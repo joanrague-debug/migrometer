@@ -1,0 +1,1797 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Llegadas irregulares de personas migrantes a España según la prensa y según el Ministerio del Interior, por separado y con sus fuentes.">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Migrometer ES Web</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: iOS "Large Title" header + widget grid on a neutral ground; one sticky filter bar. */
+:root{
+  --bg:#F5F5F7; --surface:#FFFFFF; --surface-2:#FAFAFC; --fill:rgba(118,118,128,.10); --fill-2:rgba(118,118,128,.16);
+  --line:rgba(0,0,0,.06); --line-2:rgba(0,0,0,.10);
+  --fg:#1D1D1F; --fg-2:#6E6E73; --fg-3:#8E8E93;
+  --accent:#5E5CE6; --accent-soft:rgba(94,92,230,.10); --accent-fg:#FFFFFF;
+  --warn:#C77700; --warn-bg:rgba(255,159,10,.14); --warn-line:rgba(255,159,10,.35);
+  --danger:#D70015; --ok:#248A3D;
+  --c-canarias:#5E5CE6; --c-ceuta:#0E9FB0; --c-melilla:#D9457A; --c-peninsula:#8A8F98;
+  --sea:#EEF2F7; --land:#FFFFFF; --land-es:#FFFFFF; --land-stroke:rgba(0,0,0,.14); --land-other:#E9EAEE;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 6px 24px rgba(0,0,0,.05);
+  --r-lg:20px; --r-md:16px; --r-sm:10px;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-display:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#000000; --surface:#1C1C1E; --surface-2:#232326; --fill:rgba(118,118,128,.20); --fill-2:rgba(118,118,128,.28);
+  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+  --fg:#F5F5F7; --fg-2:#A1A1A6; --fg-3:#8E8E93;
+  --accent:#7D7AFF; --accent-soft:rgba(125,122,255,.16); --accent-fg:#FFFFFF;
+  --warn:#FFB340; --warn-bg:rgba(255,179,64,.14); --warn-line:rgba(255,179,64,.35);
+  --danger:#FF6961; --ok:#30D158;
+  --c-canarias:#7D7AFF; --c-ceuta:#40C8E0; --c-melilla:#FF6B9A; --c-peninsula:#98989F;
+  --sea:#0B1016; --land:#1E1F23; --land-es:#2A2B31; --land-stroke:rgba(255,255,255,.16); --land-other:#18191C;
+  --shadow:0 1px 2px rgba(0,0,0,.4); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#000000; --surface:#1C1C1E; --surface-2:#232326; --fill:rgba(118,118,128,.20); --fill-2:rgba(118,118,128,.28);
+  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+  --fg:#F5F5F7; --fg-2:#A1A1A6; --fg-3:#8E8E93;
+  --accent:#7D7AFF; --accent-soft:rgba(125,122,255,.16); --accent-fg:#FFFFFF;
+  --warn:#FFB340; --warn-bg:rgba(255,179,64,.14); --warn-line:rgba(255,179,64,.35);
+  --danger:#FF6961; --ok:#30D158;
+  --c-canarias:#7D7AFF; --c-ceuta:#40C8E0; --c-melilla:#FF6B9A; --c-peninsula:#98989F;
+  --sea:#0B1016; --land:#1E1F23; --land-es:#2A2B31; --land-stroke:rgba(255,255,255,.16); --land-other:#18191C;
+  --shadow:0 1px 2px rgba(0,0,0,.4); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+.num,table,.kpi,.chip-n{font-variant-numeric:tabular-nums}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px;border-radius:8px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+header.top{padding-block:28px 6px}
+.brand{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand>svg{width:48px;height:48px;flex:none;filter:drop-shadow(0 4px 10px rgba(94,92,230,.25))}
+.brand h1{font-family:var(--font-display);font-size:34px;line-height:1.05;letter-spacing:-.02em;margin:0;font-weight:700}
+.brand h1 span{color:var(--fg-3);font-weight:600}
+.brand p{margin:2px 0 0;color:var(--fg-2);font-size:15px}
+.brand .meta{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 11px;border-radius:999px;background:var(--fill);color:var(--fg-2);font-size:12.5px;font-weight:500;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--fg-3)}
+.pill.ok i{background:var(--ok)} .pill.local i{background:var(--warn)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:34px;padding:0 14px;border-radius:999px;border:0;background:var(--fill);color:var(--fg);font-weight:600;font-size:13.5px;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--fill-2)}
+.btn.primary{background:var(--accent);color:var(--accent-fg)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.small{height:28px;padding:0 10px;font-size:12.5px}
+.btn.danger{color:var(--danger)}
+.btn:disabled{opacity:.45;cursor:default}
+
+/* filter bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--line);margin-top:14px}
+.bar .wrap{display:flex;gap:10px 14px;align-items:center;flex-wrap:wrap;padding-block:10px}
+.seg{display:inline-flex;background:var(--fill);border-radius:10px;padding:2px;gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;height:30px;padding:0 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--fg);cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+.field{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-2)}
+.field input,.field select,.inp{height:32px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);padding:0 10px;font-size:13.5px;color:var(--fg);min-width:0}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+.active-filter{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 6px 0 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:13px}
+.active-filter button{border:0;background:transparent;color:inherit;cursor:pointer;width:22px;height:22px;border-radius:50%;display:grid;place-items:center}
+.active-filter button:hover{background:var(--accent-soft)}
+
+main{padding-block:22px 40px;display:grid;gap:22px;grid-template-columns:minmax(0,1fr)}
+main>section,main>footer{min-width:0}
+.section-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 10px}
+.section-h h2{font-family:var(--font-display);font-size:22px;letter-spacing:-.01em;margin:0;font-weight:700;text-wrap:balance}
+.section-h .sub{color:var(--fg-2);font-size:13.5px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);min-width:0}
+.card-pad{padding:18px 20px}
+.card h3{margin:0;font-size:15px;font-weight:600}
+.card .hint{color:var(--fg-2);font-size:12.5px}
+.eyebrow{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);font-weight:600}
+
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.kpi{padding:16px 18px;display:flex;flex-direction:column;gap:6px;min-height:132px}
+.kpi .v{font-family:var(--font-display);font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.kpi .v.muted{font-size:17px;font-weight:600;color:var(--fg-3);letter-spacing:0;line-height:1.25}
+.kpi .foot{margin-top:auto;color:var(--fg-2);font-size:12.5px;display:flex;gap:6px;flex-wrap:wrap}
+.kpi.hero .v{color:var(--accent)}
+.mini{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;min-height:24px;padding:3px 9px;border-radius:999px;background:var(--fill);font-size:12px;font-weight:500;color:var(--fg)}
+.chip b{font-weight:700}
+.badge-warn{display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 8px;border-radius:999px;background:var(--warn-bg);color:var(--warn);font-size:11.5px;font-weight:600;border:1px solid var(--warn-line);white-space:nowrap;cursor:pointer}
+.badge-warn svg{width:12px;height:12px}
+.kpi .badge-warn{white-space:normal;height:auto;min-height:22px;padding:3px 8px;max-width:100%}
+.badge-warn svg{flex:none}
+.badge-sm{display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 7px;border-radius:6px;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:600;white-space:nowrap}
+
+.prof{display:grid;gap:14px}
+.brand .meta .pill{white-space:normal;height:auto;min-height:28px;padding:4px 11px;max-width:100%}
+.pnav{display:flex;gap:6px;flex-wrap:wrap;padding-block:4px 0}
+.pnav a{display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:999px;background:var(--fill);color:var(--fg);font-size:13px;font-weight:500;text-decoration:none}
+.pnav a:hover{background:var(--fill-2);text-decoration:none}
+.section-h h2,footer h2{scroll-margin-top:130px}
+.legal{display:grid;gap:4px;padding-top:28px;margin-top:10px;border-top:1px solid var(--line)}
+.fold summary{cursor:pointer;font-size:12.5px;font-weight:600;color:var(--fg-3);padding:6px 0;list-style:none;display:inline-flex;align-items:center;gap:6px}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary::before{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform .15s}
+.fold[open] summary::before{transform:rotate(45deg)}
+.fold summary:hover{color:var(--fg-2)}
+.fold-body{display:grid;gap:10px;padding:6px 0 12px 12px}
+.fine{font-size:11.5px;color:var(--fg-3);margin:6px 0 0}
+.legal h2,.legal h3{color:var(--fg)}
+.legal h2{font-family:var(--font-display);font-size:22px;margin:0;letter-spacing:-.01em}
+.legal h3{font-size:12.5px;margin:0 0 2px}
+.legal p,.legal li{margin:0;color:var(--fg-3);font-size:12px;line-height:1.5;max-width:100ch}
+.legal ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.legal .card{padding:18px 20px;display:grid;gap:12px}
+#kpis{grid-template-columns:repeat(5,minmax(0,1fr))}
+.kpi-split{grid-column:span 2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:0}
+.kpi-split .half{padding:16px 18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.kpi-split .half+.half{border-left:1px solid var(--line)}
+.kpi-split .half .v{font-family:var(--font-display);font-size:38px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.kpi-split .half:first-child .v{color:var(--accent)}
+.kpi-split .half .v.muted{font-size:16px;color:var(--fg-3);font-weight:600;letter-spacing:0;line-height:1.3}
+.kpi .eyebrow{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.src-tag.sm{height:18px;padding:0 6px;font-size:10px}
+.src-line{font-size:11.5px;color:var(--fg-3);line-height:1.45;margin-top:2px}
+.src-line span:first-child{font-weight:600}
+.src-line a{color:var(--fg-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:2px}
+.src-line a:hover{color:var(--accent)}
+.src-line .nolink{color:var(--fg-2);font-weight:400}
+.focus{display:grid;gap:8px;align-content:start}
+.focus .fx{display:grid;gap:2px;justify-items:start;padding-top:6px;border-top:1px solid var(--line)}
+.focus .fx .v{font-size:22px}
+.focus .fx .v.muted{font-size:13px}
+.focus-src{grid-column:1/-1}
+.pop-q{display:grid;gap:4px}
+.dem-block{display:grid;gap:8px;padding-top:12px;border-top:1px solid var(--line)}
+.dem-row{display:grid;gap:4px}
+.dem-l{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:14px}
+.dem-l b{font-size:17px}
+.split-bar{display:flex;height:10px;border-radius:999px;overflow:hidden;background:var(--fill)}
+.split-bar span{display:block;height:100%}
+.pop-v{font-family:var(--font-display);font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.pop-eq{display:grid;gap:4px;padding:14px 16px;border-radius:var(--r-md);background:var(--accent-soft)}
+.pop-name{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:-.01em;color:var(--accent);line-height:1.1}
+.pop-meta{font-size:13.5px;color:var(--fg);font-weight:500}
+.pop-diff{font-size:12.5px;color:var(--fg-2)}
+.pop-reg{font-size:13.5px;color:var(--fg)}
+.pop-evo table.mt td{padding:6px 8px}
+.med-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:14px}
+table.med{min-width:560px}
+.sq{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--accent)}
+.map-badge{pointer-events:auto}
+.kpi.grave .v{color:var(--fg)}
+.kpi.grave{background:linear-gradient(180deg,var(--surface),var(--surface-2))}
+.chip-grave{background:var(--fg);color:var(--bg)}
+.nat-list{display:grid;gap:8px}
+.nat{display:grid;grid-template-columns:minmax(110px,190px) minmax(0,1fr) auto;gap:12px;align-items:center;font-size:13.5px}
+.nat .nm{font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar-bg{height:8px;border-radius:999px;background:var(--fill);overflow:hidden}
+.bar-fg{display:block;height:100%;border-radius:999px;background:var(--accent)}
+.nat .num{color:var(--fg-2);font-size:12.5px;white-space:nowrap}
+.stat-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.focus-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.focus{padding:14px 16px;display:grid;gap:4px;cursor:pointer;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:var(--r-md);box-shadow:var(--shadow)}
+.focus:hover{border-color:var(--line-2)}
+.focus[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:-1px}
+.focus .t{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px}
+.focus .v{font-size:26px;font-weight:700;font-family:var(--font-display);letter-spacing:-.01em}
+.focus .v.muted{font-size:14px;color:var(--fg-3);font-weight:600}
+.focus .s{color:var(--fg-2);font-size:12px}
+
+/* map + coverage */
+.geo{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:14px}
+.map-wrap{position:relative;padding:10px}
+.map-wrap svg{display:block;width:100%;height:auto;border-radius:14px;background:var(--sea)}
+.map-head{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 10px 10px;flex-wrap:wrap}
+.map-ctrl{display:grid;gap:10px;padding:6px 10px 12px}
+.map-ctrl .row{justify-content:space-between}
+.stepper{display:inline-flex;align-items:center;gap:6px}
+.icon-btn{width:32px;height:32px;border-radius:50%;border:0;background:var(--fill);color:var(--fg);display:grid;place-items:center;cursor:pointer}
+.icon-btn:hover{background:var(--fill-2)}
+.icon-btn:disabled{opacity:.35;cursor:default}
+.icon-btn[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg)}
+.icon-btn svg{width:14px;height:14px}
+.map-day{font-weight:600;font-size:14px;min-width:0;text-align:center;padding:0 4px}
+.slider-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;font-size:12px;color:var(--fg-3)}
+input[type=range].scrub{width:100%;accent-color:var(--accent);margin:0}
+.map-badge{position:absolute;left:12px;top:12px;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line-2);border-radius:14px;padding:9px 12px;display:grid;gap:2px;max-width:calc(100% - 24px);box-shadow:var(--shadow);pointer-events:none}
+.map-badge b{font-size:14px}
+.map-badge .v{font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.map-badge .v.muted{font-size:13.5px;font-weight:600}
+.zone.chg .b{animation:bump .55s cubic-bezier(.2,.9,.3,1.3)}
+.zone .b{transform-box:fill-box;transform-origin:center}
+@keyframes bump{0%{transform:scale(.55);opacity:.4}100%{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.zone.chg .b{animation:none}}
+@media (max-width:560px){.map-badge{left:8px;top:8px;padding:7px 10px}.map-badge .v{font-size:18px}}
+.land{fill:var(--land-other);stroke:var(--land-stroke);stroke-width:.8;vector-effect:non-scaling-stroke}
+.land.es{fill:var(--land-es);stroke-width:1}
+.sea-label{fill:var(--fg-3);font-size:15px;letter-spacing:.18em;font-weight:600;text-transform:uppercase;opacity:.75}
+.country-label{fill:var(--fg-3);font-size:13px;font-weight:500;opacity:.85}
+.halo{fill:none;stroke-width:1.6;stroke-dasharray:4 5;cursor:pointer;opacity:.85}
+.halo-label{font-size:14px;font-weight:700;letter-spacing:.12em;cursor:pointer}
+.zone{cursor:pointer}
+.zone .b{stroke:var(--surface);stroke-width:2;vector-effect:non-scaling-stroke}
+.zone .empty{fill:var(--surface);stroke-width:1.6;vector-effect:non-scaling-stroke}
+.zone text{font-size:15px;font-weight:700;fill:var(--fg);paint-order:stroke;stroke:var(--sea);stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+.zone.sel .b,.zone.sel .empty{stroke:var(--fg);stroke-width:2.5}
+.zone.dim{opacity:.28}
+.pulse{fill:none;stroke-width:1.5;opacity:.0;transform-box:fill-box;transform-origin:center;animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(2.1)}}
+@media (prefers-reduced-motion:reduce){.pulse{animation:none;opacity:0}}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line-2);box-shadow:0 8px 28px rgba(0,0,0,.16);border-radius:12px;padding:8px 11px;font-size:12.5px;min-width:150px;z-index:3}
+.tip b{display:block;font-size:13.5px}
+.legend{display:flex;gap:12px;flex-wrap:wrap;color:var(--fg-2);font-size:12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+
+.cov{padding:6px 0 8px;max-height:640px;overflow:auto}
+.cov h4{margin:14px 20px 6px;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);font-weight:600}
+.cov-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:8px 20px;border:0;background:transparent;width:100%;text-align:left;cursor:pointer}
+.cov-row:hover{background:var(--fill)}
+.cov-row.sel{background:var(--accent-soft)}
+.cov-row .n{font-weight:600}
+.cov-row .n.muted{color:var(--fg-3);font-weight:500;font-size:12.5px}
+.cov-row.sub{padding-left:40px}
+.cov-row.sub .nm{color:var(--fg-2);font-size:13.5px}
+.cov-sep{height:1px;background:var(--line);margin:4px 20px}
+
+/* official */
+.off{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+#offBox{display:grid;gap:14px}
+.src-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.src-card{display:grid;gap:14px;align-content:start}
+.src-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.src-tag{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.src-tag.off{background:var(--accent);color:var(--accent-fg)}
+.src-tag.press{background:var(--accent-soft);color:var(--accent);border:1px dashed var(--accent)}
+.src-v{font-family:var(--font-display);font-size:44px;font-weight:700;letter-spacing:-.02em;line-height:1}
+table.mt{width:100%;border-collapse:collapse;font-size:13.5px}
+table.mt th{font-size:11.5px;color:var(--fg-3);font-weight:600;text-transform:uppercase;letter-spacing:.05em;text-align:right;padding:6px 8px;border-bottom:1px solid var(--line)}
+table.mt td{padding:8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
+table.mt th:first-child,table.mt td:first-child{text-align:left}
+table.mt tr:last-child td{border-bottom:0}
+table.cmp{min-width:620px}
+table.cmp td.cmp-cell{text-align:left;min-width:170px}
+.cmp-n{font-weight:700;font-size:16px}
+.cbar{height:8px;border-radius:999px;background:var(--fill);margin:5px 0 4px;overflow:hidden}
+.cbar span{display:block;height:100%;border-radius:999px}
+.cb-off{background:var(--accent)}
+.cb-press{background:repeating-linear-gradient(135deg,var(--accent) 0 3px,var(--accent-soft) 3px 7px)}
+.tl-dot-press{background:repeating-linear-gradient(135deg,var(--accent) 0 2px,var(--accent-soft) 2px 4px)}
+@media (max-width:980px){.src-grid{grid-template-columns:minmax(0,1fr)}}
+.eq{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:14px;align-items:stretch}
+.eq-b{display:grid;gap:6px;align-content:start;padding:14px 16px;border-radius:var(--r-md);background:var(--surface-2);border:1px solid var(--line)}
+.eq-b.total{background:var(--accent-soft);border-color:transparent}
+.eq-b.total .eq-v{color:var(--accent)}
+.eq-k{font-size:12.5px;font-weight:600;color:var(--fg-2);display:flex;gap:8px;align-items:center}
+.eq-n{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--fill-2);color:var(--fg);font-size:11.5px;font-weight:700;flex:none}
+.eq-v{font-family:var(--font-display);font-size:38px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.eq-s{font-size:12.5px;color:var(--fg-2);line-height:1.4}
+.eq-op{align-self:center;font-size:28px;font-weight:300;color:var(--fg-3)}
+.tl{position:relative;padding-top:22px}
+.tl-cut{position:absolute;top:0;font-size:12px;font-weight:600;color:var(--fg-2);white-space:nowrap}
+.tl-lbl span{white-space:nowrap}
+.tl-bar{display:flex;height:12px;border-radius:999px;overflow:hidden;background:var(--fill)}
+.tl-off{background:var(--accent)}
+.tl-press,.tl-dot-press{background:repeating-linear-gradient(135deg,var(--accent) 0 3px,var(--accent-soft) 3px 7px)}
+.tl-lbl{position:relative;display:flex;justify-content:space-between;font-size:12px;color:var(--fg-2);margin-top:6px;height:16px}
+@media (max-width:760px){.eq{grid-template-columns:minmax(0,1fr)}.eq-op{justify-self:center;line-height:1}}
+.off table{width:100%;border-collapse:collapse;font-size:13.5px}
+.off th{font-size:11.5px;color:var(--fg-3);font-weight:600;text-transform:uppercase;letter-spacing:.05em;text-align:right;padding:6px 8px;border-bottom:1px solid var(--line)}
+.off th:first-child,.off td:first-child{text-align:left}
+.off td{padding:8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.off tr.tot td{font-weight:700;border-bottom:0}
+.delta-up{color:var(--fg)} .muted{color:var(--fg-3)}
+.big-total{font-family:var(--font-display);font-size:44px;font-weight:700;letter-spacing:-.02em;line-height:1}
+
+/* charts */
+.charts{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:14px}
+.chart-box{position:relative;height:280px}
+.chart-empty{position:absolute;inset:0;display:grid;place-items:center;color:var(--fg-3);font-size:13.5px;text-align:center;padding:20px}
+
+/* parser */
+.parser{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:14px}
+textarea.news{width:100%;min-height:210px;resize:vertical;border-radius:14px;border:1px solid var(--line-2);background:var(--surface-2);padding:12px 14px;font-size:14px;line-height:1.5}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.drafts{display:grid;gap:12px;align-content:start}
+.draft{border:1px solid var(--line-2);border-radius:var(--r-md);padding:14px;display:grid;gap:10px;background:var(--surface-2)}
+.draft .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.draft label{display:grid;gap:3px;font-size:11.5px;color:var(--fg-2);font-weight:500;min-width:0}
+.draft label .inp{width:100%}
+.draft .wide{grid-column:span 2}
+.draft .full{grid-column:1/-1}
+.cands{display:flex;gap:6px;flex-wrap:wrap}
+.cands button{border:1px solid var(--line-2);background:var(--surface);border-radius:999px;height:24px;padding:0 9px;font-size:12px;cursor:pointer}
+.cands button[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg);border-color:transparent}
+.note{display:flex;gap:8px;align-items:flex-start;padding:9px 11px;border-radius:12px;font-size:12.5px;background:var(--fill);color:var(--fg-2)}
+.note.warn{background:var(--warn-bg);color:var(--warn)}
+.note svg{flex:none;width:15px;height:15px;margin-top:1px}
+.empty-state{display:grid;place-items:center;text-align:center;gap:6px;padding:30px 16px;color:var(--fg-2)}
+.empty-state b{color:var(--fg);font-size:15px}
+
+/* table */
+.tbl-wrap{overflow-x:auto}
+table.ev{width:100%;border-collapse:collapse;font-size:13.5px;min-width:860px}
+table.ev th{position:sticky;top:0;text-align:left;font-size:11.5px;color:var(--fg-3);font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--surface)}
+table.ev td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+table.ev tr.det td{background:var(--surface-2);padding:12px 16px}
+table.ev td.n{text-align:right;font-weight:700;font-size:15px;white-space:nowrap}
+table.ev th.n{text-align:right}
+.loc{display:flex;gap:8px;align-items:flex-start}
+.loc .dot{margin-top:6px}
+.loc small{display:block;color:var(--fg-2);font-size:12px}
+.srcs{display:grid;gap:2px}
+.srcs a,.srcs span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px;display:block}
+.rep-list{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.rep-list li{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.rep-list .c{font-weight:700;min-width:64px;text-align:right}
+.addsrc{display:grid;grid-template-columns:1.2fr 1.6fr .7fr .7fr auto;gap:8px;margin-top:10px;align-items:end}
+.addsrc label{display:grid;gap:3px;font-size:11.5px;color:var(--fg-2)}
+.confirm{display:inline-flex;gap:6px;align-items:center;font-size:12.5px;color:var(--danger)}
+
+footer{color:var(--fg-2);font-size:12.5px;padding-block:6px 40px;display:grid;gap:8px}
+footer p{margin:0;max-width:85ch}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:13.5px;font-weight:500;z-index:20;box-shadow:0 8px 28px rgba(0,0,0,.2)}
+
+@media (max-width:980px){
+  .geo,.charts,.parser,.off{grid-template-columns:minmax(0,1fr)}
+  .kpis,.focus-row,#kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .med-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  .kpi-split{grid-template-columns:minmax(0,1fr)}.kpi-split .half+.half{border-left:0;border-top:1px solid var(--line)}
+  .focus-row{grid-template-columns:minmax(0,1fr)}
+  .nat{grid-template-columns:minmax(0,1fr) auto}.nat .bar-bg{display:none}
+  .brand h1{font-size:28px}
+  .brand .meta{margin-left:0}
+  .kpi .v{font-size:32px}
+  .kpi{min-height:118px}
+  .draft .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .addsrc{grid-template-columns:1fr 1fr}
+  .zone text{font-size:22px}
+}
+</style>
+
+<header class="top wrap">
+  <div class="brand">
+    <svg viewBox="0 0 48 48" role="img" aria-label="Logotipo de Migrometer ES">
+      <defs>
+        <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B79F2"/><stop offset="1" stop-color="#4744D4"/></linearGradient>
+      </defs>
+      <rect x="1" y="1" width="46" height="46" rx="12" fill="url(#lg)"/>
+      <path d="M11.5 28.5a12.5 12.5 0 0 1 25 0" fill="none" stroke="#fff" stroke-opacity=".38" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M11.5 28.5a12.5 12.5 0 0 1 17.8-11.3" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M24 28.5l6.2-7.4" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+      <circle cx="24" cy="28.5" r="2.6" fill="#fff"/>
+      <path d="M10 37.2c2.3-2.2 4.7-2.2 7 0s4.7 2.2 7 0 4.7-2.2 7 0 4.7 2.2 7 0" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <h1>Migrometer <span>ES</span></h1>
+      <p>Llegadas irregulares de personas migrantes a España · noticias y datos oficiales, siempre por separado y con sus fuentes</p>
+    </div>
+    <div class="meta">
+      <span class="pill ok" id="updPill"><i></i><span id="updAt">Cargando datos…</span></span>
+    </div>
+  </div>
+</header>
+<nav class="pnav wrap" aria-label="Secciones">
+  <a href="#h-day">Resumen</a><a href="#h-pop">Población</a><a href="#h-prof">Perfil</a><a href="#h-map">Mapa</a><a href="#h-off">Oficial y prensa</a><a href="#h-st">Estadísticas</a><a href="#h-med">Medios</a><a href="#h-log">Registro</a>
+</nav>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="seg" id="segPreset" role="group" aria-label="Periodo">
+      <button type="button" data-p="dia">Día</button>
+      <button type="button" data-p="7d">7 días</button>
+      <button type="button" data-p="30d">30 días</button>
+      <button type="button" data-p="anio">Año</button>
+      <button type="button" data-p="todo">Todo</button>
+    </div>
+    <label class="field"><span id="fDayLbl">Fecha</span> <input type="date" id="fDay"></label>
+    <div class="seg" id="segRegion" role="group" aria-label="Región">
+      <button type="button" data-r="all">Todas</button>
+      <button type="button" data-r="canarias"><span class="dot" style="background:var(--c-canarias)"></span> Canarias</button>
+      <button type="button" data-r="ceuta"><span class="dot" style="background:var(--c-ceuta)"></span> Ceuta</button>
+      <button type="button" data-r="melilla"><span class="dot" style="background:var(--c-melilla)"></span> Melilla</button>
+      <button type="button" data-r="peninsula"><span class="dot" style="background:var(--c-peninsula)"></span> Península y Baleares</button>
+    </div>
+    <label class="field">Zona <select id="fZone"></select></label>
+    <span id="activeZone"></span>
+  </div>
+</div>
+
+<main class="wrap">
+  <!-- 1. Resumen del día -->
+  <section aria-labelledby="h-day">
+    <div class="section-h"><h2 id="h-day">Resumen del día</h2><span class="sub" id="daySub"></span></div>
+    <div class="kpis" id="kpis"></div>
+  </section>
+
+  <!-- 2. Periodo y foco -->
+  <section aria-labelledby="h-per">
+    <div class="section-h"><h2 id="h-per">Regiones foco</h2><span class="sub" id="perSub"></span></div>
+    <div class="focus-row" id="focusRow"></div>
+  </section>
+
+  <!-- 2a. Equivalencia en población -->
+  <section aria-labelledby="h-pop">
+    <div class="section-h"><h2 id="h-pop">Equivalencia en población</h2><span class="sub" id="popSub"></span></div>
+    <div id="popBox" style="display:grid;gap:14px"></div>
+  </section>
+
+  <!-- 2b. Perfil y víctimas -->
+  <section aria-labelledby="h-prof">
+    <div class="section-h"><h2 id="h-prof">Perfil demográfico y víctimas</h2><span class="sub" id="profSub"></span></div>
+    <div class="prof" id="profBox"></div>
+  </section>
+
+  <!-- 3. Mapa + cobertura -->
+  <section aria-labelledby="h-map">
+    <div class="section-h"><h2 id="h-map">Mapa de llegadas</h2><span class="sub">Toca un punto o una zona para filtrar la página</span></div>
+    <div class="geo">
+      <div class="card map-wrap">
+        <div class="map-ctrl">
+          <div class="row">
+            <div class="seg" id="mapSrc" role="group" aria-label="Fuente del mapa">
+              <button type="button" data-s="press">Noticias</button>
+              <button type="button" data-s="official">Oficial</button>
+            </div>
+            <div class="seg" id="mapPreset" role="group" aria-label="Periodo del mapa">
+              <button type="button" data-p="dia">Día</button>
+              <button type="button" data-p="7d">7 días</button>
+              <button type="button" data-p="30d">30 días</button>
+              <button type="button" data-p="anio">Año</button>
+              <button type="button" data-p="todo">Todo</button>
+            </div>
+            <div class="stepper">
+              <button type="button" class="icon-btn" id="mapPrev" aria-label="Día anterior"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 5 8l5 5"/></svg></button>
+              <button type="button" class="icon-btn" id="mapPlay" aria-label="Reproducir día a día" aria-pressed="false"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.2v9.6L13 8z"/></svg></button>
+              <button type="button" class="icon-btn" id="mapNext" aria-label="Día siguiente"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3 5 5-5 5"/></svg></button>
+            </div>
+          </div>
+          <div class="map-day" id="mapDay"></div>
+          <div class="slider-row"><span id="mapMin"></span><input type="range" class="scrub" id="mapSlider" min="0" max="1" step="1" aria-label="Fecha de referencia del mapa"><span id="mapMax"></span></div>
+        </div>
+        <div class="map-head">
+          <div class="legend" id="mapLegendOff" hidden><span><span class="sq"></span>Cuadrados: cifra oficial de Interior por región (Interior no desglosa por isla ni provincia)</span></div>
+          <div class="legend" id="mapLegendPress">
+            <span><span class="dot" style="background:var(--c-canarias)"></span>Canarias</span>
+            <span><span class="dot" style="background:var(--c-ceuta)"></span>Ceuta</span>
+            <span><span class="dot" style="background:var(--c-melilla)"></span>Melilla</span>
+            <span><span class="dot" style="background:var(--c-peninsula)"></span>Península y Baleares</span>
+            <span><span class="dot" style="background:var(--surface);border:1.5px solid var(--fg-3)"></span>Sin datos reportados</span>
+          </div>
+          <span class="hint">Escala fija: el tamaño se puede comparar entre periodos</span>
+        </div>
+        <div style="position:relative">
+          <svg id="map" viewBox="0 0 1000 914" role="img" aria-label="Mapa de España, Marruecos y cuencas marítimas con las zonas de llegada">
+            <g id="landG"></g>
+            <g id="labelsG"></g>
+            <g id="halosG"></g>
+            <g id="zonesG"></g>
+          </svg>
+          <div class="map-badge" id="mapBadge"></div>
+          <div class="tip" id="tip" hidden></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-pad" style="padding-bottom:4px"><h3>Cobertura territorial</h3><div class="hint" id="covSub">Personas en el periodo por zona</div></div>
+        <div class="cov" id="cov"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Balance oficial -->
+  <section aria-labelledby="h-off">
+    <div class="section-h"><h2 id="h-off">Fuente oficial y prensa</h2><span class="sub" id="offSub"></span></div>
+    <div id="offBox"></div>
+  </section>
+
+  <!-- 5. Estadísticas -->
+  <section aria-labelledby="h-st">
+    <div class="section-h"><h2 id="h-st">Estadísticas</h2><span class="sub">Noticias registradas, con medias aplicadas · siguen el filtro de fechas</span></div>
+    <div class="charts">
+      <div class="card card-pad"><div class="row" style="justify-content:space-between"><h3 id="trendTitle">Evolución</h3><span class="hint" id="trendSub"></span></div><div class="chart-box"><canvas id="chTrend" aria-label="Tendencia diaria de llegadas"></canvas><div class="chart-empty" id="trendEmpty" hidden>Sin datos reportados en estas fechas</div></div><div id="trendSrc"></div></div>
+      <div class="card card-pad"><div class="row" style="justify-content:space-between"><h3>Distribución por región</h3><span class="hint" id="distSub"></span></div><div class="chart-box"><canvas id="chDist" aria-label="Distribución de llegadas por región"></canvas><div class="chart-empty" id="distEmpty" hidden>Sin datos reportados en el periodo</div></div><div id="distSrc"></div></div>
+    </div>
+  </section>
+
+  <!-- 5b. Medios -->
+  <section aria-labelledby="h-med">
+    <div class="section-h"><h2 id="h-med">Medios de comunicación</h2><span class="sub" id="medSub"></span></div>
+    <div id="medBox"></div>
+  </section>
+
+  <!-- 7. Registro -->
+  <section aria-labelledby="h-log">
+    <div class="section-h"><h2 id="h-log">Registro de eventos</h2><span class="sub" id="logSub"></span></div>
+    <div class="card">
+      <div class="tbl-wrap"><table class="ev">
+        <thead><tr><th>Fecha / hora</th><th>Ubicación</th><th class="n">Personas</th><th>Detalle / embarcación</th><th>Fuente(s)</th><th>Notas</th><th></th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <footer class="legal">
+    <details class="fold" id="metodologia">
+    <summary>Metodología</summary>
+    <div class="fold-body">
+      <div>
+        <h3>De dónde salen los datos</h3>
+        <ul>
+          <li><b>Noticias:</b> webs de televisiones (RTVE, RTVC, Antena 3, laSexta, Telecinco, Canal Sur, IB3, À Punt, 7TV, RTVCE, TV Melilla…), periódicos y agencias (EFE, Europa Press). Cada cifra enlaza a la noticia de la que procede.</li>
+          <li><b>Datos oficiales:</b> informes quincenales sobre inmigración irregular del Ministerio del Interior, que solo publican el acumulado del año por vía y zona en cada fecha de corte.</li>
+          <li><b>Población:</b> Instituto Nacional de Estadística (INE), cifras oficiales de población de los municipios españoles a 1 de enero de 2025 (Revisión del Padrón municipal).</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cómo se cuentan</h3>
+        <ul>
+          <li>No se inventa ni se estima ninguna cifra. Donde no hay datos se indica «Sin datos reportados».</li>
+          <li>Las cifras aproximadas («casi», «unos», «más de», «al menos») no se cuentan como exactas.</li>
+          <li>Una misma llegada contada por varios medios es un solo registro: si las cifras difieren se usa la media aritmética y se avisa de la discrepancia.</li>
+          <li>Cada noticia cuenta una sola vez: una fuente repetida en la misma llegada cuenta una vez y los registros duplicados o solapados (por ejemplo, un total del día junto con el detalle por islas) no se suman.</li>
+          <li>Las cifras oficiales y las de prensa se muestran y comparan por separado; nunca se suman.</li>
+          <li>La cifra oficial de una quincena es la diferencia entre dos informes consecutivos. Cuando una cifra se obtiene restando datos del mismo informe, se indica.</li>
+          <li>El perfil demográfico (sexo, edad, nacionalidad) solo existe en la prensa y solo cubre las llegadas cuyas noticias lo detallan; no representa al total.</li>
+          <li>La recopilación diaria se hace con ayuda de herramientas automatizadas de inteligencia artificial que leen las noticias y aplican estas reglas, por lo que puede contener errores u omisiones.</li>
+        </ul>
+      </div>
+    </div>
+    </details>
+
+    <details class="fold" id="aviso-legal">
+    <summary>Aviso legal</summary>
+    <div class="fold-body">
+      <div>
+        <h3>1. Titular del sitio</h3>
+        <p>Sitio web personal, de carácter no comercial y sin actividad económica: no incluye publicidad, no vende productos ni servicios y no obtiene ingresos.</p>
+      </div>
+      <div>
+        <h3>2. Finalidad y naturaleza de la información</h3>
+        <p>Este sitio tiene una finalidad exclusivamente informativa y estadística: reúne y ordena cifras publicadas por medios de comunicación y por organismos públicos sobre llegadas irregulares de personas a España. No es una fuente oficial ni sustituye a las estadísticas del Ministerio del Interior, del INE o de cualquier otro organismo. Las cifras son provisionales, pueden cambiar cuando las fuentes las corrijan y pueden contener errores u omisiones.</p>
+      </div>
+      <div>
+        <h3>3. Uso de inteligencia artificial</h3>
+        <p>La lectura de noticias, la extracción de cifras y la elaboración de los textos de este sitio se realizan con ayuda de sistemas de inteligencia artificial, lo que se informa a efectos de transparencia (artículo 50 del Reglamento (UE) 2024/1689, de inteligencia artificial). Cada dato enlaza a su fuente para que pueda comprobarse.</p>
+      </div>
+      <div>
+        <h3>4. Fuentes, propiedad intelectual y marcas</h3>
+        <p>Del contenido de las noticias solo se recogen datos y cifras sobre hechos de actualidad, citando siempre el medio y enlazando a la publicación original; no se reproducen textos, fotografías ni vídeos. Los nombres y marcas de los medios citados pertenecen a sus titulares y su mención no implica relación, patrocinio ni respaldo. Los derechos sobre las noticias enlazadas corresponden a sus autores y editores (Real Decreto Legislativo 1/1996, texto refundido de la Ley de Propiedad Intelectual).</p>
+      </div>
+      <div>
+        <h3>5. Reutilización de información del sector público</h3>
+        <p>Los datos del Ministerio del Interior y del INE se reutilizan conforme a la Ley 37/2007, de 16 de noviembre, sobre reutilización de la información del sector público, citando la fuente y la fecha de cada dato. No se alteran; los cálculos propios (diferencias entre informes, restas y equivalencias de población) se identifican como tales. Su uso no implica que dichos organismos patrocinen o respalden este sitio.</p>
+      </div>
+      <div>
+        <h3>6. Protección de datos y privacidad</h3>
+        <p>Este sitio no tiene formularios, no recoge datos personales de quienes lo visitan y no instala cookies propias ni guarda información en su dispositivo. Toda la información publicada es agregada y anónima: no identifica a ninguna persona migrante ni víctima (Reglamento (UE) 2016/679, RGPD, y Ley Orgánica 3/2018, LOPDGDD). La plataforma que aloja el sitio puede tratar datos técnicos de navegación según su propia política de privacidad.</p>
+      </div>
+      <div>
+        <h3>7. Uso responsable y no discriminación</h3>
+        <p>Las cifras describen hechos y se refieren a personas, muchas de ellas menores o víctimas. Este sitio no pretende estigmatizar a ningún colectivo y rechaza cualquier uso de su información para fomentar, promover o incitar al odio, la hostilidad o la discriminación, conductas que pueden constituir delito (artículo 510 del Código Penal).</p>
+      </div>
+      <div>
+        <h3>8. Enlaces externos y responsabilidad</h3>
+        <p>Los enlaces a medios y organismos llevan a sitios de terceros, de cuyo contenido y disponibilidad responden sus titulares (artículo 17 LSSI-CE). La información se ofrece tal como está, sin garantía de exactitud, integridad o actualidad, y no constituye asesoramiento de ningún tipo. El titular no responde de las decisiones que se tomen a partir de ella ni de los daños que pudieran derivarse de su uso.</p>
+      </div>
+      <div>
+        <h3>9. Correcciones y legislación aplicable</h3>
+        <p>Si un dato es erróneo o una fuente lo ha corregido, se rectificará en cuanto se tenga constancia. Este aviso se rige por la legislación española.</p>
+      </div>
+    </div>
+    </details>
+    <p class="fine">Mapa base: Natural Earth (dominio público). Población: INE, Padrón municipal a 1/1/2025.</p>
+  </footer>
+
+</main>
+<div class="toast" id="toast" hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+<script>
+"use strict";
+/* ───────────── Geografía ───────────── */
+const MAP = {"W":1000,"H":914,"scale":2273.6420441699333,"translate":[793.6507936507936,2009.451231553871],"paths":{"es":"M856.9,343L856,343.6L853.4,343L849.4,343L849.3,341L849.9,339.6L850.6,338.1L853,341L856.9,341.5ZM918.4,285.7L922.3,287.4L926.3,285.9L928.4,286.4L930.6,287.2L931,290.5L929.2,294.2L926.6,297.8L924.3,301.8L922.4,306.5L918.9,309.2L915.6,310.8L908.7,307.5L904.7,306.6L903.6,305.3L902.6,300.1L900.9,298.5L898.2,297.8L895.9,299.1L892.9,301.8L891.2,299.1L888.7,298.6L887.7,296.9L887.7,294.9L904.2,282.4L908.9,279.6L919,276.4L920.6,276.9L919.3,278.8L919.3,279.6L920.6,280.5L920.3,282.1L919,283.3ZM964,283L963.3,283.7L951.2,277.7L947.2,277L946.2,276.1L946.3,273L946.6,271.6L954.7,271L961.3,273.2L964.9,279.2L965.2,280.2ZM851,330.5L849.6,333.6L843.6,332.5L842.2,331.2L843.4,327.6L845.3,327.2L845.3,324.7L847.2,322.1L855.7,320.1L857.7,321.9L858.2,324.3L853,329.8ZM722.4,93.7L722.6,95.6L724,98.2L725.7,99.2L729.2,100.5L731.7,100.7L735.3,101.3L737.7,102.9L737.9,105.1L737.2,107.8L735.7,110.1L734.9,112L735.7,113.1L737,113.9L738.3,114.1L739.3,113.8L740,112.4L741.3,110.6L742,110.4L742,111.4L742.6,112.6L747,114.8L756.6,118.6L760.3,118.7L763.4,119.2L764.3,120.8L770.4,126.8L771.9,126.6L774.6,126.7L777.9,126.2L780.2,125.1L781.7,125.3L783.4,126.5L785.4,127.5L788.2,129.4L790.4,131.9L792,132.7L801.6,131L803.7,132.5L806,132.5L808.6,132.1L814.2,132.9L818.7,132.7L819.2,132L819.6,126.7L820.3,124.7L821.3,124.3L824,124.6L833.7,127.8L837.7,129.8L841.6,131.4L845,131.6L847.2,132.6L850.3,137.8L849.9,140.3L850,141.2L850.4,143L850.3,145L851.2,146.3L852.6,146.5L854.6,146L856.6,145.2L860.3,143.1L861.3,142.7L867.4,145.2L870.2,146.8L871.2,148.7L872.4,150.5L874.3,150.7L876.9,149L881,147.1L887.9,148.8L895.6,151.2L898.9,151.5L899,150.3L899.6,148.6L900.9,147.9L902.7,147.6L905.4,146.7L908.4,145.2L911.4,144.7L914.7,145.7L918.7,146.6L921.2,146.6L922.2,150L924.2,151.3L924.9,154.2L921.4,155.8L919.3,156L918.7,161L919.6,162.5L921.6,163.8L922.2,165.3L922.6,172.7L918.6,177.1L912.9,182.1L885.3,198L878.7,205.8L876.3,207.5L855.9,212.4L841.4,217.6L834.6,219.4L826,228.3L822,232L825.3,233L829,237.3L827.7,239.2L822.3,242.1L819.9,243L818.6,242.5L817.3,242.9L808.2,258.3L799.9,269.4L795.3,274.2L790.7,281.3L780.7,299.7L780.6,305L785.6,323.1L788.3,327.9L792.3,331.9L799.9,335.2L801.6,338.6L799,341.8L791.6,347.4L778.6,355L773,361L771.9,366.8L768,369.4L766.6,377.4L764.3,382.8L763.7,384.5L761.3,388.6L761,391.5L765,395.6L763,397.3L761,398.1L756.4,398.5L741,399.1L728.6,407.7L722.3,415.4L716.7,429.7L709.9,438.1L706.9,439.7L702.1,436L696.3,435.4L690.6,436.7L687.7,439.5L683,441.1L678.4,439.8L668.7,439L664.3,439.2L657.4,441.5L651.6,439.9L641.7,439.2L620.3,441L617.7,441.9L615,445.4L608.1,451.4L597.9,451.7L588.4,455.6L586.1,458L582.1,464.8L580.9,469.7L580.1,469.8L579.1,468.6L577.6,469L576.9,472.8L573.3,474.5L570.4,475.1L563.1,472L557.1,467.4L554,467.2L548.9,460L546.6,455.4L545,450.5L545.3,448.6L544.9,447L540.3,445L539.1,440.5L542.6,434.6L545.3,432L547,431.3L542.9,431.6L539.9,435.4L536,429.3L520.4,417.3L521.4,414.7L521.3,413.1L518.7,416.3L516.9,417.2L508.9,416.7L499.7,418.1L497.3,405.7L496.1,400.9L495.9,397.8L498.3,390.7L500.9,387.7L504.3,381.7L508.6,376.7L513,375.5L515,374.7L516.6,370.9L517.6,367.5L516.9,367.2L511.7,367.9L502.3,353.9L502.6,351.7L503.7,348.3L504.6,344.2L504.7,340.8L507.1,338L510.9,335.2L514,331.1L515.6,327L516,323.4L514.1,320.8L509,319.4L503.7,309L502.6,302.5L501.4,301.8L498.1,298.8L495,293.3L494.6,292.4L497.9,291.4L511.1,291.3L514,290.1L514.4,289.7L516.9,285.3L519.4,278.1L520,273.7L519.1,271.9L514.7,267.5L514.6,266.1L515.3,264.1L517.9,261.8L521.4,259.3L523.4,257L523,255.3L521.9,253.5L521.7,251.9L522.4,249.8L522.6,242.6L523.1,240.8L522.4,234.4L521.6,229.1L518.7,222.2L519.3,220.7L520.6,219.4L524.7,217L528.1,211.4L533.1,206.7L539.6,202.9L544,198.7L545.9,195.5L547.1,194.6L546.7,193.1L545.9,190.9L543.3,188.8L540,187.6L536.3,187.6L534,187.2L533.4,185.4L533.6,180.9L533.4,176.4L532.7,174.3L531,172.8L527.6,173.2L524.7,171.9L522.4,171.7L521.1,172.6L514.7,172.3L512,171.6L510,170.7L508.9,171.2L508.1,172.1L508,173.5L507.6,175.3L505.1,176.9L499.9,178.6L495.6,178.4L491.6,177.3L490.3,176.4L488.4,175.6L480.3,176.6L479.3,175.9L476.6,177.6L472.4,179.6L470.1,179.7L469.3,179.3L469,178.4L467.3,175.3L467.7,173.6L471,168.7L470.7,167.6L469.3,166L468.1,163.7L467.7,162.6L465.6,162.4L463.4,163.6L454.9,166L452.9,166.8L449.1,169.2L445.3,172.9L442.4,173.6L441.3,172.5L441,164L445.6,158.5L448.7,155L447.3,154.4L443.9,154.5L444,151.8L445.7,150.6L447.3,147.7L445.4,146.4L444,144.5L444,139.5L444.4,137.5L444,135.3L437,138.3L435.1,137.9L435.1,134.1L439,128.5L439.4,126.8L434.9,125.9L431.4,123.1L429.4,120.7L427.1,117.1L427.1,113.9L429.4,106.5L432.7,104.2L435.6,102.9L441.6,97.7L449.7,98.6L454.9,97.6L459.4,94.9L462.1,94.2L466.3,92L466.1,88.8L464.7,86.5L466,84.3L470.7,81.5L476,78L482,77.3L488.1,74.1L492.3,76.2L495.9,75.5L500,77.9L505.4,83.4L513.4,85.7L519.9,83.9L531,83.6L536.7,84.3L546.7,82.9L552.4,83.4L561.6,80.7L568.9,84.1L582.7,85.7L591,88.6L614.1,93.2L622.6,93.3L634.3,90.6L639.3,88.6L643.9,89.9L650.6,87.6L653.9,88L658,91.3L672.9,95.7L676.7,92L679.6,91.1L690.1,93.4L700.9,98L706.4,98.3L714.6,97.1L721.2,94.1ZM145.4,834.2L142.1,844.5L139,848.5L137.1,849.8L132.6,850.9L127.1,844.5L124.4,838L122.9,836L125.3,834.4L128.9,834.6L136.6,833.3L138.1,832.7L146,826.1L153.9,825.4L154,827.5ZM249.4,810.1L246.7,813.1L243.7,812.1L245.1,805.5L246.4,803.6L252,800.7L256.6,799.6L257.9,796.6L259.4,795.4L261,797.2L259.7,799.2L258.9,805.9L255.7,807.9ZM230.3,843.7L224.9,848.7L219.4,847.6L218.6,846.7L224,845.5L228.9,841.6L232,833L237,823.5L238,819.4L239.9,817.8L242.6,817.7L243.7,818L245,820.1L245,824.9L243.6,832.9L241,839.8ZM182.6,844.6L182.3,848.1L183.1,851.6L183,856.9L181.1,859.7L176.1,862.6L172.4,862.2L170.3,861L166.4,856.3L166.3,851.6L169.9,848.4L171.3,844.4L180.4,845.1L181.3,844.4L181.9,844.1ZM111.7,850.3L110.1,850.7L108.1,849.5L106.1,846L107.6,843.4L108.7,842.1L110.6,842.3L113.9,844.3L115,846.3L115,847.5ZM83.9,859.8L80,867.1L75.1,864.4L74,863.5L73,862L77.7,861.7L82.4,858ZM86,829L85,829.4L84,825.8L79.3,817.1L82.1,813.2L87.4,813.1L89.6,815.8L90.3,818.6L89.3,820.3L89.6,823.5L89,825.7Z","pt":"M111.4,627.1L116.9,629.6L121.9,628.4L128,631.6L131.3,632.3L128.4,634.6L125.4,637.5L118.3,636.8L112.3,634L110.1,631.9L109.4,630ZM445.3,172.9L449.1,169.2L452.9,166.8L454.9,166L463.4,163.6L465.6,162.4L467.7,162.6L468.1,163.7L469.3,166L470.7,167.6L471,168.7L467.7,173.6L467.3,175.3L469,178.4L469.3,179.3L470.1,179.7L472.4,179.6L476.6,177.6L479.3,175.9L480.3,176.6L488.4,175.6L490.3,176.4L491.6,177.3L495.6,178.4L499.9,178.6L505.1,176.9L507.6,175.3L508,173.5L508.1,172.1L508.9,171.2L510,170.7L512,171.6L514.7,172.3L521.1,172.6L522.4,171.7L524.7,171.9L527.6,173.2L531,172.8L532.7,174.3L533.4,176.4L533.6,180.9L533.4,185.4L534,187.2L536.3,187.6L540,187.6L543.3,188.8L545.9,190.9L546.7,193.1L547.1,194.6L545.9,195.5L544,198.7L539.6,202.9L533.1,206.7L528.1,211.4L524.7,217L520.6,219.4L519.3,220.7L518.7,222.2L521.6,229.1L522.4,234.4L523.1,240.8L522.6,242.6L522.4,249.8L521.7,251.9L521.9,253.5L523,255.3L523.4,257L521.4,259.3L517.9,261.8L515.3,264.1L514.6,266.1L514.7,267.5L519.1,271.9L520,273.7L519.4,278.1L516.9,285.3L514.4,289.7L514,290.1L511.1,291.3L497.9,291.4L494.6,292.4L495,293.3L498.1,298.8L501.4,301.8L502.6,302.5L503.7,309L509,319.4L514.1,320.8L516,323.4L515.6,327L514,331.1L510.9,335.2L507.1,338L504.7,340.8L504.6,344.2L503.7,348.3L502.6,351.7L502.3,353.9L511.7,367.9L516.9,367.2L517.6,367.5L516.6,370.9L515,374.7L513,375.5L508.6,376.7L504.3,381.7L500.9,387.7L498.3,390.7L495.9,397.8L496.1,400.9L497.3,405.7L499.7,418.1L496.3,418.6L482.7,426.8L478.6,426.8L470.7,423.2L457,422L452.4,421L446.9,423.3L442.6,423.2L439,426.2L436.6,425.4L439.4,418.7L443.9,405.6L443.7,397.5L444.7,390.4L443.6,383.5L441.3,379.1L444.3,367.7L444,361.8L441.3,354.5L449.7,355.6L447,352.6L444.4,350.9L442,351.2L439.9,351.1L432.7,354L429.1,354.9L428,354.4L428.4,349.8L426.6,343.8L429.4,342.2L432.9,341.8L435.7,339.2L437.4,336.3L436.4,331.3L439,326.4L444.7,322.3L441.7,322.9L438.3,325.5L432.9,334.7L431.1,339.4L426.4,340.9L422.3,341.7L420.3,341.2L417.7,340L417.4,336.6L417.7,333.8L419.4,328.3L420,320.5L422.6,313.6L422.3,311.7L421.6,309L423.9,306.3L426.6,304.5L430.6,298.4L436.3,284.1L443,268.8L442.4,267L441,265.6L441.6,261.4L445.6,243.3L447.1,241L449,235.6L449.4,227.1L450.1,221.1L450,218.1L449.4,214.6L446.9,207.7L444.3,193.1L444,188.2L446.1,185.8L442.6,185.4L441,182.2L441.3,178.7Z","ma":"M247,914L250.1,911.9L254.9,907.8L258.1,901.7L261.6,889.5L267.6,876.6L270.7,866.9L270.9,866.7L276.1,861.6L279.9,855.1L286,852.3L298.9,850.9L318,845.5L335.1,837.3L340,834.1L345.3,827.5L353.9,819.1L370.1,808.9L377.6,803.2L388.9,788.8L396.4,776.9L402.7,769.2L407,762.4L410,755.5L411.7,744.3L410.6,739.9L405.9,732.8L402.6,730.9L401.7,727.5L403.4,721.5L403.4,711.2L404.4,694.8L409.7,681.5L422.7,663.8L425.1,656.7L426.6,645.1L426.7,641L443,624.6L452.6,612L455.9,608.9L464.3,603.2L493.6,590.4L510.1,581.4L519.9,574.8L525.6,567L541.6,536L557.3,492L558.6,486.8L565.6,485.4L570.6,484.8L574.6,483.2L579.4,479.8L584.1,481.1L581.9,483.4L581.9,488.9L585.1,495.2L591,502.4L601.7,511.5L610,515.1L621.9,517.3L635.6,513.3L643.3,513.2L647.1,511.6L651.1,514.1L659,514.9L666.4,513.5L672.1,509.7L675.7,505.4L676.3,507.5L676.4,509.9L677.6,511.2L679.7,516.8L681,518.9L685.3,518.6L689,519.7L697.4,519.1L705.6,520.1L705.6,520.1L706.7,523.7L709,526.6L717.4,533.1L722.4,537.1L722.6,538.6L720.9,541.8L720.3,544.1L721.6,546.5L724.6,549.4L724.9,550.9L724.2,552.5L722.6,555.6L725.9,564.9L726.4,573.8L725.6,580.1L725.6,583.7L726,586.8L728.9,594L727,605.8L729.2,612.2L732.2,617.4L733.7,626.7L736.2,631L740,634.9L742.2,636.2L746.4,639.4L749.6,642L751.4,645.9L747.6,649.2L744.4,652.1L743.6,655.2L745,660.2L745,662.9L743,663.8L735,663.5L728.7,663.3L721.6,663L711.4,662.5L705.1,662.2L696.4,661.8L693.6,662.1L685.6,663.4L680,664.4L679.1,664.7L677.3,666L676.1,669.6L675,673.8L673.9,675.7L657.1,681.7L650.6,682.6L646.9,681.9L644.1,682.4L641.9,683.7L641,685.7L640.9,688.2L641.4,690.7L643,694.1L643.3,697.7L642.3,700.1L642,702.6L641.6,705.3L642.4,706.7L644,707L645.6,708.2L647.9,709.3L649.9,711.4L649.7,714.4L648.1,716.1L646.7,717L640.4,717.8L635.4,718.5L629,723.3L622.1,728.4L613.9,731.8L610.3,732.7L604,735.1L596.4,739.1L592.7,745.5L588.1,752.9L583.6,757.9L577.4,762.5L571.7,764.3L564.4,766.5L555.4,768.2L549,768.8L547,769.2L541.4,769.3L538.6,768.9L536.6,768.8L535.7,769.2L535.4,770.4L535.3,773.1L534.9,776.1L533.1,778.6L531.9,779.8L530.3,780.3L525.6,779.6L521.6,778.8L512.1,777.7L510.3,777.9L509.6,778.2L506.6,780L502,783.6L498.9,786.8L496.6,788.3L491.1,789.1L488.7,790.2L478.4,798.2L476.3,800.1L465.7,807L462.7,809.3L460.3,811.5L454,816.6L450,818.8L449.3,820.2L449,823.3L449,830.1L449,836.7L449,846.3L449,855.8L449,866.7L443.7,866.7L443.7,866.7L443.9,868.6L445,872.3L445.4,875.5L444.9,877.4L444.3,879.9L444.6,882.3L445.4,884.8L446.3,887.5L446.3,889.3L444.7,890.6L440.9,891.3L436.4,892L433.1,892L428.3,891.6L425.1,891.7L422.4,891.7L420.1,892L417.1,893.7L413.9,896.4L409.7,900L407.3,902.2L404,902.7L400.7,902.7L397.6,900.9L395.6,900L394.1,900.1L392,901.3L389.3,902.2L386.9,902.2L382.7,900.4L377.9,897.8L375,896.4L370.9,896L366.7,895.1L363.9,895.5L360.1,895.5L355.3,897.3L351.1,898.6L346.7,900L341.6,901.2L342.9,905.2L344.6,907.3L344.6,910L343.7,912.3L341.9,914L247,914Z","eh":"M341.9,914L343.7,912.3L344.6,910L344.6,907.3L342.9,905.2L341.6,901.2L346.7,900L351.1,898.6L355.3,897.3L360.1,895.5L363.9,895.5L366.7,895.1L370.9,896L375,896.4L377.9,897.8L382.7,900.4L386.9,902.2L389.3,902.2L392,901.3L394.1,900.1L395.6,900L397.6,900.9L400.7,902.7L404,902.7L407.3,902.2L409.7,900L413.9,896.4L417.1,893.7L420.1,892L422.4,891.7L425.1,891.7L428.3,891.6L433.1,892L436.4,892L440.9,891.3L444.7,890.6L446.3,889.3L446.3,887.5L445.4,884.8L444.6,882.3L444.3,879.9L444.9,877.4L445.4,875.5L445,872.3L443.9,868.6L443.7,866.7L443.7,866.7L449,866.7L449,866.7L449,874.1L449,883.3L449.1,890.7L449.1,899.5L449.1,908.3L449.1,914L341.9,914Z","mr":"M449.1,914L449.1,908.3L449.1,899.5L449.1,890.7L449,883.3L456.6,888.2L464,893.1L471.4,898.1L478.9,903L486.4,907.9L493.9,912.8L495.7,914L449.1,914Z","fr":"M1000,96.7L996.9,96.9L995,96L994.4,93.8L994.4,91.7L991.2,92.6L988.6,92.6L987,93.5L985.9,94.4L984.4,93.8L983.6,94.1L983.7,95.3L980.6,95.6L977.3,94.8L968.6,91.5L967.3,91L961.3,89.8L958.9,88.5L956.9,85.1L955.3,84.2L954.4,83.5L948.9,85.1L946.9,87.7L943.9,90.7L923,105.4L919.2,111.5L914.7,120.5L914.4,124.6L916.3,137.9L920.6,145L921.2,146.6L918.7,146.6L914.7,145.7L911.4,144.7L908.4,145.2L905.4,146.7L902.7,147.6L900.9,147.9L899.6,148.6L899,150.3L898.9,151.5L895.6,151.2L887.9,148.8L881,147.1L876.9,149L874.3,150.7L872.4,150.5L871.2,148.7L870.2,146.8L867.4,145.2L861.3,142.7L861.7,141.5L862.7,139.8L862.7,138.8L861.4,137.3L855.9,135.6L853.3,135.2L851.6,136.4L850.3,137.8L847.2,132.6L845,131.6L841.6,131.4L837.7,129.8L833.7,127.8L824,124.6L821.3,124.3L820.3,124.7L819.6,126.7L819.2,132L818.7,132.7L814.2,132.9L808.6,132.1L806,132.5L803.7,132.5L801.6,131L792,132.7L790.4,131.9L788.2,129.4L785.4,127.5L783.4,126.5L781.7,125.3L780.2,125.1L777.9,126.2L774.6,126.7L771.9,126.6L770.4,126.8L764.3,120.8L763.4,119.2L760.3,118.7L756.6,118.6L747,114.8L742.6,112.6L742,111.4L742,110.4L741.3,110.6L740,112.4L739.3,113.8L738.3,114.1L737,113.9L735.7,113.1L734.9,112L735.7,110.1L737.2,107.8L737.9,105.1L737.7,102.9L735.3,101.3L731.7,100.7L729.2,100.5L725.7,99.2L724,98.2L722.6,95.6L722.4,93.7L728.9,92.1L734.7,85.1L740.3,60L744.3,30.1L747.2,24.5L750.9,22.8L747.9,18.8L746,20.8L745.3,23L744.3,24.2L746.2,0L766.2,0L766.2,0L766.3,0.3L768.4,2.9L771.9,5.4L770.6,2.6L768.2,0.5L768,0L1000,0Z","ad":"M861.3,142.7L860.3,143.1L856.6,145.2L854.6,146L852.6,146.5L851.2,146.3L850.3,145L850.4,143L850,141.2L849.9,140.3L850.3,137.8L851.6,136.4L853.3,135.2L855.9,135.6L861.4,137.3L862.7,138.8L862.7,139.8L861.7,141.5Z","dz":"M495.7,914L493.9,912.8L486.4,907.9L478.9,903L471.4,898.1L464,893.1L456.6,888.2L449,883.3L449,874.1L449,866.7L449,855.8L449,846.3L449,836.7L449,830.1L449,823.3L449.3,820.2L450,818.8L454,816.6L460.3,811.5L462.7,809.3L465.7,807L476.3,800.1L478.4,798.2L488.7,790.2L491.1,789.1L496.6,788.3L498.9,786.8L502,783.6L506.6,780L509.6,778.2L510.3,777.9L512.1,777.7L521.6,778.8L525.6,779.6L530.3,780.3L531.9,779.8L533.1,778.6L534.9,776.1L535.3,773.1L535.4,770.4L535.7,769.2L536.6,768.8L538.6,768.9L541.4,769.3L547,769.2L549,768.8L555.4,768.2L564.4,766.5L571.7,764.3L577.4,762.5L583.6,757.9L588.1,752.9L592.7,745.5L596.4,739.1L604,735.1L610.3,732.7L613.9,731.8L622.1,728.4L629,723.3L635.4,718.5L640.4,717.8L646.7,717L648.1,716.1L649.7,714.4L649.9,711.4L647.9,709.3L645.6,708.2L644,707L642.4,706.7L641.6,705.3L642,702.6L642.3,700.1L643.3,697.7L643,694.1L641.4,690.7L640.9,688.2L641,685.7L641.9,683.7L644.1,682.4L646.9,681.9L650.6,682.6L657.1,681.7L673.9,675.7L675,673.8L676.1,669.6L677.3,666L679.1,664.7L680,664.4L685.6,663.4L693.6,662.1L696.4,661.8L705.1,662.2L711.4,662.5L721.6,663L728.7,663.3L735,663.5L743,663.8L745,662.9L745,660.2L743.6,655.2L744.4,652.1L747.6,649.2L751.4,645.9L749.6,642L746.4,639.4L742.2,636.2L740,634.9L736.2,631L733.7,626.7L732.2,617.4L729.2,612.2L727,605.8L728.9,594L726,586.8L725.6,583.7L725.6,580.1L726.4,573.8L725.9,564.9L722.6,555.6L724.2,552.5L724.9,550.9L724.6,549.4L721.6,546.5L720.3,544.1L720.9,541.8L722.6,538.6L722.4,537.1L717.4,533.1L709,526.6L706.7,523.7L705.6,520.1L713.6,521L717.7,520.6L727.3,516.3L734.7,510.5L740.6,507.4L745.9,501.1L750.4,497L757.3,492.6L776.7,483.2L779.7,483.1L786.2,485.2L791.7,484.5L795.6,481.2L799.7,473.3L806,468.5L814.2,463.5L825,458.9L832.2,454.5L843.6,450.8L872,448.4L886.6,446.4L896.6,446.8L906.6,439.9L911.6,437.7L933.3,437.2L943.6,432.2L982.4,432.2L987.2,433.8L991.9,436.6L999.9,443L1000,443.1L1000,914Z"}};
+const PROJ = {s: MAP.scale, tx: MAP.translate[0], ty: MAP.translate[1]};
+function project(lon, lat){
+  const l = lon*Math.PI/180, p = lat*Math.PI/180;
+  return [PROJ.s*l + PROJ.tx, PROJ.ty - PROJ.s*Math.log(Math.tan(Math.PI/4 + p/2))];
+}
+const GROUPS = {
+  canarias:{name:"Islas Canarias", short:"Canarias", color:"--c-canarias"},
+  ceuta:{name:"Ceuta", short:"Ceuta", color:"--c-ceuta"},
+  melilla:{name:"Melilla", short:"Melilla", color:"--c-melilla"},
+  peninsula:{name:"Península y Baleares", short:"Península y Baleares", color:"--c-peninsula"}
+};
+// sub: subregión administrativa para cobertura y distribución
+const ZONES = [
+  {id:"el-hierro", name:"El Hierro", g:"canarias", sub:"Islas Canarias", lon:-17.98, lat:27.64, kw:["el hierro","la restinga","hierro"]},
+  {id:"la-palma", name:"La Palma", g:"canarias", sub:"Islas Canarias", lon:-17.80, lat:28.68, kw:["santa cruz de la palma","tazacorte","isla de la palma","la palma"]},
+  {id:"la-gomera", name:"La Gomera", g:"canarias", sub:"Islas Canarias", lon:-17.11, lat:28.10, kw:["la gomera","gomera","valle gran rey"]},
+  {id:"tenerife", name:"Tenerife", g:"canarias", sub:"Islas Canarias", lon:-16.72, lat:28.05, kw:["tenerife","los cristianos","granadilla","san andres","la caleta de adeje"]},
+  {id:"gran-canaria", name:"Gran Canaria", g:"canarias", sub:"Islas Canarias", lon:-15.68, lat:27.78, kw:["gran canaria","arguineguin","mogan","maspalomas","las palmas de gran canaria","puerto de las palmas"]},
+  {id:"fuerteventura", name:"Fuerteventura", g:"canarias", sub:"Islas Canarias", lon:-14.02, lat:28.30, kw:["fuerteventura","gran tarajal","morro jable","puerto del rosario","corralejo"]},
+  {id:"lanzarote", name:"Lanzarote y La Graciosa", g:"canarias", sub:"Islas Canarias", lon:-13.55, lat:29.00, kw:["lanzarote","arrecife","orzola","la graciosa","playa blanca","puerto del carmen","los marmoles"]},
+  {id:"canarias", name:"Canarias (isla sin precisar)", g:"canarias", sub:"Islas Canarias", lon:-15.30, lat:28.75, kw:["canarias","ruta canaria","archipielago"]},
+  {id:"ceuta", name:"Ceuta", g:"ceuta", sub:"Ceuta", lon:-5.32, lat:35.89, kw:["ceuta","tarajal","benzu","el desnarigado"]},
+  {id:"melilla", name:"Melilla", g:"melilla", sub:"Melilla", lon:-2.94, lat:35.29, kw:["melilla","chafarinas"]},
+  {id:"almeria", name:"Almería", g:"peninsula", sub:"Andalucía", lon:-2.46, lat:36.84, kw:["almeria","carboneras","cabo de gata","nijar","roquetas","adra"]},
+  {id:"alboran", name:"Isla de Alborán", g:"peninsula", sub:"Andalucía", lon:-3.03, lat:35.94, kw:["alboran"]},
+  {id:"granada", name:"Granada (Motril)", g:"peninsula", sub:"Andalucía", lon:-3.52, lat:36.72, kw:["motril","almunecar","granada"]},
+  {id:"malaga", name:"Málaga", g:"peninsula", sub:"Andalucía", lon:-4.42, lat:36.70, kw:["malaga","marbella","velez-malaga","estepona"]},
+  {id:"cadiz", name:"Cádiz y Estrecho", g:"peninsula", sub:"Andalucía", lon:-5.60, lat:36.05, kw:["tarifa","algeciras","barbate","la linea","conil","cadiz","estrecho"]},
+  {id:"huelva", name:"Huelva", g:"peninsula", sub:"Andalucía", lon:-6.95, lat:37.20, kw:["huelva","isla cristina","ayamonte"]},
+  {id:"murcia", name:"Región de Murcia", g:"peninsula", sub:"Región de Murcia", lon:-0.98, lat:37.60, kw:["cartagena","cabo de palos","mazarron","aguilas","la manga","murcia"]},
+  {id:"alicante", name:"Alicante", g:"peninsula", sub:"Comunidad Valenciana", lon:-0.48, lat:38.34, kw:["alicante","torrevieja","santa pola","denia","benidorm","tabarca"]},
+  {id:"valencia", name:"Valencia y Castellón", g:"peninsula", sub:"Comunidad Valenciana", lon:-0.33, lat:39.45, kw:["valencia","gandia","sagunto","cullera","castellon"]},
+  {id:"formentera", name:"Formentera", g:"peninsula", sub:"Islas Baleares", lon:1.45, lat:38.70, kw:["formentera","la savina"]},
+  {id:"ibiza", name:"Ibiza", g:"peninsula", sub:"Islas Baleares", lon:1.43, lat:38.98, kw:["ibiza","eivissa"]},
+  {id:"cabrera", name:"Cabrera", g:"peninsula", sub:"Islas Baleares", lon:2.93, lat:39.15, kw:["cabrera"]},
+  {id:"mallorca", name:"Mallorca", g:"peninsula", sub:"Islas Baleares", lon:3.02, lat:39.55, kw:["mallorca","palma de mallorca","ses salines","colonia de sant jordi","santanyi","portocolom"]},
+  {id:"menorca", name:"Menorca", g:"peninsula", sub:"Islas Baleares", lon:4.10, lat:39.95, kw:["menorca","mahon","ciutadella"]},
+  {id:"baleares", name:"Baleares (isla sin precisar)", g:"peninsula", sub:"Islas Baleares", lon:2.30, lat:39.35, kw:["baleares","balear"]},
+  {id:"otras", name:"Otras zonas, interior o aeropuertos", g:"peninsula", sub:"Otras zonas", lon:-3.70, lat:40.42, kw:["aeropuerto","barajas","el prat"]}
+];
+const ZONE = Object.fromEntries(ZONES.map(z=>[z.id,z]));
+const SUBS = ["Andalucía","Región de Murcia","Comunidad Valenciana","Islas Baleares","Otras zonas"];
+const BOAT_TYPES = ["cayuco","patera","neumática","lancha","embarcación","a nado","valla terrestre","otro"];
+const LAND_TYPES = new Set(["a nado","valla terrestre"]);
+
+/* ───────────── Utilidades ───────────── */
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm = s=>String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+function fmt(n){
+  if(n==null||isNaN(n)) return "—";
+  const neg=n<0; n=Math.abs(n);
+  const r=Math.round(n*10)/10;
+  let [i,d]=String(r).split(".");
+  i=i.replace(/\B(?=(\d{3})+(?!\d))/g,".");
+  return (neg?"−":"")+i+(d&&d!=="0"?","+d:"");
+}
+const todayISO = ()=>{const d=new Date();return iso(d);};
+function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function parseISO(s){const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d);}
+function addDays(s,n){const d=parseISO(s);d.setDate(d.getDate()+n);return iso(d);}
+const MES=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const MESL=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+const DIAS=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+function dShort(s){const d=parseISO(s);return d.getDate()+" "+MES[d.getMonth()];}
+function dLong(s){const d=parseISO(s);return DIAS[d.getDay()]+" "+d.getDate()+" de "+MESL[d.getMonth()]+" de "+d.getFullYear();}
+const uid = ()=>"ev-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,7);
+const cssVar = n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function toast(msg){const t=$("#toast");t.textContent=msg;t.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>t.hidden=true,2600);}
+const WARN_ICON='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M8 2.2 14.3 13H1.7z"/><path d="M8 6.5v3M8 11.3v.2" stroke-linecap="round"/></svg>';
+
+/* ───────────── Cálculos ───────────── */
+/* ── Anti-duplicados: una noticia nunca suma dos veces ── */
+function repsOf(e){return e._reps||e.reports||[];}
+function normUrl(u){try{const x=new URL(u);return (x.hostname.replace(/^www\./,"")+x.pathname.replace(/\/amp\/?$|\/$/,"")).toLowerCase();}catch(_){return "";}}
+function prepEvents(){
+  const evs=S.events;
+  evs.forEach(e=>{
+    const raw=e.reports||[]; const byKey=new Map(); const dropped=[];
+    raw.forEach((r,i)=>{
+      const u=normUrl(r.url||""); const m=norm(mediumOf(r.source));
+      let k=null;
+      for(const [kk,v] of byKey){ if((u&&v.u===u)||v.m===m){k=kk;break;} }
+      if(k!==null){ dropped.push(byKey.get(k).r); byKey.delete(k); }
+      byKey.set(i,{u,m,r});
+    });
+    e._reps=[...byKey.values()].map(v=>v.r); e._dropped=dropped; e._excluded=false; e._dupOf=null; e._dupWhy="";
+  });
+  const sorted=[...evs].sort((a,b)=>(a.createdAt||"").localeCompare(b.createdAt||"")||a.id.localeCompare(b.id));
+  // 1) Misma noticia (URL) con la misma cifra, mismo día y misma región: es la misma llegada registrada dos veces
+  for(let i=0;i<sorted.length;i++){const e=sorted[i]; if(e._excluded) continue;
+    for(let j=i+1;j<sorted.length;j++){const f=sorted[j]; if(f._excluded||f.date!==e.date||ZONE[f.zone]?.g!==ZONE[e.zone]?.g) continue;
+      const same=repsOf(f).some(r=>{const u=normUrl(r.url||"");return u&&repsOf(e).some(q=>normUrl(q.url||"")===u&&Number(q.count)===Number(r.count));});
+      if(same||(f.zone===e.zone&&repsOf(f).length&&repsOf(f).every(r=>repsOf(e).some(q=>norm(mediumOf(q.source))===norm(mediumOf(r.source))&&Number(q.count)===Number(r.count))))){f._excluded=true;f._dupOf=e.id;f._dupWhy="Misma noticia y misma cifra que otro registro del mismo día";}
+    }}
+  // 2) Registro genérico («Canarias», «Baleares») el mismo día que registros por isla: solapan
+  evs.forEach(e=>{ if(e._excluded||(e.zone!=="canarias"&&e.zone!=="baleares")) return;
+    const g=e.zone==="canarias"?(z=>ZONE[z]?.g==="canarias"&&z!=="canarias"):(z=>ZONE[z]?.sub==="Islas Baleares"&&z!=="baleares");
+    const sp=evs.find(f=>!f._excluded&&f.date===e.date&&g(f.zone)); if(sp){e._excluded=true;e._dupOf=sp.id;e._dupWhy="Recuento global del día que se solapa con los registros por isla";}
+  });
+}
+function counts(e){return repsOf(e).map(r=>Number(r.count)).filter(n=>isFinite(n)&&n>=0);}
+function personsRaw(e){const c=counts(e);return c.length?c.reduce((a,b)=>a+b,0)/c.length:null;}
+function persons(e){if(e._excluded)return null;const c=counts(e);return c.length?c.reduce((a,b)=>a+b,0)/c.length:null;}
+function discrepant(e){return new Set(counts(e)).size>1;}
+function boatsInfo(e){
+  const v=repsOf(e).map(r=>r.boats).filter(n=>n!==null&&n!==undefined&&n!==""&&isFinite(Number(n))).map(Number);
+  if(!v.length) return e.boats!=null&&e.boats!==""?{min:Number(e.boats),max:Number(e.boats),mean:Number(e.boats)}:null;
+  return {min:Math.min(...v),max:Math.max(...v),mean:v.reduce((a,b)=>a+b,0)/v.length};
+}
+function boatsLabel(b){if(!b) return null;return b.min===b.max?fmt(b.min):fmt(b.min)+"–"+fmt(b.max);}
+
+/* ───────────── Estado ───────────── */
+const S = {
+  events:[], official:null, mode:"loading", canWrite:false, stale:false, db:null,
+  f:{preset:"7d", day:todayISO(), region:"all", zone:"", mapSrc:"press"},
+  drafts:[], open:new Set(), confirmDel:null
+};
+const LS_KEY="migranometer-es:v1", LS_UI="migranometer-es:ui";
+function lsGet(k){return null;}
+function lsSet(k,v){}
+
+function range(){
+  const d=S.f.day;
+  switch(S.f.preset){
+    case "dia": return [d,d];
+    case "7d": return [addDays(d,-6),d];
+    case "30d": return [addDays(d,-29),d];
+    case "anio": return [d.slice(0,4)+"-01-01",d];
+    default: return [null,null];
+  }
+}
+function inGeo(e){
+  const z=ZONE[e.zone]; if(!z) return false;
+  if(S.f.zone) return e.zone===S.f.zone;
+  if(S.f.region!=="all") return z.g===S.f.region;
+  return true;
+}
+function inRange(e,[a,b]){return (!a||e.date>=a)&&(!b||e.date<=b);}
+const sortEv = (a,b)=> (b.date+(b.time||"")).localeCompare(a.date+(a.time||""));
+
+/* ───────────── Persistencia ───────────── */
+function setPill(){
+  const el=$("#updAt"); if(!el) return;
+  if(S.mode==="public"){const u=S.meta&&S.meta.updatedAt; el.textContent="Datos actualizados: "+(u?new Date(u).toLocaleString("es-ES",{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Madrid"}):"sin fecha");}
+  else if(S.mode==="error"){el.textContent="No se pudieron cargar los datos";$("#updPill").className="pill local";}
+  else el.textContent="Cargando datos…";
+  return;
+  const p=$("#storePill"), t=p.querySelector("span");
+  p.className="pill";
+  if(S.mode==="db"){p.classList.add("ok");t.textContent=S.stale?"Sin conexión · puede no estar al día":"Sincronizado";}
+  else if(S.mode==="local"){p.classList.add("local");t.textContent="Guardado solo en este navegador";}
+  else t.textContent="Conectando…";
+  if(!S.canWrite) t.textContent+=" · solo lectura";
+}
+async function initStore(){
+  renderAll();
+  try{
+    const r=await fetch("data.json",{cache:"no-store"}); if(!r.ok) throw new Error(String(r.status));
+    const d=await r.json();
+    S.events=Array.isArray(d.events)?d.events:[]; S.offReports=Array.isArray(d.official)?d.official:[]; S.official=null; S.meta=d; S.mode="public";
+    const last=S.events.map(e=>e.date).sort().pop();
+    if(last&&last<addDays(todayISO(),-6)) S.f.day=last;
+  }catch(e){S.mode="error";}
+  renderAll();
+}
+async function putEvent(ev){
+  if(S.db){
+    try{await S.db.collection("events").doc(ev.id).set(JSON.parse(JSON.stringify(ev,(k,v)=>k.startsWith("_")?undefined:v)));return true;}
+    catch(e){ if(e&&e.code==="invalid_argument"){S.canWrite=false;renderAll();toast("No tienes permiso para guardar en este panel.");} else toast("No se pudo guardar. Inténtalo de nuevo."); return false;}
+  }
+  ev=JSON.parse(JSON.stringify(ev,(k,v)=>k.startsWith("_")?undefined:v));
+  const i=S.events.findIndex(x=>x.id===ev.id); if(i>=0) S.events[i]=ev; else S.events.push(ev);
+  lsSet(LS_KEY,{events:S.events,official:S.official,offReports:S.offReports}); renderAll(); return true;
+}
+async function removeEvent(id){
+  if(S.db){try{await S.db.collection("events").doc(id).delete();}catch(e){toast("No se pudo eliminar.");return;}}
+  else{S.events=S.events.filter(x=>x.id!==id);lsSet(LS_KEY,{events:S.events,official:S.official,offReports:S.offReports});}
+  renderAll();
+}
+
+/* ───────────── Render: filtros ───────────── */
+function renderFilters(){
+  document.querySelectorAll("#segPreset button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.p===S.f.preset)));
+  document.querySelectorAll("#segRegion button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.r===S.f.region&&!S.f.zone)));
+  $("#fDay").value=S.f.day; $("#fDayLbl").textContent=S.f.preset==="dia"?"Fecha":S.f.preset==="todo"?"Referencia":"Hasta";
+  const sel=$("#fZone");
+  if(!sel.options.length){
+    let h='<option value="">Todas las zonas</option>';
+    for(const g of Object.keys(GROUPS)){
+      h+='<optgroup label="'+esc(GROUPS[g].name)+'">'+ZONES.filter(z=>z.g===g).map(z=>'<option value="'+z.id+'">'+esc(z.name)+'</option>').join("")+'</optgroup>';
+    }
+    sel.innerHTML=h;
+  }
+  sel.value=S.f.zone;
+  const az=$("#activeZone");
+  if(S.f.zone){az.innerHTML='<span class="active-filter">'+esc(ZONE[S.f.zone].name)+'<button type="button" aria-label="Quitar filtro de zona" id="clrZone"><svg width="10" height="10" viewBox="0 0 10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2 2 8"/></svg></button></span>';
+    $("#clrZone").onclick=()=>{S.f.zone="";saveUI();renderAll();};}
+  else az.innerHTML="";
+}
+function saveUI(){lsSet(LS_UI,{preset:S.f.preset,region:S.f.region});}
+
+/* ───────────── Render: resumen del periodo ───────────── */
+function rangeBounds(){
+  let [a,b]=range();
+  if(!a){const ds=S.events.map(e=>e.date).concat(offReports().map(r=>r.from||r.to)).sort(); a=ds[0]||S.f.day; const de=S.events.map(e=>e.date).sort(); b=de.length&&de[de.length-1]>S.f.day?de[de.length-1]:S.f.day;}
+  return [a,b];
+}
+function scopeLabel(){return S.f.zone?ZONE[S.f.zone].name:S.f.region!=="all"?GROUPS[S.f.region].name:"Toda España";}
+/* ───────────── Perfil y víctimas ───────────── */
+const STAT_KEYS=[["deaths","Fallecidos"],["missing","Desaparecidos"],["women","Mujeres"],["minors","Menores"],["men","Hombres"],["pregnant","Embarazadas"],["injured","Heridos u hospitalizados"]];
+const STAT_LABEL=Object.fromEntries(STAT_KEYS);
+function statVal(e,k){
+  if(e._excluded) return null;
+  const v=repsOf(e).map(r=>r.stats&&r.stats[k]).filter(n=>n!=null&&n!==""&&isFinite(Number(n))).map(Number);
+  if(!v.length) return null;
+  return {mean:v.reduce((a,b)=>a+b,0)/v.length,disc:new Set(v).size>1,vals:v};
+}
+function natsOf(e){
+  if(e._excluded) return {};
+  const m={};
+  repsOf(e).forEach(r=>((r.stats&&r.stats.nationalities)||[]).forEach(n=>{
+    if(!n||!n.country) return; const o=m[n.country]||(m[n.country]={counts:[]});
+    if(n.count!=null&&n.count!==""&&isFinite(Number(n.count))) o.counts.push(Number(n.count));
+  }));
+  return m;
+}
+function statsChips(e,limit){
+  const out=[];
+  for(const [k,l] of STAT_KEYS){const s=statVal(e,k); if(s) out.push('<span class="chip'+(k==="deaths"||k==="missing"?' chip-grave':'')+'">'+esc(l)+' <b>'+fmt(s.mean)+'</b>'+(s.disc?' <span title="Cifras distintas según la fuente: '+esc(s.vals.map(fmt).join(" / "))+'" style="color:var(--warn)">media</span>':'')+'</span>');}
+  const n=Object.keys(natsOf(e)); if(n.length) out.push('<span class="chip">'+esc(n.slice(0,limit||5).join(", "))+(n.length>(limit||5)?" y "+(n.length-(limit||5))+" más":"")+'</span>');
+  return out.join("");
+}
+function renderProfile(){
+  const r=range(); const evs=S.events.filter(e=>inRange(e,r)&&inGeo(e)&&!e._excluded);
+  $("#profSub").textContent=periodLabel()+" · "+scopeLabel();
+  const box=$("#profBox");
+  const agg={}; for(const [k] of STAT_KEYS){agg[k]={sum:0,n:0,disc:0,base:0,evs:[]};}
+  evs.forEach(e=>{for(const [k] of STAT_KEYS){const s=statVal(e,k); if(s){const a=agg[k];a.sum+=s.mean;a.n++;a.base+=persons(e)||0;a.evs.push(e);if(s.disc)a.disc++;}}});
+  // Menores / adultos: solo donde el desglose es completo (hombres + mujeres + menores = personas)
+  let fullN=0,fullP=0,fullAd=0,fullMin=0; const fullEv=[];
+  evs.forEach(e=>{const m=statVal(e,"men"),w=statVal(e,"women"),c=statVal(e,"minors"),p=persons(e);
+    if(m&&w&&c&&p!=null&&Math.abs(m.mean+w.mean+c.mean-p)<0.5){fullN++;fullP+=p;fullAd+=m.mean+w.mean;fullMin+=c.mean;fullEv.push(e);}});
+  const pct=(v,b)=>b?fmt(100*v/b)+" %":"";
+  const bar=(lab,k,col)=>{const a=agg[k];return '<div class="dem-row"><div class="dem-l"><span>'+esc(lab)+'</span>'+(a.n?'<b class="num">'+fmt(a.sum)+'</b>':'<span class="muted">Sin datos reportados</span>')+'</div>'+
+    (a.n?'<div class="bar-bg"><span class="bar-fg" style="width:'+Math.min(100,100*a.sum/Math.max(1,a.base)).toFixed(1)+'%;background:var('+col+')"></span></div><div class="hint">'+pct(a.sum,a.base)+' de las '+fmt(a.base)+' personas de los '+a.n+(a.n===1?' evento':' eventos')+' que dan este dato'+(a.disc?' · <span style="color:var(--warn)">'+a.disc+' con media entre medios</span>':'')+'</div>':'')+'</div>';};
+  const nat={}; const natEv=[];
+  evs.forEach(e=>{const m=natsOf(e); if(Object.keys(m).length) natEv.push(e); for(const [c,o] of Object.entries(m)){const a=nat[c]||(nat[c]={ev:0,count:0,known:0}); a.ev++; if(o.counts.length){a.count+=o.counts.reduce((x,y)=>x+y,0)/o.counts.length;a.known++;}}});
+  const natList=Object.entries(nat).sort((a,b)=>b[1].ev-a[1].ev||b[1].count-a[1].count);
+  const vict=[["deaths","Fallecidos"],["missing","Desaparecidos"],["injured","Heridos u hospitalizados"],["pregnant","Embarazadas"]];
+  const vEv=evs.filter(e=>vict.some(([k])=>statVal(e,k)));
+  const A='<div class="card card-pad src-card"><div class="src-h"><span class="src-tag press">Noticias</span><h3>Según la prensa</h3><span class="hint" style="margin-left:auto">'+evs.length+(evs.length===1?' evento':' eventos')+' en el periodo</span></div>'+
+    '<div class="dem-block"><div class="eyebrow">Sexo</div>'+bar("Hombres","men","--c-ceuta")+bar("Mujeres","women","--c-melilla")+srcLine(agg.men.evs.concat(agg.women.evs),4)+'</div>'+
+    '<div class="dem-block"><div class="eyebrow">Menores y adultos</div>'+bar("Menores","minors","--accent")+
+      '<div class="dem-row"><div class="dem-l"><span>Adultos</span>'+(fullN?'<b class="num">'+fmt(fullAd)+'</b>':'<span class="muted">Sin datos reportados</span>')+'</div>'+(fullN?'<div class="split-bar"><span style="width:'+(100*fullMin/fullP).toFixed(1)+'%;background:var(--accent)"></span><span style="width:'+(100*fullAd/fullP).toFixed(1)+'%;background:var(--c-peninsula)"></span></div><div class="hint">Solo en los '+fullN+(fullN===1?' evento':' eventos')+' con desglose completo (hombres + mujeres + menores = total): '+fmt(fullMin)+' menores ('+pct(fullMin,fullP)+') y '+fmt(fullAd)+' adultos ('+pct(fullAd,fullP)+') de '+fmt(fullP)+' personas</div>':'<div class="hint">Solo se calcula cuando la noticia da el desglose completo de hombres, mujeres y menores.</div>')+'</div>'+srcLine(agg.minors.evs.concat(fullEv),4)+'</div>'+
+    '<div class="dem-block"><div class="row" style="justify-content:space-between"><div class="eyebrow">Nacionalidad</div><span class="hint">'+(natList.length?natList.length+(natList.length===1?' país':' países')+' en '+natEv.length+' de '+evs.length+' eventos':'')+'</span></div>'+
+      (natList.length?'<div class="nat-list">'+natList.map(([c,a])=>'<div class="nat"><span class="nm">'+esc(c)+'</span><span class="bar-bg"><span class="bar-fg" style="width:'+(100*a.ev/Math.max(...natList.map(x=>x[1].ev))).toFixed(0)+'%"></span></span><span class="num">'+a.ev+(a.ev===1?' evento':' eventos')+(a.known?' · '+fmt(a.count)+' pers.':'')+'</span></div>').join("")+'</div>'+srcLine(natEv,5):'<div class="muted">Sin datos reportados</div>')+'</div>'+
+    '<div class="dem-block"><div class="eyebrow">Víctimas y salud</div><div class="mini">'+vict.map(([k,l])=>'<span class="chip'+(k==="deaths"||k==="missing"?' chip-grave':'')+'">'+esc(l)+' <b>'+(agg[k].n?fmt(agg[k].sum):'—')+'</b></span>').join("")+'</div>'+(vEv.length?srcLine(vEv,4):'<div class="hint">Sin datos reportados en estas fechas</div>')+'</div>'+
+  '</div>';
+  const last=offReports().slice(-1)[0];
+  const B='<div class="card card-pad src-card"><div class="src-h"><span class="src-tag off">Oficial</span><h3>Ministerio del Interior</h3></div>'+
+    ['Sexo','Menores y adultos','Nacionalidad','Víctimas'].map(t=>'<div class="dem-block"><div class="eyebrow">'+t+'</div><span class="v muted" style="font-size:15px;font-weight:600;color:var(--fg-3)">Sin datos oficiales publicados</span></div>').join("")+
+    '<div class="note">'+INFO_ICON+'<span>Los informes quincenales de Interior solo publican totales de llegadas por vía (marítima o terrestre) y zona, con la comparación con el año anterior. No desglosan por sexo, edad ni nacionalidad, así que este perfil solo puede construirse con lo que publica la prensa.</span></div>'+
+    (last?offSrcLine([last]):'')+'</div>';
+  box.innerHTML='<div class="src-grid">'+A+B+'</div><div class="note">'+INFO_ICON+'<span>Cada noticia cuenta una sola vez: si varios medios informan de la misma llegada se usa la media, una fuente repetida cuenta una vez y los registros duplicados no se suman. Las cifras de perfil solo cubren las llegadas cuyas noticias las detallan; no son proporciones del total.</span></div>';
+}
+
+/* ───────────── Render: periodo / foco ───────────── */
+function periodLabel(){
+  const [a,b]=range();
+  if(!a) return "Todo el registro";
+  if(a===b) return dShort(a);
+  return dShort(a)+" – "+dShort(b)+" "+b.slice(0,4);
+}
+/* ───────────── Render: mapa ───────────── */
+function buildMapBase(){
+  const order=["mr","eh","dz","ma","fr","ad","pt","es"];
+  $("#landG").innerHTML=order.filter(k=>MAP.paths[k]).map(k=>'<path class="land'+(k==="es"?" es":"")+'" d="'+MAP.paths[k]+'"/>').join("");
+  const L=(t,lon,lat,cls,extra)=>{const [x,y]=project(lon,lat);return '<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" class="'+cls+'" text-anchor="middle" '+(extra||"")+'>'+t+'</text>';};
+  $("#labelsG").innerHTML=
+    L("Océano Atlántico",-14.5,37.6,"sea-label")+
+    L("Mar Mediterráneo",2.2,37.35,"sea-label","")+
+    L("Mar de Alborán",-3.6,36.25,"sea-label",'style="font-size:11px"')+
+    L("ESPAÑA",-3.7,39.9,"country-label",'style="letter-spacing:.3em;font-size:15px"')+
+    L("Portugal",-8.0,39.6,"country-label")+
+    L("Marruecos",-6.4,32.6,"country-label")+
+    L("Argelia",1.2,34.2,"country-label")+
+    L("Francia",1.8,44.0,"country-label");
+  // Halos de foco
+  const [cx1,cy1]=project(-15.85,28.45), [cx2,cy2]=project(-13.3,28.45);
+  const [,cyT]=project(-15.8,29.55), [,cyB]=project(-15.8,27.35);
+  const [hx0]=project(-18.6,28), [hx1]=project(-13.0,28);
+  const [ceX,ceY]=project(-5.32,35.89), [meX,meY]=project(-2.94,35.29);
+  $("#halosG").innerHTML=
+    '<g data-g="canarias"><ellipse class="halo" style="stroke:var(--c-canarias)" cx="'+((hx0+hx1)/2).toFixed(1)+'" cy="'+((cyT+cyB)/2).toFixed(1)+'" rx="'+((hx1-hx0)/2).toFixed(1)+'" ry="'+((cyB-cyT)/2).toFixed(1)+'"/>'+
+    '<text class="halo-label" style="fill:var(--c-canarias)" x="'+((hx0+hx1)/2).toFixed(1)+'" y="'+(cyT-10).toFixed(1)+'" text-anchor="middle">ISLAS CANARIAS</text></g>'+
+    '<g data-g="ceuta"><circle class="halo" style="stroke:var(--c-ceuta)" cx="'+ceX.toFixed(1)+'" cy="'+ceY.toFixed(1)+'" r="30"/><text class="halo-label" style="fill:var(--c-ceuta)" x="'+(ceX-36).toFixed(1)+'" y="'+(ceY+5).toFixed(1)+'" text-anchor="end">CEUTA</text></g>'+
+    '<g data-g="melilla"><circle class="halo" style="stroke:var(--c-melilla)" cx="'+meX.toFixed(1)+'" cy="'+meY.toFixed(1)+'" r="30"/><text class="halo-label" style="fill:var(--c-melilla)" x="'+(meX).toFixed(1)+'" y="'+(meY+48).toFixed(1)+'" text-anchor="middle">MELILLA</text></g>';
+  $("#halosG").querySelectorAll("[data-g]").forEach(g=>g.addEventListener("click",()=>{S.f.zone="";S.f.region=(S.f.region===g.dataset.g?"all":g.dataset.g);saveUI();renderAll();}));
+}
+function mapBounds(){
+  const ds=S.events.map(e=>e.date).sort(); const today=todayISO();
+  let mn=ds[0]||today; if(mn>addDays(today,-29)) mn=addDays(today,-29); if(mn<addDays(today,-730)) mn=addDays(today,-730);
+  const mx=ds.length&&ds[ds.length-1]>today?ds[ds.length-1]:today;
+  return [mn,mx];
+}
+const dayIdx=(a,b)=>Math.round((parseISO(b)-parseISO(a))/86400000);
+function renderMapCtrl(){
+  document.querySelectorAll("#mapPreset button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.p===S.f.preset)));
+  const [mn,mx]=mapBounds(); const sl=$("#mapSlider");
+  sl.max=String(dayIdx(mn,mx)); sl.value=String(Math.max(0,Math.min(dayIdx(mn,mx),dayIdx(mn,S.f.day))));
+  sl.disabled=S.f.preset==="todo";
+  $("#mapMin").textContent=dShort(mn); $("#mapMax").textContent=dShort(mx);
+  $("#mapDay").textContent=S.f.preset==="todo"?"Todo el registro":S.f.preset==="dia"?cap(dLong(S.f.day)):periodLabel()+" · hasta el "+dLong(S.f.day);
+  $("#mapPrev").disabled=S.f.preset==="todo"||S.f.day<=mn; $("#mapNext").disabled=S.f.preset==="todo"||S.f.day>=mx;
+  const p=$("#mapPlay"); p.setAttribute("aria-pressed",String(!!S.playT)); p.setAttribute("aria-label",S.playT?"Pausar":"Reproducir día a día");
+  p.innerHTML=S.playT?'<svg viewBox="0 0 16 16" fill="currentColor"><rect x="4" y="3" width="3" height="10" rx="1"/><rect x="9" y="3" width="3" height="10" rx="1"/></svg>':'<svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.2v9.6L13 8z"/></svg>';
+}
+function stopPlay(){if(S.playT){clearInterval(S.playT);S.playT=null;renderMapCtrl();}}
+function togglePlay(){
+  if(S.playT){stopPlay();return;}
+  const [mn,mx]=mapBounds();
+  if(S.f.preset==="todo"||S.f.preset==="anio"){S.f.preset="dia";saveUI();}
+  if(S.f.day>=mx) S.f.day=addDays(mx,-13)<mn?mn:addDays(mx,-13);
+  S.playT=setInterval(()=>{const [,m2]=mapBounds(); if(S.f.day>=m2){stopPlay();return;} S.f.day=addDays(S.f.day,1); renderAll();},1000);
+  renderAll();
+}
+function zoneTotals(){
+  const r=range(); const t={};
+  S.events.filter(e=>inRange(e,r)).forEach(e=>{const o=t[e.zone]||(t[e.zone]={p:0,n:0,d:0});o.p+=persons(e)||0;o.n++;if(discrepant(e))o.d++;});
+  return t;
+}
+/* ───────────── Render: cobertura ───────────── */
+function renderCoverage(){
+  const t=zoneTotals(); $("#covSub").textContent="Personas por zona · "+periodLabel();
+  const row=(id,label,val,sub,dot)=>'<button type="button" class="cov-row'+(sub?" sub":"")+(S.f.zone===id?" sel":"")+'" '+(id?'data-z="'+id+'"':'')+'>'+
+    (dot?'<span class="dot" style="background:var('+dot+')"></span>':'<span></span>')+'<span class="nm">'+esc(label)+'</span>'+
+    (val>0?'<span class="n num">'+fmt(val)+'</span>':'<span class="n muted">Sin datos reportados</span>')+'</button>';
+  const sum=ids=>ids.reduce((a,id)=>a+(t[id]?.p||0),0);
+  let h='<h4>Foco principal</h4>';
+  const can=ZONES.filter(z=>z.g==="canarias");
+  h+='<button type="button" class="cov-row" data-g="canarias"><span class="dot" style="background:var(--c-canarias)"></span><span class="nm"><b>Islas Canarias</b></span>'+(sum(can.map(z=>z.id))>0?'<span class="n num">'+fmt(sum(can.map(z=>z.id)))+'</span>':'<span class="n muted">Sin datos reportados</span>')+'</button>';
+  can.forEach(z=>h+=row(z.id,z.name,t[z.id]?.p||0,true));
+  h+='<div class="cov-sep"></div>'+row("ceuta","Ceuta (marítima y terrestre)",t.ceuta?.p||0,false,"--c-ceuta")+row("melilla","Melilla (marítima y terrestre)",t.melilla?.p||0,false,"--c-melilla");
+  h+='<h4>Resto del territorio</h4>';
+  for(const s of SUBS){
+    const zs=ZONES.filter(z=>z.sub===s);
+    h+='<div class="cov-row" style="cursor:default"><span class="dot" style="background:var(--c-peninsula)"></span><span class="nm"><b>'+esc(s)+'</b></span>'+(sum(zs.map(z=>z.id))>0?'<span class="n num">'+fmt(sum(zs.map(z=>z.id)))+'</span>':'<span class="n muted">Sin datos reportados</span>')+'</div>';
+    if(zs.length>1||zs[0].name!==s) zs.forEach(z=>h+=row(z.id,z.name,t[z.id]?.p||0,true));
+  }
+  h+='<div style="padding:10px 20px 4px">'+srcLine(S.events.filter(e=>inRange(e,range())),8)+'</div>';
+  const c=$("#cov"); c.innerHTML=h;
+  c.querySelectorAll("[data-z]").forEach(b=>b.onclick=()=>{S.f.zone=(S.f.zone===b.dataset.z?"":b.dataset.z);renderAll();});
+  c.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{S.f.zone="";S.f.region=(S.f.region===b.dataset.g?"all":b.dataset.g);saveUI();renderAll();});
+}
+
+/* ───────────── Render: oficial y prensa (independientes) ───────────── */
+const OFF_MATCH={
+  canarias:e=>ZONE[e.zone].g==="canarias",
+  baleares:e=>ZONE[e.zone].sub==="Islas Baleares",
+  peninsula:e=>ZONE[e.zone].g==="peninsula"&&ZONE[e.zone].sub!=="Islas Baleares",
+  ceuta_mar:e=>e.zone==="ceuta"&&!LAND_TYPES.has(e.boatType),
+  ceuta_tierra:e=>e.zone==="ceuta"&&LAND_TYPES.has(e.boatType),
+  melilla_mar:e=>e.zone==="melilla"&&!LAND_TYPES.has(e.boatType),
+  melilla_tierra:e=>e.zone==="melilla"&&LAND_TYPES.has(e.boatType)
+};
+const INFO_ICON='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6.5"/><path d="M8 7v4M8 4.6v.2" stroke-linecap="round"/></svg>';
+const SCOPE_KEYS={canarias:["canarias"],ceuta:["ceuta_mar","ceuta_tierra"],melilla:["melilla_mar","melilla_tierra"],peninsula:["peninsula","baleares"]};
+function offReports(){
+  const m=new Map();
+  [...(S.offReports||[]),S.official].forEach(r=>{if(r&&r.to&&Array.isArray(r.rows)) m.set(r.to,r);});
+  return [...m.values()].sort((a,b)=>a.to.localeCompare(b.to));
+}
+function cmpScope(){
+  const g=S.f.zone?ZONE[S.f.zone].g:S.f.region;
+  return {g, keys:g==="all"?null:SCOPE_KEYS[g], label:g==="all"?"Toda España":GROUPS[g].name, zoneNote:!!S.f.zone};
+}
+function offVal(rep,keys,field){
+  field=field||"v";
+  if(!keys) return rep.total?rep.total[field]:null;
+  const rs=rep.rows.filter(r=>keys.includes(r.key)); if(!rs.length) return null;
+  return rs.reduce((a,r)=>a+(r[field]||0),0);
+}
+function pressIn(a,b,sc){
+  return S.events.filter(e=>e.date>=a&&e.date<=b&&ZONE[e.zone]&&(sc.g==="all"||ZONE[e.zone].g===sc.g));
+}
+function renderOfficial(){
+  const box=$("#offBox"); const reps=offReports(); const sc=cmpScope();
+  const cutoff=rangeBounds()[1]; const yr=cutoff.slice(0,4);
+  const pct=(a,b)=>b?((a-b)/b*100):null;
+  const sgn=v=>(v>0?"+":"")+fmt(v);
+  $("#offSub").textContent=sc.label+" · hasta el "+dShort(cutoff)+" de "+yr;
+  // A · Oficial
+  const rep=[...reps].reverse().find(r=>r.to<=cutoff&&r.to.slice(0,4)===yr);
+  let A;
+  if(!rep){
+    A='<div class="card card-pad src-card"><div class="src-h"><span class="src-tag off">Fuente oficial</span><h3>Ministerio del Interior</h3></div><span class="v muted" style="font-size:18px;font-weight:600;color:var(--fg-3)">Sin informe oficial cargado a esta fecha</span><div class="note">'+INFO_ICON+'<span>'+(reps.length?'Informes cargados: '+reps.map(r=>dShort(r.to)+" "+r.to.slice(0,4)).join(", ")+'.':'Aún no hay informes cargados.')+'</span></div></div>';
+  }else{
+    const v=offVal(rep,sc.keys), pv=offVal(rep,sc.keys,"prev"); const d=pct(v,pv);
+    const rows=rep.rows.filter(r=>!sc.keys||sc.keys.includes(r.key)).map(r=>'<tr><td><span class="dot" style="background:var('+(GROUPS[r.group]?.color||"--c-peninsula")+');margin-right:8px"></span>'+esc(r.label)+'</td><td class="num"><b>'+fmt(r.v)+'</b></td><td class="num muted">'+(r.prev!=null?fmt(r.prev):"—")+'</td><td class="num">'+(r.prev?sgn(pct(r.v,r.prev))+" %":"—")+'</td></tr>').join("");
+    A='<div class="card card-pad src-card"><div class="src-h"><span class="src-tag off">Fuente oficial</span><h3>Ministerio del Interior</h3></div>'+
+      '<div><div class="src-v num">'+fmt(v)+'</div><div class="hint">Acumulado del 1 ene al '+esc(dShort(rep.to))+' de '+esc(rep.to.slice(0,4))+(rep.provisional?' · provisional':'')+'</div></div>'+
+      '<div class="mini">'+(pv!=null?'<span class="chip">Mismo periodo de '+(Number(yr)-1)+' <b>'+fmt(pv)+'</b></span>':'')+(d!=null?'<span class="chip">Variación <b>'+sgn(d)+' %</b></span>':'')+'</div>'+
+      '<div class="tbl-wrap"><table class="mt"><thead><tr><th>Vía / zona</th><th>'+esc(rep.to.slice(0,4))+'</th><th>'+(Number(rep.to.slice(0,4))-1)+'</th><th>Var.</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+      '<div class="hint">Informe quincenal: solo da el acumulado del año en cada fecha de corte, no cifras diarias. <a href="'+esc(/^https:\/\//.test(rep.url||"")?rep.url:"#")+'" target="_blank" rel="noopener">Ver informe</a></div></div>';
+  }
+  // B · Prensa
+  const pyear=S.events.filter(e=>e.date.slice(0,4)===yr&&e.date<=cutoff).map(e=>e.date).sort();
+  const pStart=pyear[0]||null;
+  const pev=pStart?pressIn(yr+"-01-01",cutoff,sc):[];
+  const ptot=pev.reduce((a,e)=>a+(persons(e)||0),0);
+  const media=new Set(pev.flatMap(e=>repsOf(e).map(r=>norm(r.source).split(" (")[0])));
+  const keysB=sc.keys||Object.keys(OFF_MATCH);
+  const labB={canarias:"Canarias",ceuta_mar:"Ceuta (marítima)",ceuta_tierra:"Ceuta (terrestre)",melilla_mar:"Melilla (marítima)",melilla_tierra:"Melilla (terrestre)",peninsula:"Península",baleares:"Baleares"};
+  const grpB={canarias:"canarias",ceuta_mar:"ceuta",ceuta_tierra:"ceuta",melilla_mar:"melilla",melilla_tierra:"melilla",peninsula:"peninsula",baleares:"peninsula"};
+  const rowsB=keysB.map(k=>{const v=pev.filter(OFF_MATCH[k]).reduce((a,e)=>a+(persons(e)||0),0);return '<tr><td><span class="dot" style="background:var('+GROUPS[grpB[k]].color+');margin-right:8px"></span>'+labB[k]+'</td><td class="num">'+(v?'<b>'+fmt(v)+'</b>':'<span class="muted">Sin datos reportados</span>')+'</td></tr>';}).join("");
+  const B='<div class="card card-pad src-card"><div class="src-h"><span class="src-tag press">Prensa</span><h3>Periódicos y televisiones</h3></div>'+
+    (pStart?'<div><div class="src-v num">'+fmt(ptot)+'</div><div class="hint">Llegadas registradas del '+esc(dShort(pStart))+' al '+esc(dShort(cutoff))+' de '+yr+' · '+pev.length+(pev.length===1?' evento':' eventos')+' · '+media.size+(media.size===1?' medio':' medios')+'</div></div>'+
+      '<div class="mini"><span class="chip">El registro de prensa empieza el '+esc(dShort(pStart))+': no cubre el año completo</span></div>'+
+      '<div class="tbl-wrap"><table class="mt"><thead><tr><th>Vía / zona</th><th>'+yr+'</th></tr></thead><tbody>'+rowsB+'</tbody></table></div>'+
+      '<div class="hint">Suma de las noticias registradas; si varios medios difieren se usa su media.</div>'
+     :'<span class="v muted" style="font-size:18px;font-weight:600;color:var(--fg-3)">Sin datos reportados</span>')+'</div>';
+  // C · Comparación en las mismas fechas
+  const periods=[];
+  const yrReps=reps.filter(r=>r.to.slice(0,4)===yr&&r.to<=cutoff);
+  for(let i=0;i<yrReps.length;i++){
+    const r=yrReps[i], p=yrReps[i-1];
+    const a=p?addDays(p.to,1):r.from||(yr+"-01-01");
+    const o=p?(offVal(r,sc.keys)??0)-(offVal(p,sc.keys)??0):offVal(r,sc.keys);
+    periods.push({a,b:r.to,off:o,offNote:p?"Diferencia entre los informes del "+dShort(p.to)+" y del "+dShort(r.to):"Primer informe cargado: acumulado desde el 1 de enero"});
+  }
+  const last=yrReps[yrReps.length-1];
+  if(last&&cutoff>last.to) periods.push({a:addDays(last.to,1),b:cutoff,off:null,offNote:"Pendiente del próximo informe de Interior"});
+  if(!last&&pStart) periods.push({a:yr+"-01-01",b:cutoff,off:null,offNote:"Sin informe oficial cargado"});
+  const rowsC=periods.reverse().map(pr=>{
+    const ev=pressIn(pr.a,pr.b,sc); const pv=ev.reduce((s,e)=>s+(persons(e)||0),0);
+    const days=dayIdx(pr.a,pr.b)+1; const cov=new Set(ev.map(e=>e.date)).size;
+    const firstP=pStart&&pStart>pr.a&&pStart<=pr.b?pStart:null; const noPressYet=!pStart||pStart>pr.b;
+    const mx=Math.max(pr.off||0,pv,1);
+    const fullCov=pStart&&pStart<=pr.a; const diff=pr.off!=null&&fullCov?pv-pr.off:null;
+    return '<tr><td style="white-space:nowrap"><b>'+esc(dShort(pr.a))+' – '+esc(dShort(pr.b))+'</b><div class="hint">'+days+' días</div></td>'+
+      '<td class="cmp-cell"><div class="cmp-n num">'+(pr.off!=null?fmt(pr.off):'<span class="muted">—</span>')+'</div>'+(pr.off!=null?'<div class="cbar"><span class="cb-off" style="width:'+(100*pr.off/mx).toFixed(1)+'%"></span></div>':'')+'<div class="hint">'+esc(pr.offNote)+'</div></td>'+
+      '<td class="cmp-cell"><div class="cmp-n num">'+(noPressYet?'<span class="muted" style="font-weight:500;font-size:12.5px">Sin registro de prensa</span>':fmt(pv))+'</div>'+(!noPressYet?'<div class="cbar"><span class="cb-press" style="width:'+(100*pv/mx).toFixed(1)+'%"></span></div>':'')+'<div class="hint">'+(noPressYet?'El registro empieza el '+esc(dShort(pStart||cutoff)):'Días con llegadas registradas: '+cov+' de '+days+(firstP?' · registro desde el '+esc(dShort(firstP)):''))+'</div></td>'+
+      '<td class="num" style="white-space:nowrap">'+(diff!=null?'<b>'+sgn(diff)+'</b><div class="hint">'+(pr.off?sgn(pct(pv,pr.off))+' %':'')+'</div>':'<span class="muted">No comparable</span><div class="hint" style="white-space:normal;max-width:150px;margin-left:auto">'+(pr.off==null?'Falta la cifra oficial':'La prensa no cubre todo el periodo')+'</div>')+'</td></tr>';
+  }).join("");
+  const C='<div class="card card-pad" style="display:grid;gap:12px"><div class="row" style="justify-content:space-between"><h3>Comparación en las mismas fechas</h3><div class="legend"><span><span class="dot" style="background:var(--accent)"></span>Oficial</span><span><span class="dot tl-dot-press"></span>Prensa</span></div></div>'+
+    (rowsC?'<div class="tbl-wrap"><table class="mt cmp"><thead><tr><th>Periodo</th><th>Oficial (Interior)</th><th>Prensa (panel)</th><th>Prensa − oficial</th></tr></thead><tbody>'+rowsC+'</tbody></table></div>':'<div class="muted">Sin datos reportados</div>')+
+    '<div class="note">'+INFO_ICON+'<span>Cada fuente se cuenta por separado y nunca se suman. La cifra oficial de cada periodo es la diferencia entre dos informes quincenales consecutivos. La de prensa es la suma de las noticias registradas en esas mismas fechas. Una diferencia grande puede deberse a que la prensa no cubrió todos los días'+(sc.zoneNote?'. Interior no desglosa por isla ni provincia, así que la comparación se hace a nivel de '+esc(sc.label):'')+'.</span></div></div>';
+  box.innerHTML='<div class="src-grid">'+A+B+'</div>'+C;
+}
+
+/* ───────────── Render: gráficos ───────────── */
+let chT=null, chD=null;
+function renderCharts(){
+  const hasChart=typeof window.Chart==="function";
+  const fg=cssVar("--fg-2"), grid=cssVar("--line");
+  const [a,b]=rangeBounds(); const n=dayIdx(a,b)+1;
+  const evR=S.events.filter(e=>inRange(e,[a,b])&&inGeo(e));
+  const groups=Object.keys(GROUPS).filter(g=>S.f.zone?ZONE[S.f.zone].g===g:(S.f.region==="all"||S.f.region===g));
+  let labels=[], datasets=[], mode="";
+  if(n<=1){
+    mode="Por zona · "+dShort(a);
+    const zs=ZONES.filter(z=>evR.some(e=>e.zone===z.id));
+    labels=zs.map(z=>z.name);
+    datasets=[{label:"Personas",data:zs.map(z=>evR.filter(e=>e.zone===z.id).reduce((s,e)=>s+(persons(e)||0),0)),backgroundColor:zs.map(z=>cssVar(GROUPS[z.g].color)),borderRadius:6,borderSkipped:false,maxBarThickness:40}];
+  }else{
+    let keyOf, keys=[];
+    if(n<=92){mode="Diaria";for(let i=0;i<n;i++){const d=addDays(a,i);keys.push(d);labels.push(dShort(d));}keyOf=e=>e.date;}
+    else if(n<=731){mode="Semanal";for(let i=0;i<n;i+=7){const d=addDays(a,i);keys.push(d);labels.push("Sem. "+dShort(d));}keyOf=e=>addDays(a,Math.floor(dayIdx(a,e.date)/7)*7);}
+    else{mode="Mensual";let d=parseISO(a.slice(0,7)+"-01");const end=parseISO(b);while(d<=end){const k=iso(d).slice(0,7);keys.push(k);labels.push(MES[d.getMonth()]+" "+String(d.getFullYear()).slice(2));d.setMonth(d.getMonth()+1);}keyOf=e=>e.date.slice(0,7);}
+    mode+=" · "+dShort(a)+" – "+dShort(b);
+    datasets=groups.map(g=>({label:GROUPS[g].name,data:keys.map(k=>evR.filter(e=>ZONE[e.zone]?.g===g&&keyOf(e)===k).reduce((s,e)=>s+(persons(e)||0),0)),backgroundColor:cssVar(GROUPS[g].color),borderRadius:5,borderSkipped:false,maxBarThickness:28}));
+  }
+  const any=datasets.some(d=>d.data.some(v=>v>0));
+  $("#trendTitle").textContent=n<=1?"Llegadas del día":"Evolución";
+  $("#trendSrc").innerHTML=srcLine(evR,6); $("#distSrc").innerHTML=srcLine(evR,6);
+  $("#trendSub").textContent=mode;
+  $("#trendEmpty").hidden=any&&hasChart; if(!hasChart) $("#trendEmpty").textContent="No se pudo cargar la librería de gráficos";
+  if(chT){chT.destroy();chT=null;}
+  if(any&&hasChart){
+    chT=new Chart($("#chTrend"),{type:"bar",data:{labels,datasets},
+      options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:"index",intersect:false},
+        plugins:{legend:{display:n>1&&datasets.length>1,position:"bottom",labels:{color:fg,boxWidth:10,boxHeight:10,usePointStyle:true,pointStyle:"circle",font:{size:12}}},
+          tooltip:{callbacks:{label:c=>" "+c.dataset.label+": "+(c.raw?fmt(c.raw):"sin datos reportados")}}},
+        scales:{x:{stacked:true,grid:{display:false},ticks:{color:fg,maxRotation:0,autoSkip:true,font:{size:11}}},y:{stacked:true,beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:fg,font:{size:11},callback:v=>fmt(v)}}}}});
+  }
+  // Distribución
+  const cats=[["Islas Canarias","canarias"],["Ceuta","ceuta"],["Melilla","melilla"],...SUBS.map(s=>[s,"peninsula"])];
+  const vals=cats.map(([lab,g])=>evR.filter(e=>{const z=ZONE[e.zone];return z&&(g==="peninsula"?z.sub===lab:z.g===g);}).reduce((s,e)=>s+(persons(e)||0),0));
+  const anyD=vals.some(v=>v>0);
+  $("#distSub").textContent=periodLabel();
+  $("#distEmpty").hidden=anyD&&hasChart;
+  if(chD){chD.destroy();chD=null;}
+  if(anyD&&hasChart){
+    chD=new Chart($("#chDist"),{type:"bar",data:{labels:cats.map(c=>c[0]),datasets:[{data:vals,backgroundColor:cats.map(c=>cssVar(GROUPS[c[1]].color)),borderRadius:6,borderSkipped:false,maxBarThickness:22}]},
+      options:{indexAxis:"y",responsive:true,maintainAspectRatio:false,animation:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>" "+(c.raw?fmt(c.raw)+" personas":"Sin datos reportados")}}},
+        scales:{x:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:fg,font:{size:11},callback:v=>fmt(v)}},y:{grid:{display:false},ticks:{color:fg,font:{size:12}}}}}});
+  }
+}
+
+/* ───────────── Fuentes y medios ───────────── */
+function mediumOf(src){const s=String(src||"").trim();const i=s.indexOf(" (");return i>0?s.slice(0,i).trim():s||"Fuente sin nombre";}
+function agencyOf(src){const m=String(src||"").match(/\(([^)]*)\)/);if(!m)return null;const t=norm(m[1]);if(/\befe\b/.test(t))return "EFE";if(t.includes("europa press"))return "Europa Press";if(t.includes("salvamento"))return "Salvamento Marítimo";if(t.includes("delegacion"))return "Delegación del Gobierno";return null;}
+const MEDIA_TYPES=[
+  ["Televisión",["rtve","rtvc","television canaria","tvcanaria","antena 3","antena3","lasexta","la sexta","telecinco","informativos telecinco","cuatro","canal sur","ib3","a punt","7tv","la 7","rtvce","tv melilla","television melilla","telemadrid","24h","la 1"]],
+  ["Agencia",["efe","europa press"]],
+  ["Radio",["cadena ser","cope","onda cero","rne"]],
+  ["Organismo u ONG",["salvamento maritimo","ministerio del interior","delegacion del gobierno","cruz roja","caminando fronteras","cear","acnur"]]
+];
+const MEDIA_COLOR={"Televisión":"--accent","Prensa":"--c-peninsula","Agencia":"--c-ceuta","Radio":"--c-melilla","Organismo u ONG":"--fg-3"};
+function mediaType(name){const n=norm(name);for(const [t,ks] of MEDIA_TYPES){if(ks.some(k=>n===k||n.startsWith(k+" ")))return t;}return "Prensa";}
+function sourcesOf(evs){
+  const m=new Map();
+  evs.forEach(e=>repsOf(e).forEach(r=>{const k=mediumOf(r.source);const o=m.get(k)||{name:k,url:"",n:0};o.n++;if(!o.url&&/^https:\/\//.test(r.url||""))o.url=r.url;m.set(k,o);}));
+  return [...m.values()].sort((a,b)=>b.n-a.n||a.name.localeCompare(b.name));
+}
+function srcLine(evs,max){
+  const s=sourcesOf(evs); if(!s.length) return "";
+  max=max||6;
+  return '<div class="src-line"><span>Fuentes:</span> '+s.slice(0,max).map(o=>o.url?'<a href="'+esc(o.url)+'" target="_blank" rel="noopener">'+esc(o.name)+'</a>':'<span class="nolink">'+esc(o.name)+'</span>').join(", ")+(s.length>max?' y '+(s.length-max)+' más':'')+'</div>';
+}
+/* Periodos oficiales: diferencia entre informes quincenales consecutivos */
+function officialPeriods(){
+  const reps=offReports(); const out=[];
+  reps.forEach((r,i)=>{const p=reps[i-1]&&reps[i-1].to.slice(0,4)===r.to.slice(0,4)?reps[i-1]:null;out.push({a:p?addDays(p.to,1):(r.from||r.to.slice(0,4)+"-01-01"),b:r.to,rep:r,prev:p});});
+  return out;
+}
+function periodVal(p,keys){const v=offVal(p.rep,keys);if(v==null)return null;return p.prev?v-(offVal(p.prev,keys)||0):v;}
+function officialFor(a,b,keys){
+  const ps=officialPeriods(); const parts=ps.filter(p=>p.a>=a&&p.b<=b);
+  const v=parts.length?parts.reduce((s,p)=>s+(periodVal(p,keys)||0),0):null;
+  const near=parts.length?null:(ps.filter(p=>p.a<=b&&p.b>=a).pop()||ps.filter(p=>p.b<a).pop()||null);
+  const covA=parts.length?parts[0].a:null, covB=parts.length?parts[parts.length-1].b:null;
+  return {v,parts,near,covA,covB,full:parts.length&&covA===a&&covB===b};
+}
+function offSrcLine(reps){
+  const u=[...new Map(reps.filter(Boolean).map(r=>[r.to,r])).values()];
+  if(!u.length) return "";
+  return '<div class="src-line"><span>Fuente:</span> '+u.map(r=>'<a href="'+esc(/^https:\/\//.test(r.url||"")?r.url:"#")+'" target="_blank" rel="noopener">Ministerio del Interior, informe a '+esc(dShort(r.to))+' '+esc(r.to.slice(0,4))+'</a>').join(", ")+'</div>';
+}
+function officialBlock(a,b,keys,compact){
+  const o=officialFor(a,b,keys);
+  if(o.v!=null){
+    const reps=o.parts.flatMap(p=>[p.rep,p.prev]);
+    const cov=dShort(o.covA)+" – "+dShort(o.covB);
+    return '<span class="v num">'+fmt(o.v)+'</span><span class="hint">'+(o.full?'Del '+esc(cov):'Solo '+esc(cov)+': el resto del periodo no tiene cifra oficial')+'</span>'+offSrcLine(reps);
+  }
+  return '<span class="v muted">Sin cifra oficial para estas fechas</span><span class="hint">Interior publica por quincenas'+(o.near?'. Más cercana: '+esc(dShort(o.near.a))+' – '+esc(dShort(o.near.b))+': <b>'+fmt(periodVal(o.near,keys))+'</b>':'')+'</span>'+(o.near&&!compact?offSrcLine([o.near.rep,o.near.prev]):'');
+}
+
+/* ───────────── Render: resumen ───────────── */
+function renderDay(){
+  const r=range(); const [a,b]=rangeBounds();
+  const evs=S.events.filter(e=>inRange(e,r)&&inGeo(e));
+  const isDay=S.f.preset==="dia";
+  $("#h-day").textContent=isDay?"Resumen del día":"Resumen del periodo";
+  $("#daySub").textContent=(isDay?dLong(S.f.day):periodLabel())+" · "+scopeLabel();
+  const sc=cmpScope();
+  const regs={}; evs.forEach(e=>{const g=ZONE[e.zone].g;regs[g]=(regs[g]||0)+(persons(e)||0);});
+  const total=evs.reduce((s,e)=>s+(persons(e)||0),0);
+  const days=new Set(evs.map(e=>e.date)).size;
+  const split='<div class="card kpi kpi-split">'+
+    '<div class="half"><span class="eyebrow"><span class="src-tag press sm">Noticias</span> Llegadas según prensa</span>'+
+      (evs.length?'<span class="v num">'+fmt(total)+'</span><span class="foot">'+Object.entries(regs).map(([g,v])=>'<span class="chip"><span class="dot" style="background:var('+GROUPS[g].color+')"></span>'+esc(GROUPS[g].short)+' <b>'+fmt(v)+'</b></span>').join("")+(!isDay?'<span class="chip">Días con llegadas <b>'+days+'</b></span>':'')+'</span>'+srcLine(evs,5)
+       :'<span class="v muted">Sin datos reportados</span><span class="hint">No hay noticias registradas para estas fechas y zona</span>')+'</div>'+
+    '<div class="half"><span class="eyebrow"><span class="src-tag off sm">Oficial</span> Ministerio del Interior</span>'+officialBlock(a,b,sc.keys)+(S.f.zone?'<span class="hint">Interior no desglosa por isla ni provincia: cifra de '+esc(sc.label)+'</span>':'')+'</div>'+
+  '</div>';
+  const k=$("#kpis");
+  if(!evs.length){
+    k.innerHTML=split+["Embarcaciones","Salvamento Marítimo","Discrepancias"].map(t=>'<div class="card kpi"><span class="eyebrow">'+t+'</span><span class="v muted">Sin datos reportados</span><span class="foot">&nbsp;</span></div>').join("");
+    return;
+  }
+  const byType={}; let boatsTot=0; const bEv=[];
+  evs.forEach(e=>{const bi=boatsInfo(e); const t=e.boatType||"sin especificar"; if(bi){bEv.push(e);boatsTot+=bi.mean;byType[t]=(byType[t]||0)+bi.mean;} });
+  const smEv=evs.filter(e=>e.sm===true); const smBoats=smEv.reduce((s,e)=>s+(boatsInfo(e)?.mean||0),0);
+  const smPersons=smEv.reduce((s,e)=>s+(persons(e)||0),0);
+  const disc=evs.filter(discrepant);
+  k.innerHTML=split+
+   '<div class="card kpi"><span class="eyebrow">Embarcaciones · prensa</span>'+(bEv.length?'<span class="v num">'+fmt(boatsTot)+'</span>':'<span class="v muted">Sin datos reportados</span>')+
+     '<span class="foot">'+Object.entries(byType).map(([t,v])=>'<span class="chip">'+esc(cap(t))+' <b>'+fmt(v)+'</b></span>').join("")+'</span>'+srcLine(bEv,3)+'</div>'+
+   '<div class="card kpi"><span class="eyebrow">Salvamento Marítimo · prensa</span>'+(smEv.length?'<span class="v num">'+fmt(smEv.length)+'</span><span class="foot"><span class="chip">'+(smEv.length===1?"Evento":"Eventos")+' con intervención</span>'+(smBoats?'<span class="chip">Embarcaciones <b>'+fmt(smBoats)+'</b></span>':'')+'<span class="chip">Personas <b>'+fmt(smPersons)+'</b></span></span>'+srcLine(smEv,3):'<span class="v muted">Sin intervenciones reportadas</span><span class="foot">&nbsp;</span>')+'</div>'+
+   '<div class="card kpi"><span class="eyebrow">Discrepancias entre medios</span>'+(disc.length?'<span class="v num" style="color:var(--warn)">'+disc.length+'</span><span class="foot">'+disc.slice(0,3).map(e=>'<span class="badge-warn" data-open="'+e.id+'" title="'+esc(repsOf(e).map(r=>mediumOf(r.source)+": "+fmt(Number(r.count))).join(" · "))+'">'+WARN_ICON+esc(ZONE[e.zone].name)+' '+esc(dShort(e.date))+': '+esc(repsOf(e).map(r=>mediumOf(r.source)+" "+fmt(Number(r.count))).join(" / "))+'</span>').join("")+(disc.length>3?'<span class="chip">y '+(disc.length-3)+' más</span>':'')+'</span>':'<span class="v num">0</span><span class="foot">Las fuentes coinciden</span>')+'</div>';
+  k.querySelectorAll("[data-open]").forEach(x=>x.onclick=()=>openRow(x.dataset.open));
+}
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+
+function renderFocus(){
+  const r=range(); const [a,b]=rangeBounds();
+  $("#perSub").textContent=periodLabel()+" · prensa y oficial por separado";
+  const evs=S.events.filter(e=>inRange(e,r));
+  const box=$("#focusRow");
+  box.innerHTML=Object.keys(GROUPS).map(g=>{
+    const ge=evs.filter(e=>ZONE[e.zone]?.g===g);
+    const tot=ge.reduce((s,e)=>s+(persons(e)||0),0);
+    const d=ge.filter(discrepant).length;
+    const pressed=S.f.region===g&&!S.f.zone;
+    const o=officialFor(a,b,SCOPE_KEYS[g]);
+    return '<div class="focus" role="button" tabindex="0" data-g="'+g+'" aria-pressed="'+pressed+'"><span class="t"><span class="dot" style="background:var('+GROUPS[g].color+')"></span>'+esc(GROUPS[g].name)+'</span>'+
+      '<div class="fx"><span class="src-tag press sm">Noticias</span>'+(ge.length?'<span class="v num">'+fmt(tot)+'</span><span class="s">'+ge.length+(ge.length===1?" evento":" eventos")+(d?' · <span style="color:var(--warn)">'+d+' con discrepancia</span>':'')+'</span>'+srcLine(ge,3):'<span class="v muted">Sin datos reportados</span>')+'</div>'+
+      '<div class="fx"><span class="src-tag off sm">Oficial</span>'+(o.v!=null?'<span class="v num">'+fmt(o.v)+'</span><span class="s">'+(o.full?'':'Solo ')+esc(dShort(o.covA))+' – '+esc(dShort(o.covB))+'</span>':'<span class="v muted">Sin cifra para estas fechas</span>')+'</div>'+
+    '</div>';
+  }).join("")+'<div class="focus-src">'+(()=>{const ps=officialPeriods().filter(p=>p.a>=a&&p.b<=b);return ps.length?offSrcLine(ps.flatMap(p=>[p.rep,p.prev])):"";})()+'</div>';
+  box.querySelectorAll(".focus").forEach(x=>{const act=e=>{if(e.target.closest("a"))return;S.f.zone="";S.f.region=(S.f.region===x.dataset.g?"all":x.dataset.g);saveUI();renderAll();};x.onclick=act;x.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();act(e);}};});
+}
+
+/* ───────────── Render: mapa (noticias u oficial) ───────────── */
+const OFF_POINTS=[
+  {key:"canarias",name:"Canarias",g:"canarias",keys:["canarias"],lon:-15.6,lat:28.35},
+  {key:"ceuta",name:"Ceuta",g:"ceuta",keys:["ceuta_mar","ceuta_tierra"],lon:-5.32,lat:35.89},
+  {key:"melilla",name:"Melilla",g:"melilla",keys:["melilla_mar","melilla_tierra"],lon:-2.94,lat:35.29},
+  {key:"peninsula",name:"Península (marítima)",g:"peninsula",keys:["peninsula"],lon:-1.3,lat:37.35},
+  {key:"baleares",name:"Baleares (marítima)",g:"peninsula",keys:["baleares"],lon:2.95,lat:39.55}
+];
+function renderMap(){
+  const off=S.f.mapSrc==="official";
+  document.querySelectorAll("#mapSrc button").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.s===(off?"official":"press"))));
+  $("#mapLegendPress").hidden=off; $("#mapLegendOff").hidden=!off;
+  return off?renderMapOfficial():renderMapPress();
+}
+function bindTips(g,info,act){
+  const tip=$("#tip"), svg=$("#map");
+  g.querySelectorAll(".zone").forEach(el=>{
+    const show=()=>{const {html,lon,lat}=info(el.dataset.z); const bb=svg.getBoundingClientRect(); const [x,y]=project(lon,lat);
+      tip.innerHTML=html; tip.hidden=false; const px=x/1000*bb.width, py=y/914*bb.height;
+      tip.style.left=Math.min(Math.max(8,px+14),bb.width-190)+"px"; tip.style.top=Math.max(8,py-14)+"px";};
+    el.addEventListener("mouseenter",show); el.addEventListener("focus",show);
+    el.addEventListener("mouseleave",()=>tip.hidden=true); el.addEventListener("blur",()=>tip.hidden=true);
+    const go=()=>{tip.hidden=true;act(el.dataset.z);};
+    el.addEventListener("click",go); el.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();go();}});
+  });
+}
+function renderMapPress(){
+  const t=zoneTotals();
+  const all={}; S.events.forEach(e=>{all[e.zone]=(all[e.zone]||0)+(persons(e)||0);});
+  const max=Math.max(1,...Object.values(all));
+  const prev=renderMap._prev||{}; renderMap._prev=Object.fromEntries(Object.entries(t).map(([k,o])=>[k,o.p]));
+  const g=$("#zonesG"); const parts=[];
+  const ge=S.events.filter(e=>inRange(e,range())&&inGeo(e)); const gt=ge.reduce((a,e)=>a+(persons(e)||0),0);
+  $("#mapBadge").innerHTML='<span class="eyebrow"><span class="src-tag press sm">Noticias</span> '+esc(scopeLabel())+'</span><b>'+esc(periodLabel())+'</b>'+
+    (gt>0?'<span class="v num">'+fmt(gt)+' <span style="font-size:13px;font-weight:500;color:var(--fg-2)">personas · '+ge.length+(ge.length===1?' evento':' eventos')+'</span></span>'+srcLine(ge,4):'<span class="v muted">Sin datos reportados</span>');
+  const sorted=[...ZONES].sort((a,b)=>(t[a.id]?.p||0)-(t[b.id]?.p||0));
+  for(const z of sorted){
+    const [x,y]=project(z.lon,z.lat); const o=t[z.id]; const col="var("+GROUPS[z.g].color+")";
+    const dim=(S.f.zone&&S.f.zone!==z.id)||(!S.f.zone&&S.f.region!=="all"&&S.f.region!==z.g);
+    const cls="zone"+(S.f.zone===z.id?" sel":"")+(dim?" dim":"")+(o&&o.p>0&&prev[z.id]!==o.p?" chg":"");
+    if(o&&o.p>0){
+      const r=8+30*Math.sqrt(o.p/max);
+      parts.push('<g class="'+cls+'" data-z="'+z.id+'" tabindex="0" role="button" aria-label="'+esc(z.name)+': '+fmt(o.p)+' personas">'+
+        (z.g!=="peninsula"?'<circle class="pulse" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(1)+'" style="stroke:'+col+'"/>':'')+
+        '<circle class="b" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(1)+'" style="fill:'+col+';fill-opacity:.82"/>'+
+        '<text x="'+x.toFixed(1)+'" y="'+(y-r-6).toFixed(1)+'" text-anchor="middle">'+fmt(o.p)+'</text></g>');
+    }else{
+      parts.push('<g class="'+cls+'" data-z="'+z.id+'" tabindex="0" role="button" aria-label="'+esc(z.name)+': sin datos reportados"><circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="11" fill="transparent"/><circle class="empty" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="4.5" style="stroke:'+col+'"/></g>');
+    }
+  }
+  g.innerHTML=parts.join("");
+  bindTips(g,id=>{const z=ZONE[id];const o=t[id];const evz=S.events.filter(e=>e.zone===id&&inRange(e,range()));
+    return {lon:z.lon,lat:z.lat,html:'<b>'+esc(z.name)+'</b>'+(o&&o.p>0?fmt(o.p)+' personas · '+o.n+(o.n===1?' evento':' eventos')+(o.d?'<br><span style="color:var(--warn)">'+o.d+' con discrepancia</span>':'')+'<br><span class="muted">Fuentes: '+esc(sourcesOf(evz).map(s=>s.name).join(", "))+'</span>':'<span class="muted">Sin datos reportados</span>')+'<br><span class="muted">'+esc(periodLabel())+'</span>'};},
+    id=>{S.f.zone=(S.f.zone===id?"":id);renderAll();});
+}
+function renderMapOfficial(){
+  const [a,b]=rangeBounds(); const g=$("#zonesG");
+  const latest=offReports().slice(-1)[0];
+  const max=Math.max(1,...OFF_POINTS.map(p=>latest?offVal(latest,p.keys)||0:0));
+  const vals=Object.fromEntries(OFF_POINTS.map(p=>[p.key,officialFor(a,b,p.keys)]));
+  const any=Object.values(vals).some(o=>o.v!=null);
+  const tot=officialFor(a,b,cmpScope().keys);
+  const prev=renderMap._prevO||{}; renderMap._prevO=Object.fromEntries(Object.entries(vals).map(([k,o])=>[k,o.v]));
+  $("#mapBadge").innerHTML='<span class="eyebrow"><span class="src-tag off sm">Oficial</span> '+esc(cmpScope().label)+'</span>'+
+    (tot.v!=null?'<b>'+(tot.full?'':'Solo ')+esc(dShort(tot.covA))+' – '+esc(dShort(tot.covB))+' '+esc(tot.covB.slice(0,4))+'</b><span class="v num">'+fmt(tot.v)+' <span style="font-size:13px;font-weight:500;color:var(--fg-2)">personas</span></span>'+offSrcLine(tot.parts.flatMap(p=>[p.rep,p.prev]))
+     :'<b>'+esc(periodLabel())+'</b><span class="v muted">Sin cifra oficial para estas fechas</span><span class="hint" style="max-width:240px">Interior publica el acumulado cada quincena; no hay cifras diarias.</span><button type="button" class="btn small" id="mapToYear" style="justify-self:start;margin-top:4px">Ver el año completo</button>');
+  const bt=$("#mapToYear"); if(bt) bt.onclick=()=>{stopPlay();S.f.preset="anio";saveUI();renderAll();};
+  const parts=[];
+  for(const p of OFF_POINTS){
+    const [x,y]=project(p.lon,p.lat); const o=vals[p.key]; const col="var("+GROUPS[p.g].color+")";
+    const dim=S.f.region!=="all"&&!S.f.zone?S.f.region!==p.g:(S.f.zone?ZONE[S.f.zone].g!==p.g:false);
+    const cls="zone"+(dim?" dim":"")+(o.v!=null&&prev[p.key]!==o.v?" chg":"");
+    if(o.v!=null&&o.v>0){
+      const r=8+30*Math.sqrt(o.v/max);
+      parts.push('<g class="'+cls+'" data-z="'+p.key+'" tabindex="0" role="button" aria-label="'+esc(p.name)+': '+fmt(o.v)+' personas según Interior">'+
+        '<rect class="b" x="'+(x-r).toFixed(1)+'" y="'+(y-r).toFixed(1)+'" width="'+(2*r).toFixed(1)+'" height="'+(2*r).toFixed(1)+'" rx="'+(r*0.32).toFixed(1)+'" style="fill:'+col+';fill-opacity:.82"/>'+
+        '<text x="'+x.toFixed(1)+'" y="'+(y-r-6).toFixed(1)+'" text-anchor="middle">'+fmt(o.v)+'</text></g>');
+    }else{
+      parts.push('<g class="'+cls+'" data-z="'+p.key+'" tabindex="0" role="button" aria-label="'+esc(p.name)+': sin cifra oficial"><rect x="'+(x-11)+'" y="'+(y-11)+'" width="22" height="22" fill="transparent"/><rect class="empty" x="'+(x-5)+'" y="'+(y-5)+'" width="10" height="10" rx="3" style="stroke:'+col+'"/></g>');
+    }
+  }
+  g.innerHTML=parts.join("");
+  bindTips(g,key=>{const p=OFF_POINTS.find(q=>q.key===key);const o=vals[key];
+    const rows=o.parts.length?p.keys.map(k=>{const rr=o.parts.reduce((s,pp)=>s+(periodVal(pp,[k])||0),0);const lb=o.parts[0].rep.rows.find(x=>x.key===k)?.label||k;return esc(lb)+': '+fmt(rr);}).join("<br>"):"";
+    return {lon:p.lon,lat:p.lat,html:'<b>'+esc(p.name)+'</b>'+(o.v!=null?fmt(o.v)+' personas · '+(o.full?'':'solo ')+esc(dShort(o.covA))+' – '+esc(dShort(o.covB))+(p.keys.length>1?'<br><span class="muted">'+rows+'</span>':'')+'<br><span class="muted">Fuente: Ministerio del Interior</span>':'<span class="muted">Sin cifra oficial para estas fechas</span>')};},
+    key=>{const p=OFF_POINTS.find(q=>q.key===key);S.f.zone="";S.f.region=(S.f.region===p.g?"all":p.g);saveUI();renderAll();});
+}
+
+/* ───────────── Render: medios de comunicación ───────────── */
+let chM=null;
+function renderMedia(){
+  const r=range(); const evs=S.events.filter(e=>inRange(e,r)&&inGeo(e));
+  $("#medSub").textContent=periodLabel()+" · "+scopeLabel();
+  const box=$("#medBox");
+  if(chM){chM.destroy();chM=null;}
+  if(!evs.length){box.innerHTML='<div class="card empty-state"><b>Sin datos reportados</b><span>No hay noticias registradas para estas fechas y zona.</span></div>';return;}
+  const M=new Map(); let nRep=0;
+  evs.forEach(e=>{
+    const c=counts(e); const mean=c.length?c.reduce((a,b)=>a+b,0)/c.length:null;
+    repsOf(e).forEach(rp=>{
+      nRep++; const k=mediumOf(rp.source);
+      const o=M.get(k)||{name:k,type:mediaType(k),reports:0,events:new Set(),regions:new Set(),persons:0,devs:[],agencies:new Set(),url:"",first:null};
+      o.reports++; o.events.add(e.id); o.regions.add(ZONE[e.zone]?.g); o.persons+=Number(rp.count)||0;
+      if(c.length>1&&mean>0) o.devs.push(Math.abs(Number(rp.count)-mean)/mean*100);
+      const ag=agencyOf(rp.source); if(ag) o.agencies.add(ag);
+      if(!o.url&&/^https:\/\//.test(rp.url||"")) o.url=rp.url;
+      if(!o.first||e.date<o.first) o.first=e.date;
+      M.set(k,o);
+    });
+  });
+  const list=[...M.values()].sort((a,b)=>b.reports-a.reports||b.events.size-a.events.size||a.name.localeCompare(b.name));
+  const byType={}; list.forEach(o=>{byType[o.type]=(byType[o.type]||0)+o.reports;});
+  const agTot={}; list.forEach(o=>o.agencies.forEach(a=>{agTot[a]=(agTot[a]||0)+1;}));
+  const h=Math.max(160,list.length*30+40);
+  box.innerHTML='<div class="med-grid">'+
+    '<div class="card card-pad" style="display:grid;gap:12px;align-content:start"><div class="row" style="justify-content:space-between"><h3>Noticias registradas por medio</h3><span class="hint">'+list.length+(list.length===1?' medio':' medios')+' · '+nRep+(nRep===1?' noticia':' noticias')+'</span></div>'+
+      '<div class="mini">'+Object.entries(byType).sort((a,b)=>b[1]-a[1]).map(([t,v])=>'<span class="chip"><span class="dot" style="background:var('+MEDIA_COLOR[t]+')"></span>'+esc(t)+' <b>'+v+'</b> <span class="muted">('+Math.round(100*v/nRep)+' %)</span></span>').join("")+'</div>'+
+      '<div class="chart-box" style="height:'+h+'px"><canvas id="chMed" aria-label="Noticias registradas por medio"></canvas></div>'+
+      (Object.keys(agTot).length?'<div class="hint">Medios que citan a una agencia u organismo: '+Object.entries(agTot).map(([a,n])=>esc(a)+' ('+n+')').join(", ")+'</div>':'')+
+    '</div>'+
+    '<div class="card card-pad" style="display:grid;gap:10px;align-content:start"><h3>Detalle por medio</h3><div class="tbl-wrap"><table class="mt med"><thead><tr><th>Medio</th><th>Tipo</th><th>Noticias</th><th>Eventos</th><th>% eventos</th><th>Personas citadas</th><th>Desv. media</th></tr></thead><tbody>'+
+      list.map(o=>'<tr><td>'+(o.url?'<a href="'+esc(o.url)+'" target="_blank" rel="noopener">'+esc(o.name)+'</a>':esc(o.name))+(o.agencies.size?'<div class="hint">cita a '+esc([...o.agencies].join(", "))+'</div>':'')+'</td><td><span class="dot" style="background:var('+MEDIA_COLOR[o.type]+');margin-right:6px"></span>'+esc(o.type)+'</td><td class="num"><b>'+o.reports+'</b></td><td class="num">'+o.events.size+'</td><td class="num">'+Math.round(100*o.events.size/evs.length)+' %</td><td class="num">'+fmt(o.persons)+'</td><td class="num">'+(o.devs.length?'±'+fmt(o.devs.reduce((a,b)=>a+b,0)/o.devs.length)+' %':'<span class="muted">—</span>')+'</td></tr>').join("")+
+    '</tbody></table></div>'+
+    '<div class="note">'+INFO_ICON+'<span>Cada noticia registrada cuenta una vez para su medio. «% eventos»: parte de las '+evs.length+' llegadas del periodo que ese medio cubrió. «Desv. media»: cuánto se aparta su cifra de la media cuando varios medios informan de la misma llegada (solo en llegadas con más de una fuente). Refleja lo registrado en este panel, no toda la producción de cada medio.</span></div></div>'+
+  '</div>';
+  if(typeof window.Chart==="function"){
+    const fg=cssVar("--fg-2"), grid=cssVar("--line");
+    chM=new Chart($("#chMed"),{type:"bar",data:{labels:list.map(o=>o.name),datasets:[{data:list.map(o=>o.reports),backgroundColor:list.map(o=>cssVar(MEDIA_COLOR[o.type])),borderRadius:6,borderSkipped:false,maxBarThickness:20}]},
+      options:{indexAxis:"y",responsive:true,maintainAspectRatio:false,animation:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const o=list[c.dataIndex];return " "+o.reports+(o.reports===1?" noticia":" noticias")+" · "+o.events.size+(o.events.size===1?" evento":" eventos")+" · "+o.type;}}}},
+        scales:{x:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:fg,precision:0,font:{size:11}}},y:{grid:{display:false},ticks:{color:fg,font:{size:12}}}}}});
+  }
+}
+
+/* ───────────── Equivalencia en población (INE) ───────────── */
+const MUNIS=[[10,"19049","Bañuelos"],[11,"19231","Rebollosa de Jadraque"],[12,"09184","Jaramillo Quemado"],[13,"19048","Baños de Tajo"],[14,"05034","Blasconuño de Matacabras"],[15,"19019","Alique"],[16,"16140","Olmeda de la Cuesta"],[17,"16071","Castillo-Albaráñez"],[18,"05063","Collado del Mirón"],[19,"05206","San Esteban de los Patos"],[20,"09046","Bascuñana"],[21,"09202","Manciles"],[21,"12037","Castell de Cabres"],[22,"05119","Manjabálago y Ortigosa de Rioalmar"],[23,"05018","Avellaneda"],[24,"05106","Hoyos de Miguel Muñoz"],[25,"08216","Sant Jaume de Frontanyà"],[26,"05148","Narros del Puerto"],[27,"09201","Mamolar"],[28,"05104","Hoyos del Collado"],[29,"05120","Marlín"],[30,"05188","Poveda"],[31,"05070","Donvidas"],[32,"03130","Tollos"],[33,"09062","Cabezón de la Sierra"],[34,"05039","Brabos"],[34,"12087","Palanques"],[35,"05244","Tormellas"],[36,"09071","Carcedo de Bureba"],[37,"05081","Garganta del Villar"],[38,"05164","Navaquesera"],[39,"09191","Jurisdicción de Lara"],[40,"05108","Junciana"],[41,"05107","Hurtumpascual"],[42,"05046","Canales"],[43,"09055","Brazacorta"],[44,"03068","Famorca"],[45,"05085","Gil García"],[46,"09007","Aguilar de Bureba"],[47,"16169","Pozuelo, El"],[49,"05264","Viñegra de Moraña"],[50,"05143","Muñotello"],[51,"02077","Villa de Ves"],[51,"12137","Villores"],[52,"09050","Berberana"],[54,"05155","Navaescurial"],[54,"21027","Cumbres de Enmedio"],[55,"05030","Berrocalejo de Aragona"],[55,"12063","Fuente la Reina"],[56,"05144","Narrillos del Álamo"],[58,"05015","Arevalillo"],[59,"05196","Rivilla de Barajas"],[61,"05067","Chamartín"],[62,"05126","Mesegar de Corneja"],[63,"04026","Benitagla"],[63,"12127","Vallibona"],[64,"05133","Monsalupe"],[65,"05217","San Miguel de Corneja"],[67,"05017","Aveinte"],[68,"12068","Herbers"],[69,"05069","Donjimeno"],[70,"05025","Becedillas"],[72,"09328","Rucandio"],[72,"12088","Pavías"],[74,"02050","Montalvos"],[76,"05139","Muñogrande"],[78,"19066","Cañizar"],[80,"05043","Cabezas del Pozo"],[82,"10042","Campillo de Deleitosa"],[84,"05059","Cillán"],[85,"03039","Benimassot"],[86,"05131","Mirueña de los Infanzones"],[88,"05253","Vega de Santa María"],[90,"05078","Fuentes de Año"],[92,"05075","Fresnedilla"],[95,"05141","Muñopepe"],[97,"09312","Revilla y Ahedo, La"],[97,"46086","Carrícola"],[99,"05112","Losar del Barco, El"],[101,"04033","Castro de Filabres"],[102,"05048","Cantiveros"],[104,"05036","Bohodón, El"],[107,"05060","Cisla"],[107,"12055","Xodos/Chodos"],[110,"03036","Benillup"],[112,"09316","Revilla Vallejera"],[115,"04009","Alcudia de Monteagud"],[118,"10208","Villa del Rey"],[121,"02013","Balsa de Ves"],[121,"12025","Benafigos"],[124,"17119","Palau de Santa Eulàlia"],[126,"04015","Alsodux"],[127,"10106","Jarilla"],[130,"03032","Benifallim"],[134,"05235","Sinlabajos"],[136,"12112","Todolella"],[137,"09140","Fuentenebro"],[139,"18121","Lobras"],[140,"04023","Beires"],[144,"06110","Reina"],[148,"09345","Santa Cruz de la Salceda"],[151,"05147","Narros del Castillo"],[151,"46243","Torrella"],[155,"05051","Carrera, La"],[159,"03134","Vall d'Alcalà, la"],[163,"05215","San Martín de la Vega del Alberche"],[167,"05172","Niharra"],[169,"04034","Cóbdar"],[171,"05231","San Vicente de Arévalo"],[171,"12142","Zucaina"],[175,"04068","Olula de Castro"],[180,"10088","Guijo de Coria"],[184,"03008","Alcoleja"],[188,"12020","Barracas"],[189,"13043","Fuenllana"],[194,"29085","Salares"],[198,"09483","Zazuar"],[199,"07019","Escorca"],[203,"05254","Velayos"],[208,"04014","Almócita"],[209,"46056","Beniatjar"],[214,"16121","Majadas, Las"],[215,"04021","Bayarque"],[219,"05901","San Juan de Gredos"],[224,"04087","Suflí"],[230,"04097","Velefique"],[236,"04080","Santa Cruz de Marchena"],[239,"21071","Valdelarco"],[242,"04027","Benizalón"],[246,"46262","Yesa, La"],[248,"20031","Elduain"],[254,"39077","Santiurde de Reinosa"],[260,"06142","Valverde de Burguillos"],[265,"03086","Millena"],[267,"08004","Alpens"],[271,"21051","Nava, La"],[274,"10065","Collado de la Vera"],[280,"08901","Rupit i Pruit"],[287,"17100","Masarac i Vilarnadal"],[295,"05221","Santa Cruz del Valle"],[295,"12059","Fanzara"],[301,"04036","Chercos"],[302,"08190","Saldes"],[309,"08242","Marganell"],[317,"02076","Vianos"],[325,"02084","Villaverde de Guadalimar"],[333,"39072","San Roque de Riomiera"],[335,"23042","Hinojares"],[338,"46038","Andilla"],[342,"10053","Casas de Don Gómez"],[350,"05105","Hoyos del Espino"],[359,"05156","Navahondilla"],[368,"09400","Vadocondes"],[369,"07021","Estellencs"],[374,"46263","Zarra"],[377,"09406","Valdorros"],[378,"04058","Líjar"],[386,"10091","Guijo de Santa Bárbara"],[396,"05178","Palacios de Goda"],[406,"10033","Cabañas del Castillo"],[416,"48066","Morga"],[419,"03010","Alfafara"],[422,"18005","Albuñán"],[427,"43177","Vinebre"],[437,"18128","Marchal"],[448,"22023","Almuniente"],[459,"17123","Palol de Revardit"],[466,"21067","Santa Ana la Real"],[471,"47110","Parrilla, La"],[473,"12130","Villahermosa del Río"],[483,"02020","Carcelén"],[495,"50124","Herrera de los Navarros"],[507,"04055","Instinción"],[520,"13073","Saceruela"],[526,"04051","Huécija"],[527,"46222","Sant Joanet"],[533,"18117","Lanteira"],[546,"46071","Bicorp"],[548,"30031","Ojós"],[560,"06144","Valverde de Llerena"],[573,"07007","Banyalbufar"],[574,"03091","Murla"],[588,"10099","Holguera"],[590,"18042","Capileira"],[590,"03029","Benigembla"],[603,"10011","Aldeacentenera"],[617,"10202","Valdeobispo"],[633,"08212","Sant Feliu Sasserra"],[649,"12079","Montanejos"],[660,"23077","Santiago de Calatrava"],[662,"03127","Tàrbena"],[665,"12067","Geldo"],[682,"49024","Bóveda de Toro, La"],[699,"24123","Quintana del Castillo"],[717,"37073","Calzada de Valdunciel"],[734,"03110","Ràfol d'Almúnia, el"],[741,"07018","Deià"],[742,"11009","Benaocaz"],[743,"07025","Fornalutx"],[744,"03035","Benilloba"],[753,"02001","Abengibre"],[771,"04043","Felix"],[791,"48030","Etxebarria"],[801,"35007","Betancuria"],[810,"39067","Ruesga"],[827,"12109","Tales"],[829,"04007","Alcolea"],[832,"25225","Tornabous"],[853,"16271","Villarta"],[873,"16202","Talayuelas"],[895,"01033","Lapuebla de Labarca"],[917,"16126","Mira"],[926,"30040","Ulea"],[933,"18904","Alpujarra de la Sierra"],[936,"46124","Fontanars dels Alforins"],[940,"29062","Iznate"],[964,"08099","Guardiola de Berguedà"],[987,"40152","Otero de Herreros"],[1012,"24083","Igüeña"],[1024,"35005","Artenara"],[1038,"08206","Sant Cugat Sesgarrigues"],[1039,"12105","Sierra Engarcerán"],[1040,"18159","Píñar"],[1064,"01055","Valdegovía/Gaubea"],[1072,"07901","Ariany"],[1078,"38002","Agulo"],[1090,"06148","Valle de Santa Ana"],[1118,"16236","Valverde de Júcar"],[1123,"30006","Aledo"],[1144,"39084","Solórzano"],[1166,"18152","Pedro Martínez"],[1171,"46217","Rotglà i Corberà"],[1175,"06042","Cheles"],[1197,"30034","Ricote"],[1202,"04063","María"],[1215,"07009","Búger"],[1234,"06131","Torre de Miguel Sesmero"],[1264,"43128","Riudecols"],[1297,"06099","Parra, La"],[1302,"12121","Traiguera"],[1309,"23030","Chilluévar"],[1328,"03013","Algueña"],[1362,"05054","Casavieja"],[1395,"30004","Albudeite"],[1431,"14048","Palenciana"],[1453,"41083","Ronquillo, El"],[1461,"46158","Macastre"],[1465,"02046","Mahora"],[1502,"25078","Corbins"],[1540,"50181","Muel"],[1579,"17184","Santa Pau"],[1591,"07017","Costitx"],[1619,"04037","Chirivel"],[1624,"46173","Montaverner"],[1639,"23017","Cabra del Santo Cristo"],[1659,"15028","Corcubión"],[1700,"18063","Darro"],[1742,"45034","Camuñas"],[1785,"50038","Ateca"],[1806,"35025","Tejeda"],[1828,"03116","Salinas"],[1831,"13092","Villanueva de la Fuente"],[1841,"18912","Cuevas del Campo"],[1877,"19274","Torija"],[1902,"07053","Santa Eugènia"],[1924,"47101","Nava del Rey"],[1974,"24105","Onzonilla"],[2021,"12100","Sant Mateu"],[2042,"12034","Càlig"],[2049,"07045","Puigpunyent"],[2061,"38003","Alajeró"],[2062,"41073","Pedroso, El"],[2074,"32052","Nogueira de Ramuín"],[2124,"39011","Bareyo"],[2159,"30014","Campos del Río"],[2177,"45025","Cabañas de la Sagra"],[2232,"25158","Palau d'Anglesola, El"],[2287,"08094","Granada, La"],[2302,"14004","Almedinilla"],[2314,"46150","Llutxent"],[2336,"07049","Sant Joan"],[2344,"37376","Vitigudino"],[2345,"38029","Puntagorda"],[2403,"32050","Monterrei"],[2463,"40043","Carbonero el Mayor"],[2524,"29018","Ardales"],[2577,"46197","Polinyà de Xúquer"],[2582,"18171","Salar"],[2587,"08223","Sant Llorenç Savall"],[2589,"07030","Llubí"],[2653,"25172","Ponts"],[2718,"43002","Albinyana"],[2733,"38047","Tijarafe"],[2787,"38044","Tanque, El"],[2822,"46132","Genovés, el"],[2856,"24223","Villarejo de Órbigo"],[2859,"07012","Campanet"],[2908,"23014","Begíjar"],[2925,"31015","Andosilla"],[2938,"38050","Vallehermoso"],[3002,"43042","Castellvell del Camp"],[3076,"36044","Pontecesures"],[3145,"38012","Fasnia"],[3153,"46089","Casinos"],[3220,"41003","Albaida del Aljarafe"],[3225,"46191","Pedralba"],[3231,"07041","Petra"],[3311,"28093","Navacerrada"],[3395,"43020","Banyeres del Penedès"],[3481,"41901","Cañada Rosal"],[3569,"28170","Villaconejos"],[3626,"29043","Colmenar"],[3657,"36034","Neves, As"],[3677,"03043","Biar"],[3746,"31042","Azagra"],[3775,"35032","Valleseco"],[3842,"50204","Pedrola"],[3929,"07065","Vilafranca de Bonany"],[3941,"45133","Polán"],[3973,"07047","Sencelles"],[4003,"30032","Pliego"],[4020,"46127","Font d'en Carròs, la"],[4041,"26125","Rincón de Soto"],[4049,"29020","Arriate"],[4111,"30042","Villanueva del Río Segura"],[4137,"27013","Cervo"],[4242,"15032","Curtis"],[4345,"23063","Navas de San Juan"],[4350,"38033","San Andrés y Sauces"],[4456,"36030","Mondariz"],[4537,"07060","Sineu"],[4549,"38045","Tazacorte"],[4552,"04074","Pechina"],[4565,"48916","Usansolo"],[4605,"12901","Alqueries, les/Alquerías del Niño Perdido"],[4688,"50066","Cadrete"],[4807,"46118","Enguera"],[4911,"03042","Poble Nou de Benitatxell, el/Benitachell"],[5037,"45145","Recas"],[5087,"21052","Nerva"],[5089,"46233","Sollana"],[5131,"38053","Villa de Mazo"],[5166,"36046","Ribadumia"],[5170,"07023","Ferreries"],[5291,"41026","Casariche"],[5427,"37156","Guijuelo"],[5552,"10127","Montehermoso"],[5683,"35001","Agaete"],[5692,"11026","Prado del Rey"],[5710,"15029","Coristanco"],[5744,"12117","Torreblanca"],[5847,"13020","Argamasilla de Calatrava"],[5854,"30023","Librilla"],[5892,"07043","Porreres"],[5988,"45176","Ugena"],[6149,"46143","Xeraco"],[6159,"38009","Breña Baja"],[6256,"30001","Abanilla"],[6290,"47007","Aldeamayor de San Martín"],[6322,"46006","Albaida"],[6357,"07004","Algaida"],[6371,"18084","Gójar"],[6459,"07037","Mercadal, Es"],[6606,"28108","Pedrezuela"],[6777,"13019","Argamasilla de Alba"],[6882,"30011","Blanca"],[6939,"35029","Tinajo"],[7046,"07050","Sant Joan de Labritja"],[7107,"23088","Torreperogil"],[7108,"15048","Miño"],[7177,"03120","San Miguel de Salinas"],[7294,"48901","Derio"],[7487,"38008","Breña Alta"],[7669,"03083","Xixona/Jijona"],[7774,"07064","Castell, Es"],[7864,"08067","Centelles"],[7946,"30025","Lorquí"],[7995,"46126","Foios"],[8007,"35013","Moya"],[8024,"21061","Rociana del Condado"],[8060,"48073","Ondarroa"],[8260,"43131","Roda de Berà"],[8458,"04032","Carboneras"],[8679,"33073","Tineo"],[8886,"08135","Montmeló"],[8951,"46109","Cheste"],[9004,"14043","Montoro"],[9089,"38025","Matanza de Acentejo, La"],[9126,"15067","Pobra do Caramiñal, A"],[9231,"07051","Sant Llorenç des Cardassar"],[9345,"38041","Sauzal, El"],[9574,"38036","San Sebastián de la Gomera"],[9824,"14058","Rute"],[9869,"35031","Valsequillo de Gran Canaria"],[10062,"46172","Montserrat"],[10129,"23003","Alcaudete"],[10217,"07002","Alaior"],[10305,"24008","Astorga"],[10391,"30013","Calasparra"],[10594,"28004","Álamo, El"],[10835,"39079","Santoña"],[11099,"46011","Alberic"],[11192,"46903","San Antonio de Benagéber"],[11285,"23053","Jódar"],[11403,"46256","Vilamarxant"],[11437,"30020","Fortuna"],[11490,"38046","Tegueste"],[11661,"07024","Formentera"],[11663,"46249","Utiel"],[11939,"48011","Arrigorriaga"],[12262,"46060","Benifaió"],[12485,"07013","Campos"],[12570,"17199","Torroella de Montgrí"],[12582,"38040","Santiago del Teide"],[12587,"46019","Alcúdia, l'"],[12631,"21072","Valverde del Camino"],[12879,"08126","Montgat"],[13089,"30018","Ceutí"],[13211,"35027","Teror"],[13533,"15009","Betanzos"],[13882,"07061","Sóller"],[14056,"07055","Santa Margalida"],[14164,"35003","Antigua"],[14222,"41075","Pilas"],[14315,"12082","Nules"],[14506,"30017","Cehegín"],[14615,"43092","Mont-roig del Camp"],[14976,"37294","Santa Marta de Tormes"],[14990,"07044","Pobla, Sa"],[15301,"20018","Azpeitia"],[15575,"23009","Baeza"],[15690,"38037","Santa Cruz de la Palma"],[16119,"43136","Ràpita, La"],[16443,"30901","Santomera"],[16479,"41040","Espartinas"],[16734,"46054","Benetússer"],[16878,"18062","Churriana de la Vega"],[17309,"49021","Benavente"],[17396,"41068","Osuna"],[17652,"03113","Rojales"],[17729,"25040","Balaguer"],[17807,"07042","Pollença"],[17937,"30029","Mula"],[17958,"38032","Rosario, El"],[18174,"36035","Nigrán"],[18660,"04052","Huércal de Almería"],[19121,"03094","Nucia, la"],[19146,"07022","Felanitx"],[19551,"35018","San Bartolomé"],[19642,"31901","Barañáin/Barañain"],[19768,"18003","Albolote"],[19839,"46116","Eliana, l'"],[20076,"11016","Chipiona"],[20408,"30902","Alcázares, Los"],[20587,"18023","Baza"],[21080,"03011","Alfàs del Pi, l'"],[21613,"35028","Tías"],[21907,"07003","Alcúdia"],[22009,"38020","Güímar"],[22213,"46171","Montcada/Moncada"],[22294,"18127","Maracena"],[22676,"30038","Torres de Cotillas, Las"],[22737,"21002","Aljaraque"],[23211,"36042","Ponteareas"],[23917,"43171","Vila-seca"],[24163,"30008","Alhama de Murcia"],[24462,"23060","Martos"],[24702,"46105","Cullera"],[24864,"21005","Almonte"],[25108,"35009","Gáldar"],[25773,"06153","Villanueva de la Serena"],[26350,"28040","Ciempozuelos"],[26967,"46102","Quart de Poblet"],[27574,"30022","Jumilla"],[27650,"28104","Paracuellos de Jarama"],[27788,"41053","Lebrija"],[28136,"46186","Paiporta"],[28306,"46029","Algemesí"],[29023,"38011","Candelaria"],[29089,"41021","Camas"],[29132,"07046","Sant Antoni de Portmany"],[29674,"30036","San Pedro del Pinatar"],[29761,"07048","Sant Josep de sa Talaia"],[30577,"39016","Camargo"],[30666,"07032","Maó"],[31137,"38028","Puerto de la Cruz"],[31267,"11006","Arcos de la Frontera"],[31278,"41034","Coria del Río"],[31419,"03050","Campello, el"],[32120,"15019","Carballo"],[32905,"35011","Ingenio"],[33800,"35002","Agüimes"],[34587,"06011","Almendralejo"],[34712,"03140","Villena"],[35449,"30026","Mazarrón"],[35610,"23005","Andújar"],[36262,"07027","Inca"],[36373,"33037","Mieres"],[37060,"13082","Tomelloso"],[37811,"30003","Águilas"],[38075,"28015","Arroyomolinos"],[38761,"41069","Palacios y Villafranca, Los"],[39059,"28130","San Fernando de Henares"],[39232,"35006","Arucas"],[39709,"03121","Santa Pola"],[40132,"10148","Plasencia"],[40422,"07036","Marratxí"],[41133,"43163","Vendrell, El"],[41299,"46078","Burjassot"],[42085,"08102","Igualada"],[42479,"07054","Santa Eulària des Riu"],[42514,"38026","Orotava, La"],[43000,"17095","Lloret de Mar"],[43408,"14038","Lucena"],[43876,"30005","Alcantarilla"],[45565,"13071","Puertollano"],[46442,"48082","Santurtzi"],[48017,"41059","Mairena del Aljarafe"],[48236,"46017","Alzira"],[49153,"07033","Manacor"],[50021,"38001","Adeje"],[51796,"39087","Torrelavega"],[52454,"29082","Rincón de la Victoria"],[53793,"07011","Calvià"],[54291,"35019","San Bartolomé de Tirajana"],[55222,"03066","Elda"],[55337,"07026","Eivissa"],[55633,"23055","Linares"],[56651,"28113","Pinto"],[58528,"08266","Cerdanyola del Vallès"],[58752,"38017","Granadilla de Abona"],[59815,"49275","Zamora"],[59862,"18140","Motril"],[61468,"03009","Alcoi/Alcoy"],[63040,"28013","Aranjuez"],[64367,"15036","Ferrol"],[65341,"08096","Granollers"],[67274,"28047","Collado Villalba"],[70012,"11032","Sanlúcar de Barrameda"],[70811,"35004","Arrecife"],[73031,"46220","Sagunt/Sagunto"],[73625,"28080","Majadahonda"],[76217,"13034","Ciudad Real"],[77327,"03031","Benidorm"],[77474,"41004","Alcalá de Guadaíra"],[78338,"29025","Benalmádena"],[78458,"30027","Molina de Segura"],[78584,"35022","Santa Lucía de Tirajana"],[80512,"28049","Coslada"],[82823,"08184","Rubí"],[83595,"51001","Ceuta"],[83803,"45165","Talavera de la Reina"],[84560,"03099","Orihuela"],[86048,"29094","Vélez-Málaga"],[86780,"52001","Melilla"],[87793,"38006","Arona"],[90864,"11015","Chiclana de la Frontera"],[92834,"19130","Guadalajara"],[95104,"29070","Mijas"],[97983,"08205","Sant Cugat del Vallès"],[98533,"03133","Torrevieja"],[98969,"30024","Lorca"],[100143,"27028","Lugo"],[100965,"15078","Santiago de Compostela"],[102986,"48013","Barakaldo"],[103148,"28123","Rivas-Vaciamadrid"],[104168,"35026","Telde"],[105769,"32054","Ourense"],[108666,"17079","Girona"],[109950,"11012","Cádiz"],[111240,"04079","Roquetas de Mar"],[111601,"43123","Reus"],[112235,"23050","Jaén"],[123342,"28006","Alcobendas"],[123446,"24089","León"],[123981,"08245","Santa Coloma de Gramenet"],[126589,"11004","Algeciras"],[131683,"08121","Mataró"],[137471,"28106","Parla"],[142519,"41038","Dos Hermanas"],[143215,"21041","Huelva"],[143526,"28148","Torrejón de Ardoz"],[143649,"43148","Tarragona"],[146110,"37274","Salamanca"],[146266,"25120","Lleida"],[150209,"06015","Badajoz"],[152150,"26089","Logroño"],[159786,"29069","Marbella"],[161108,"38023","San Cristóbal de La Laguna"],[175400,"02003","Albacete"],[175425,"39075","Santander"],[175719,"28007","Alcorcón"],[177402,"09059","Burgos"],[183711,"12040","Castelló de la Plana/Castellón de la Plana"],[189866,"20069","Donostia/San Sebastián"],[190076,"28058","Fuenlabrada"],[193238,"28065","Getafe"],[195734,"28074","Leganés"],[203208,"28005","Alcalá de Henares"],[205468,"04013","Almería"],[209094,"31201","Pamplona/Iruña"],[211957,"38038","Santa Cruz de Tenerife"],[213634,"11020","Jerez de la Frontera"],[214817,"28092","Móstoles"],[220704,"30016","Cartagena"],[223968,"33044","Oviedo"],[225368,"08187","Sabadell"],[231542,"08015","Badalona"],[233270,"08279","Terrassa"],[233975,"18087","Granada"],[245557,"03065","Elx/Elche"],[251543,"15030","Coruña, A"],[260699,"01059","Vitoria-Gasteiz"],[269894,"33024","Gijón"],[289510,"08101","Hospitalet de Llobregat, L'"],[294489,"36057","Vigo"],[302614,"47186","Valladolid"],[323262,"14021","Córdoba"],[351124,"48020","Bilbao"],[366221,"03014","Alacant/Alicante"],[381868,"35016","Palmas de Gran Canaria, Las"],[434786,"07040","Palma"],[479405,"30030","Murcia"],[599063,"29067","Málaga"],[689423,"41091","Sevilla"],[693091,"50297","Zaragoza"],[840792,"46250","València"],[1731649,"08019","Barcelona"],[3506730,"28079","Madrid"]];
+const PROV={"01":"Araba/Álava","02":"Albacete","03":"Alicante/Alacant","04":"Almería","05":"Ávila","06":"Badajoz","07":"Illes Balears","08":"Barcelona","09":"Burgos","10":"Cáceres","11":"Cádiz","12":"Castellón/Castelló","13":"Ciudad Real","14":"Córdoba","15":"A Coruña","16":"Cuenca","17":"Girona","18":"Granada","19":"Guadalajara","20":"Gipuzkoa","21":"Huelva","22":"Huesca","23":"Jaén","24":"León","25":"Lleida","26":"La Rioja","27":"Lugo","28":"Madrid","29":"Málaga","30":"Murcia","31":"Navarra","32":"Ourense","33":"Asturias","34":"Palencia","35":"Las Palmas","36":"Pontevedra","37":"Salamanca","38":"Santa Cruz de Tenerife","39":"Cantabria","40":"Segovia","41":"Sevilla","42":"Soria","43":"Tarragona","44":"Teruel","45":"Toledo","46":"Valencia/València","47":"Valladolid","48":"Bizkaia","49":"Zamora","50":"Zaragoza","51":"Ceuta","52":"Melilla"};
+
+const INE_SRC={label:"INE · Cifras oficiales de población de los municipios españoles a 1 de enero de 2025 (Revisión del Padrón municipal)",url:"https://www.ine.es/dynt3/inebase/es/index.htm?padre=525"};
+const POP_GROUPS={canarias:["35","38"],ceuta:["51"],melilla:["52"],peninsula:["04","11","14","18","21","23","29","41","30","03","12","46","07"]};
+function nearestMuni(v,provs,exclude){
+  let best=null,bd=Infinity;
+  for(const m of MUNIS){ if(provs&&!provs.includes(m[1].slice(0,2))) continue; if(exclude&&exclude.has(m[1])) continue;
+    const d=Math.abs(Math.log(m[0]/v)); if(d<bd){bd=d;best=m;} }
+  return best;
+}
+function neighbours(v){
+  let lo=null,hi=null;
+  for(const m of MUNIS){ if(m[0]<v&&(!lo||m[0]>lo[0])) lo=m; if(m[0]>v&&(!hi||m[0]<hi[0])) hi=m; }
+  return {lo,hi};
+}
+function muniName(m){ const n=m[2].replace(/^(.*), (El|La|Los|Las|L'|A|As|O|Os|Es|Sa|Ses|Els|Les|el|la|les|l')$/,(x,a,b)=>b+(b.endsWith("'")?"":" ")+a); return n; }
+function muniHtml(m,v,big){
+  const diff=(v/m[0]-1)*100;
+  return '<span class="'+(big?'pop-name':'')+'">'+esc(muniName(m))+'</span>'+(big?'<span class="pop-meta">'+esc(PROV[m[1].slice(0,2)]||"")+' · '+fmt(m[0])+' habitantes</span>':' <span class="muted">('+esc(PROV[m[1].slice(0,2)]||"")+', '+fmt(m[0])+' hab.)</span>')+
+    (big?'<span class="pop-diff">'+(Math.abs(diff)<0.5?'Prácticamente la misma cifra':'Llegadas: '+fmt(Math.abs(diff))+' % '+(diff>0?'más':'menos')+' que sus habitantes')+'</span>':'');
+}
+function mainGroup(evs){const t={};evs.forEach(e=>{const g=ZONE[e.zone]?.g;if(g)t[g]=(t[g]||0)+(persons(e)||0);});return Object.entries(t).sort((a,b)=>b[1]-a[1])[0]?.[0]||null;}
+function popCard(kind,v,label,sub,srcHtml,evo,group){
+  const head='<div class="src-h"><span class="src-tag '+(kind==="off"?'off':'press')+'">'+(kind==="off"?'Oficial':'Noticias')+'</span><h3>'+esc(label)+'</h3></div>';
+  if(v==null||!(v>0)) return '<div class="card card-pad src-card">'+head+'<span class="v muted" style="font-size:17px;font-weight:600;color:var(--fg-3)">'+(kind==="off"?'Sin cifra oficial para estas fechas':'Sin datos reportados')+'</span>'+(sub?'<span class="hint">'+sub+'</span>':'')+'</div>';
+  const m=nearestMuni(v); const nb=neighbours(v);
+  let extra=[];
+  if(nb.lo&&nb.lo!==m) extra.push('<span class="chip">Algo menor: '+esc(muniName(nb.lo))+' <b>'+fmt(nb.lo[0])+'</b></span>');
+  if(nb.hi&&nb.hi!==m) extra.push('<span class="chip">Algo mayor: '+esc(muniName(nb.hi))+' <b>'+fmt(nb.hi[0])+'</b></span>');
+  let regional="";
+  if(group==="ceuta"||group==="melilla"){const city=MUNIS.find(x=>x[1]===(group==="ceuta"?"51001":"52001"));regional='<div class="pop-reg">Equivale al <b>'+fmt(100*v/city[0])+' %</b> de la población de '+esc(city[2])+' ('+fmt(city[0])+' hab.)</div>';}
+  else if(group&&POP_GROUPS[group]){const r=nearestMuni(v,POP_GROUPS[group]); if(r&&r!==m) regional='<div class="pop-reg">En '+esc(GROUPS[group].name)+': como '+muniHtml(r,v,false)+'</div>';}
+  return '<div class="card card-pad src-card">'+head+
+    '<div class="pop-q"><span class="pop-v num">'+fmt(v)+'</span><span class="hint">'+sub+'</span></div>'+
+    '<div class="pop-eq"><span class="eyebrow">Equivale a la población de</span>'+muniHtml(m,v,true)+'</div>'+
+    (extra.length?'<div class="mini">'+extra.join("")+'</div>':'')+regional+
+    (evo?'<div class="pop-evo"><div class="eyebrow" style="margin-bottom:6px">'+(kind==="off"?'Evolución según cada informe':'Evolución acumulada en el periodo')+'</div><div class="tbl-wrap"><table class="mt"><tbody>'+evo+'</tbody></table></div></div>':'')+
+    srcHtml+'<div class="src-line"><span>Población:</span> <a href="'+INE_SRC.url+'" target="_blank" rel="noopener">'+esc(INE_SRC.label)+'</a></div></div>';
+}
+function renderPopulation(){
+  const box=$("#popBox"); if(!box) return;
+  const r=range(); const [a,b]=rangeBounds(); const sc=cmpScope();
+  $("#popSub").textContent=periodLabel()+" · "+scopeLabel();
+  // Prensa
+  const evs=S.events.filter(e=>inRange(e,r)&&inGeo(e));
+  const pv=evs.reduce((s,e)=>s+(persons(e)||0),0);
+  const byDay={}; evs.forEach(e=>{byDay[e.date]=(byDay[e.date]||0)+(persons(e)||0);});
+  const days=Object.keys(byDay).sort(); let cum=0;
+  const steps=days.map(d=>{cum+=byDay[d];return [d,cum];});
+  const evoP=steps.length>1?steps.slice(-8).reverse().map(([d,c])=>{const m=nearestMuni(c);return '<tr><td style="white-space:nowrap">'+esc(dShort(d))+'</td><td class="num"><b>'+fmt(c)+'</b></td><td style="text-align:left">'+esc(muniName(m))+' <span class="muted">('+esc(PROV[m[1].slice(0,2)])+', '+fmt(m[0])+')</span></td></tr>';}).join(""):"";
+  const A=popCard("press",pv,"Llegadas según prensa",(pv?'Personas llegadas del '+esc(dShort(days[0]||a))+' al '+esc(dShort(days[days.length-1]||b))+' · '+evs.length+(evs.length===1?' evento':' eventos'):''),srcLine(evs,5),evoP,S.f.zone?ZONE[S.f.zone].g:(S.f.region!=="all"?S.f.region:mainGroup(evs)));
+  // Oficial
+  const o=officialFor(a,b,sc.keys);
+  let evoO="";
+  const reps=offReports().filter(x=>x.to<=b&&x.to.slice(0,4)===b.slice(0,4));
+  if(reps.length) evoO=reps.slice().reverse().map(x=>{const v=offVal(x,sc.keys);if(!v)return "";const m=nearestMuni(v);return '<tr><td style="white-space:nowrap">1 ene – '+esc(dShort(x.to))+'</td><td class="num"><b>'+fmt(v)+'</b></td><td style="text-align:left">'+esc(muniName(m))+' <span class="muted">('+esc(PROV[m[1].slice(0,2)])+', '+fmt(m[0])+')</span></td></tr>';}).join("");
+  const B=popCard("off",o.v,"Ministerio del Interior",o.v!=null?(o.full?'Del ':'Solo del ')+esc(dShort(o.covA))+' al '+esc(dShort(o.covB))+' de '+esc(o.covB.slice(0,4)):'Interior publica por quincenas'+(o.near?(()=>{const nv=periodVal(o.near,sc.keys);const nm=nv?nearestMuni(nv):null;return '. Quincena más cercana, del '+esc(dShort(o.near.a))+' al '+esc(dShort(o.near.b))+': <b>'+fmt(nv)+'</b> personas'+(nm?', como la población de '+esc(muniName(nm))+' ('+esc(PROV[nm[1].slice(0,2)])+', '+fmt(nm[0])+' hab.)':'')+'.';})()+offSrcLine([o.near.rep,o.near.prev]):''),o.v!=null?offSrcLine(o.parts.flatMap(p=>[p.rep,p.prev])):"",evoO,sc.g==="all"?null:sc.g);
+  box.innerHTML='<div class="src-grid">'+A+B+'</div><div class="note">'+INFO_ICON+'<span>Se compara el número de personas llegadas con el municipio de población más parecida, entre '+MUNIS.length+' municipios de referencia escogidos del padrón del INE para cubrir todos los tamaños (de 10 a 3,5 millones de habitantes, con más detalle en Canarias, Andalucía, Murcia, Comunidad Valenciana, Baleares, Ceuta y Melilla). La equivalencia se recalcula sola cada vez que entran datos nuevos o cambias las fechas.</span></div>';
+}
+
+/* ───────────── Render: tabla ───────────── */
+function openRow(id){S.open.add(id);renderTable();const r=document.querySelector('tr[data-id="'+id+'"]');if(r) r.scrollIntoView({behavior:"smooth",block:"center"});}
+function srcLink(r){
+  const name=esc(r.source||"Fuente sin nombre");
+  return /^https:\/\//.test(r.url||"")?'<a href="'+esc(r.url)+'" target="_blank" rel="noopener" title="'+esc(r.url)+'">'+name+'</a>':'<span>'+name+'</span>';
+}
+function renderTable(){
+  const r=range();
+  const evs=S.events.filter(e=>inRange(e,r)&&inGeo(e)).sort(sortEv);
+  $("#logSub").textContent=evs.length?evs.length+(evs.length===1?" evento":" eventos")+" · "+periodLabel():periodLabel();
+  const tb=$("#tbody");
+  if(!evs.length){tb.innerHTML='<tr><td colspan="7"><div class="empty-state"><b>Sin datos reportados</b><span>No hay llegadas registradas para este periodo y zona.</span></div></td></tr>';return;}
+  tb.innerHTML=evs.map(e=>{
+    const z=ZONE[e.zone]||{name:e.zone,g:"peninsula",sub:""}; const p=persons(e); const d=discrepant(e); const b=boatsInfo(e);
+    const open=S.open.has(e.id);
+    let h='<tr data-id="'+e.id+'"><td style="white-space:nowrap"><b>'+esc(dShort(e.date))+'</b> <span class="muted">'+esc(e.date.slice(0,4))+'</span>'+(e.time?'<br><span class="muted">'+esc(e.time)+' h</span>':'')+'</td>'+
+      '<td><div class="loc"><span class="dot" style="background:var('+GROUPS[z.g].color+')"></span><div>'+esc(z.name)+'<small>'+esc(z.sub)+'</small></div></div></td>'+
+      '<td class="n num">'+(e._excluded?'<s class="muted">'+fmt(personsRaw(e))+'</s><div class="hint" style="font-weight:500">No se suma</div>':(p==null?'<span class="muted">—</span>':fmt(p)))+(d?'<div style="margin-top:4px"><span class="badge-warn" data-tog="'+e.id+'" title="Ver cifras de cada fuente">'+WARN_ICON+'Media de '+counts(e).length+'</span></div>':'')+'</td>'+
+      '<td>'+(b?'<b>'+boatsLabel(b)+'</b> ':'')+esc(e.boatType?(b&&b.max!==1?pluralType(e.boatType):e.boatType):(b?"embarcaciones":"Sin detalle"))+(e.sm===true?'<div style="margin-top:4px"><span class="badge-sm">Salvamento Marítimo</span></div>':'')+'</td>'+
+      '<td><div class="srcs">'+repsOf(e).map(srcLink).join("")+'</div></td>'+
+      '<td style="max-width:300px;color:var(--fg-2);font-size:12.5px">'+(e._excluded?'<div class="badge-warn" style="margin-bottom:4px">'+WARN_ICON+'Duplicado: '+esc(e._dupWhy)+'</div>':'')+(e._dropped&&e._dropped.length?'<div class="hint">Fuente repetida, cuenta una vez: '+esc(e._dropped.map(r=>mediumOf(r.source)).join(", "))+'</div>':'')+esc(e.notes||"")+(statsChips(e,4)?'<div class="stat-row">'+statsChips(e,4)+'</div>':'')+'</td>'+
+      '<td style="white-space:nowrap;text-align:right"><button type="button" class="btn small" data-tog="'+e.id+'">'+(open?"Cerrar":"Fuentes")+'</button></td></tr>';
+    if(open){
+      h+='<tr class="det" data-det="'+e.id+'"><td colspan="7">'+
+        '<div class="row" style="justify-content:space-between;align-items:flex-start;gap:16px"><div style="min-width:0;flex:1">'+
+        '<div class="eyebrow" style="margin-bottom:8px">Cifras por fuente</div><ul class="rep-list">'+repsOf(e).map(rp=>'<li><span class="c num">'+fmt(Number(rp.count))+'</span>'+srcLink(rp)+(rp.boats!=null&&rp.boats!==""?'<span class="muted">· '+fmt(Number(rp.boats))+' embarcaciones</span>':'')+(rp.note?'<span class="muted">· '+esc(rp.note)+'</span>':'')+(rp.stats?'<span class="muted">· '+esc(STAT_KEYS.filter(([k])=>rp.stats[k]!=null).map(([k,l])=>l.toLowerCase()+" "+fmt(rp.stats[k])).concat(rp.stats.nationalities&&rp.stats.nationalities.length?["origen: "+natText(rp.stats.nationalities)]:[]).join(" · "))+'</span>':'')+'</li>').join("")+'</ul>'+
+        (d?'<div class="note warn" style="margin-top:10px">'+WARN_ICON+'<span>Las fuentes no coinciden ('+counts(e).map(fmt).join(" / ")+'). El recuento usa la media aritmética: <b>'+fmt(p)+'</b>.</span></div>':'')+
+        '</div>'+
+        (S.canWrite?(S.confirmDel===e.id?'<span class="confirm">¿Eliminar este evento? <button class="btn small danger" type="button" data-delok="'+e.id+'">Eliminar</button><button class="btn small" type="button" data-delno="1">Cancelar</button></span>':'<button class="btn small danger" type="button" data-del="'+e.id+'">Eliminar evento</button>'):'')+
+        '</div>'+
+        (S.canWrite?'<form class="addsrc" data-add="'+e.id+'"><label>Medio<input class="inp" name="source" required placeholder="p. ej. EFE"></label><label>Enlace<input class="inp" name="url" type="url" placeholder="https://…"></label><label>Personas<input class="inp" name="count" type="number" min="0" step="1" required></label><label>Embarc.<input class="inp" name="boats" type="number" min="0" step="1"></label><button class="btn primary small" type="submit">Añadir fuente</button></form>':'')+
+        '</td></tr>';
+    }
+    return h;
+  }).join("");
+  tb.querySelectorAll("[data-tog]").forEach(x=>x.onclick=()=>{const id=x.dataset.tog;S.open.has(id)?S.open.delete(id):S.open.add(id);renderTable();});
+  tb.querySelectorAll("[data-del]").forEach(x=>x.onclick=()=>{S.confirmDel=x.dataset.del;renderTable();});
+  tb.querySelectorAll("[data-delno]").forEach(x=>x.onclick=()=>{S.confirmDel=null;renderTable();});
+  tb.querySelectorAll("[data-delok]").forEach(x=>x.onclick=async()=>{const id=x.dataset.delok;S.confirmDel=null;S.open.delete(id);await removeEvent(id);toast("Evento eliminado");});
+  tb.querySelectorAll("form[data-add]").forEach(f=>f.onsubmit=async ev=>{
+    ev.preventDefault(); const e=S.events.find(x=>x.id===f.dataset.add); if(!e) return;
+    const fd=new FormData(f); const rep={source:String(fd.get("source")).trim(),url:String(fd.get("url")||"").trim(),count:Number(fd.get("count")),boats:fd.get("boats")===""?null:Number(fd.get("boats")),addedAt:new Date().toISOString()};
+    if(!rep.source||!isFinite(rep.count)){toast("Indica el medio y el número de personas.");return;}
+    const ne=mergeReport(e,rep); if(await putEvent(ne)) toast("Fuente añadida");
+  });
+}
+function pluralType(t){return ({cayuco:"cayucos",patera:"pateras","neumática":"neumáticas",lancha:"lanchas","embarcación":"embarcaciones",otro:"otras"})[t]||t;}
+function mergeReport(e,rep){
+  const ne=JSON.parse(JSON.stringify(e,(k,v)=>k.startsWith("_")?undefined:v)); ne.reports=ne.reports||[];
+  const i=ne.reports.findIndex(r=>norm(r.source)===norm(rep.source));
+  if(i>=0) ne.reports[i]=Object.assign(ne.reports[i],rep); else ne.reports.push(rep);
+  return ne;
+}
+
+/* ───────────── Parser de noticias ───────────── */
+const UNITS={cero:0,un:1,uno:1,una:1,dos:2,tres:3,cuatro:4,cinco:5,seis:6,siete:7,ocho:8,nueve:9,diez:10,once:11,doce:12,trece:13,catorce:14,quince:15,dieciseis:16,diecisiete:17,dieciocho:18,diecinueve:19,veinte:20,veintiun:21,veintiuno:21,veintiuna:21,veintidos:22,veintitres:23,veinticuatro:24,veinticinco:25,veintiseis:26,veintisiete:27,veintiocho:28,veintinueve:29};
+const TENS={treinta:30,cuarenta:40,cincuenta:50,sesenta:60,setenta:70,ochenta:80,noventa:90};
+const HUND={cien:100,ciento:100,doscientos:200,doscientas:200,trescientos:300,trescientas:300,cuatrocientos:400,cuatrocientas:400,quinientos:500,quinientas:500,seiscientos:600,seiscientas:600,setecientos:700,setecientas:700,ochocientos:800,ochocientas:800,novecientos:900,novecientas:900};
+const NUMWORD="(?:(?:"+Object.keys(HUND).join("|")+")(?:\\s+(?:"+Object.keys(TENS).join("|")+")(?:\\s+y\\s+(?:"+Object.keys(UNITS).join("|")+"))?|\\s+(?:"+Object.keys(UNITS).join("|")+"))?|(?:"+Object.keys(TENS).join("|")+")(?:\\s+y\\s+(?:"+Object.keys(UNITS).join("|")+"))?|(?:"+Object.keys(UNITS).join("|")+"))";
+function wordsToNum(s){let n=0;for(const w of s.split(/\s+/)){if(w==="y")continue;if(w in HUND)n+=HUND[w];else if(w in TENS)n+=TENS[w];else if(w in UNITS)n+=UNITS[w];else return null;}return n;}
+function toNum(tok){tok=tok.trim();if(/^\d{1,3}(\.\d{3})+$/.test(tok))return Number(tok.replace(/\./g,""));if(/^\d+$/.test(tok))return Number(tok);return wordsToNum(tok);}
+const NUMRE="(\\d{1,3}(?:\\.\\d{3})+|\\d+|"+NUMWORD+")";
+const PERSON_NOUNS="(?:personas|migrantes|inmigrantes|ocupantes|naufragos|rescatados|subsaharianos|magrebies|argelinos|marroquies|tripulantes)";
+const BOAT_NOUNS="(cayucos?|pateras?|embarcaciones|embarcacion|neumaticas?|lanchas?|botes?|barquillas?|zodiacs?)";
+const OUTLETS=[["efe","EFE"],["europa press","Europa Press"],["salvamento maritimo","Salvamento Marítimo"],["cruz roja","Cruz Roja"],["ministerio del interior","Ministerio del Interior"],["delegacion del gobierno","Delegación del Gobierno"],["rtve","RTVE"],["rtvc","RTVC"],["television canaria","RTVC"],["canarias7","Canarias7"],["canarias 7","Canarias7"],["la provincia","La Provincia"],["el dia","El Día"],["diario de avisos","Diario de Avisos"],["el pais","El País"],["el mundo","El Mundo"],["abc","ABC"],["la vanguardia","La Vanguardia"],["20 minutos","20minutos"],["20minutos","20minutos"],["el confidencial","El Confidencial"],["eldiario.es","elDiario.es"],["publico","Público"],["la razon","La Razón"],["el espanol","El Español"],["cadena ser","Cadena SER"],["cope","COPE"],["antena 3","Antena 3"],["lasexta","laSexta"],["la sexta","laSexta"],["el faro de ceuta","El Faro de Ceuta"],["el faro de melilla","El Faro de Melilla"],["melilla hoy","Melilla Hoy"],["ceuta actualidad","Ceuta Actualidad"],["diario de almeria","Diario de Almería"],["ideal","Ideal"],["la verdad","La Verdad"],["la opinion de murcia","La Opinión de Murcia"],["la 7","La 7"],["informacion","Información"],["levante-emv","Levante-EMV"],["diario de mallorca","Diario de Mallorca"],["ultima hora","Última Hora"],["diario de ibiza","Diario de Ibiza"],["periodico de ibiza","Periódico de Ibiza"],["europa sur","Europa Sur"],["diario de cadiz","Diario de Cádiz"],["infobae","Infobae"],["telecinco","Telecinco"],["informativos telecinco","Informativos Telecinco"],["cuatro","Cuatro"],["canal sur","Canal Sur"],["ib3","IB3"],["a punt","À Punt"],["7tv","7TV Región de Murcia"],["rtvce","RTVCE (Ceuta)"],["television melilla","TV Melilla"],["telemadrid","Telemadrid"],["tvcanaria","Televisión Canaria"],["antena3","Antena 3"]];
+const HOSTS={"rtve.es":"RTVE","rtvc.es":"RTVC","canarias7.es":"Canarias7","eldia.es":"El Día","laprovincia.es":"La Provincia","elpais.com":"El País","elmundo.es":"El Mundo","abc.es":"ABC","lavanguardia.com":"La Vanguardia","20minutos.es":"20minutos","publico.es":"Público","europapress.es":"Europa Press","efe.com":"EFE","salvamentomaritimo.es":"Salvamento Marítimo","interior.gob.es":"Ministerio del Interior","la7tv.es":"La 7","lasexta.com":"laSexta","elfarodeceuta.es":"El Faro de Ceuta","elfarodemelilla.es":"El Faro de Melilla","melillahoy.es":"Melilla Hoy","diariodealmeria.es":"Diario de Almería","diariodeavisos.elespanol.com":"Diario de Avisos","eldiario.es":"elDiario.es","cadenaser.com":"Cadena SER","ultimahora.es":"Última Hora","diariodemallorca.es":"Diario de Mallorca","diariodeibiza.es":"Diario de Ibiza","laverdad.es":"La Verdad","larazon.es":"La Razón","elespanol.com":"El Español","infobae.com":"Infobae","antena3.com":"Antena 3","telecinco.es":"Telecinco","informativos.telecinco.es":"Informativos Telecinco","cuatro.com":"Cuatro","canalsur.es":"Canal Sur","ib3.org":"IB3","ib3noticias.com":"IB3","apuntmedia.es":"À Punt","7tvregiondemurcia.es":"7TV Región de Murcia","rtvce.es":"RTVCE (Ceuta)","televisionmelilla.es":"TV Melilla","telemadrid.es":"Telemadrid","newtral.es":"Newtral","elfarodeceuta.es":"El Faro de Ceuta"};
+const WEEK={domingo:0,lunes:1,martes:2,miercoles:3,jueves:4,viernes:5,sabado:6};
+
+function parseChunk(raw,ref){
+  const t=" "+norm(raw).replace(/\s+/g," ")+" ";
+  const D={key:uid(),raw,date:null,dateNote:"",time:"",zone:"",zoneCands:[],persons:null,personCands:[],boats:null,boatType:"",sm:null,source:"",url:"",notes:"",warnings:[]};
+  // URL
+  const um=raw.match(/https:\/\/[^\s)>\]]+/i); if(um){D.url=um[0];try{const h=new URL(um[0]).hostname.replace(/^www\./,"");D.source=HOSTS[h]||Object.entries(HOSTS).find(([k])=>h.endsWith(k))?.[1]||h;}catch(e){}}
+  // Fuente
+  if(!D.source){let best=null;for(const [k,v] of OUTLETS){const re=new RegExp("(^|[^a-z0-9])"+k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"([^a-z0-9]|$)");const m=re.exec(t);if(m&&(best===null||m.index<best.i)&&k!=="salvamento maritimo"&&k!=="cruz roja"&&k!=="delegacion del gobierno"&&k!=="ministerio del interior")best={i:m.index,v};}
+    if(!best){for(const k of ["ministerio del interior","delegacion del gobierno","salvamento maritimo","cruz roja"]){if(t.includes(" "+k)){best={v:OUTLETS.find(o=>o[0]===k)[1]};break;}}}
+    if(best)D.source=best.v;}
+  // Fecha
+  let m;
+  if((m=t.match(/(\d{4})-(\d{2})-(\d{2})/))) D.date=m[1]+"-"+m[2]+"-"+m[3];
+  else if((m=t.match(/(\d{1,2})[\/.](\d{1,2})[\/.](\d{2,4})/))){const y=m[3].length===2?"20"+m[3]:m[3];D.date=y+"-"+m[2].padStart(2,"0")+"-"+m[1].padStart(2,"0");}
+  else if((m=t.match(/(\d{1,2}) de (enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)(?: de (\d{4}))?/))){const mi=m[2]==="setiembre"?8:MESL.indexOf(m[2]);const y=m[3]||ref.slice(0,4);D.date=y+"-"+String(mi+1).padStart(2,"0")+"-"+m[1].padStart(2,"0");}
+  else if((m=t.match(/\b(?:este|esta|el pasado|el|la pasada)\s+(lunes|martes|miercoles|jueves|viernes|sabado|domingo)\b/))){const target=WEEK[m[1]];const r=parseISO(ref);let back=(r.getDay()-target+7)%7;D.date=addDays(ref,-back);D.dateNote="«"+m[0].trim()+"» calculado desde la fecha de publicación";}
+  else if(/\b(anteayer)\b/.test(t)){D.date=addDays(ref,-2);D.dateNote="«anteayer» calculado desde la fecha de publicación";}
+  else if(/\b(ayer|anoche)\b/.test(t)){D.date=addDays(ref,-1);D.dateNote="«ayer» calculado desde la fecha de publicación";}
+  else if(/\b(hoy|esta madrugada|esta manana|esta tarde|esta noche)\b/.test(t)){D.date=ref;D.dateNote="Fecha de publicación (el texto dice «hoy» o similar)";}
+  if(!D.date){D.date=ref;D.warnings.push("No se detecta fecha: se usa la de publicación. Revísala.");}
+  // Hora
+  if((m=t.match(/\b([01]?\d|2[0-3])[.:]([0-5]\d)\s*(?:horas|h\b)/))) D.time=m[1].padStart(2,"0")+":"+m[2];
+  // Zona
+  const hits=[];
+  for(const z of ZONES) for(const k of z.kw){const re=new RegExp("(^|[^a-z])"+k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"([^a-z]|$)");const mm=re.exec(t);if(mm){hits.push({z:z.id,i:mm.index,len:k.length});}}
+  hits.sort((a,b)=>a.i-b.i||b.len-a.len);
+  const seen=new Set(); for(const h of hits){if(!seen.has(h.z)){seen.add(h.z);D.zoneCands.push(h.z);}}
+  const generic=new Set(["canarias","baleares"]);
+  D.zone=D.zoneCands.find(z=>!generic.has(z))||D.zoneCands[0]||"";
+  if(D.zoneCands.filter(z=>!generic.has(z)).length>1) D.warnings.push("La noticia cita varias zonas. Elige una o guarda cada zona por separado.");
+  if(!D.zone) D.warnings.push("No se reconoce la ubicación: elígela.");
+  // Personas
+  const pre=new RegExp(NUMRE+"(?:\\s+(?:de\\s+)?[a-z]+){0,2}?\\s+"+PERSON_NOUNS,"g");
+  const cands=[];
+  while((m=pre.exec(t))){const n=toNum(m[1]);const ctx=t.slice(Math.max(0,m.index-28),m.index);if(/(casi|cerca de|alrededor de|unos|unas|mas de|menos de|en torno a|aproximadamente|al menos)\s*$/.test(ctx))continue;if(n!=null&&n>0&&n<20000&&!/^(19|20)\d\d$/.test(m[1])){cands.push({n,total:/(total|ascienden?|asciende|suman?|en total|un total de|elevan?)/.test(ctx)||/total de\s*$/.test(ctx)});}}
+  const uniq=[...new Map(cands.map(c=>[c.n,c])).values()];
+  D.personCands=uniq.map(c=>c.n);
+  const tot=uniq.find(c=>c.total);
+  D.persons=tot?tot.n:(uniq.length?Math.max(...uniq.map(c=>c.n)):null);
+  if(uniq.length>1) D.warnings.push("Hay varias cifras de personas en el texto: comprueba la elegida.");
+  const approx=t.match(/\b(?:(?:casi|cerca de|alrededor de|unos|unas|mas de|menos de|en torno a|aproximadamente|al menos)\s+\d[\d.]*|medio centenar|un centenar|centenares|decenas|cientos|un millar|millares)\b/);
+  if(approx) D.warnings.push("El texto incluye una cifra aproximada («"+approx[0].trim()+"»): no se usa como dato exacto.");
+  if(D.persons==null) D.warnings.push("No hay una cifra explícita de personas.");
+  // Embarcaciones
+  const bre=new RegExp(NUMRE+"\\s+(?:nuevos?\\s+|nuevas?\\s+)?"+BOAT_NOUNS,"g"); let bc=[];
+  while((m=bre.exec(t))){const n=toNum(m[1]);if(n!=null&&n<500)bc.push({n,type:m[2]});}
+  if(bc.length){const best=bc.reduce((a,b)=>b.n>a.n?b:a);D.boats=best.n;}
+  else if((m=t.match(/\b(un|una)\s+(cayuco|patera|neumatica|lancha|embarcacion|barquilla)\b/))) D.boats=1;
+  const tm=t.match(/\b(cayuco|patera|neumatica|lancha|zodiac|moto de agua|a nado|nadando|espigon|valla|embarcacion)/);
+  if(tm){const v=tm[1];D.boatType=v==="neumatica"||v==="zodiac"?"neumática":v==="embarcacion"?"embarcación":v==="nadando"||v==="espigon"||v==="a nado"?"a nado":v==="valla"?"valla terrestre":v==="moto de agua"?"otro":v;}
+  // Salvamento Marítimo
+  D.sm=/(salvamento maritimo|salvamar|guardamar|sasemar)/.test(t)?true:null;
+  extractStats(t,D);
+  return D;
+}
+function parseText(text,ref){
+  const chunks=text.split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean);
+  return chunks.map(c=>parseChunk(c,ref)).filter(d=>d.persons!=null||d.zone);
+}
+
+/* ───────────── Perfil: extracción ───────────── */
+const COUNTRIES=[
+ ["Guinea-Bisáu",["guinea bissau","guinea-bissau","guinea bisau","guinea-bisau","bisauguineano","bisauguineana","bisauguineanos"]],
+ ["Guinea Ecuatorial",["guinea ecuatorial","ecuatoguineano"]],
+ ["Guinea",["guinea conakry","guinea-conakry","guineano","guineana","guineanos","guineanas","guinea"]],
+ ["Senegal",["senegal","senegales","senegalesa","senegaleses","senegalesas"]],
+ ["Gambia",["gambia","gambiano","gambiana","gambianos","gambianas"]],
+ ["Mali",["mali","maliense","malienses","maliano","malianos"]],
+ ["Mauritania",["mauritania","mauritano","mauritana","mauritanos","mauritanas"]],
+ ["Marruecos",["marruecos","marroqui","marroquies"]],
+ ["Argelia",["argelia","argelino","argelina","argelinos","argelinas"]],
+ ["Túnez",["tunez","tunecino","tunecina","tunecinos"]],
+ ["Libia",["libia","libio","libios"]],
+ ["Egipto",["egipto","egipcio","egipcios"]],
+ ["Costa de Marfil",["costa de marfil","marfileno","marfilena","marfilenos","marfilenas"]],
+ ["Burkina Faso",["burkina faso","burkines","burkinesa","burkineses","burkinabe","burkinabes"]],
+ ["Níger",["niger","nigerino","nigerinos"]],
+ ["Nigeria",["nigeria","nigeriano","nigeriana","nigerianos","nigerianas"]],
+ ["Camerún",["camerun","camerunes","camerunesa","cameruneses"]],
+ ["Sierra Leona",["sierra leona","sierraleones","sierraleoneses"]],
+ ["Liberia",["liberia","liberiano","liberianos"]],
+ ["Ghana",["ghana","ghanes","ghaneses"]],
+ ["Togo",["togo","togoles","togoleses"]],
+ ["Benín",["benin","benines","benineses"]],
+ ["Cabo Verde",["cabo verde","caboverdiano","caboverdianos"]],
+ ["Chad",["chad","chadiano","chadianos"]],
+ ["Sudán del Sur",["sudan del sur","sursudanes","sursudaneses"]],
+ ["Sudán",["sudan","sudanes","sudanesa","sudaneses"]],
+ ["Eritrea",["eritrea","eritreo","eritreos"]],
+ ["Etiopía",["etiopia","etiope","etiopes"]],
+ ["Somalia",["somalia","somali","somalies"]],
+ ["Comoras",["comoras","comorense","comorenses"]],
+ ["R. D. del Congo",["republica democratica del congo","rd congo","congoleno","congolenos","congo"]],
+ ["Siria",["siria","sirio","siria","sirios"]],
+ ["Yemen",["yemen","yemeni","yemenies"]],
+ ["Afganistán",["afganistan","afgano","afganos"]],
+ ["Pakistán",["pakistan","paquistani","pakistanies","paquistanies"]],
+ ["Bangladés",["banglades","bangladesh","bangladesi","bangladesies"]],
+ ["Palestina",["palestina","palestino","palestinos"]],
+ ["Sahara Occidental",["sahara occidental","saharaui","saharauis"]],
+ ["África subsahariana (sin precisar)",["subsahariano","subsahariana","subsaharianos","subsaharianas"]],
+ ["Magreb (sin precisar)",["magrebi","magrebies"]]
+];
+const STAT_RE={
+  men:"(?:hombres|varones)",
+  women:"(?:mujeres)",
+  minors:"(?:menores|ninos|ninas|bebes)",
+  pregnant:"(?:embarazadas|mujeres embarazadas)",
+  deaths:"(?:fallecidos?|fallecidas?|muertos?|muertas?|cadaveres|cuerpos sin vida|personas sin vida|cuerpos)",
+  missing:"(?:desaparecidos?|desaparecidas?)",
+  injured:"(?:heridos?|heridas?|hospitalizados?|hospitalizadas?|evacuados? al hospital|trasladados? al hospital)"
+};
+const APPROX_BEFORE=/(casi|cerca de|alrededor de|unos|unas|mas de|menos de|en torno a|aproximadamente|al menos|un minimo de)\s*$/;
+function extractStats(t,D){
+  D.stats={}; D.nats=[];
+  for(const [k,nouns] of Object.entries(STAT_RE)){
+    const re=new RegExp(NUMRE+"\\s+(?:de\\s+ellos\\s+|de\\s+ellas\\s+)?"+nouns+"\\b","g"); let m; const vals=[];
+    while((m=re.exec(t))){const ctx=t.slice(Math.max(0,m.index-24),m.index); if(APPROX_BEFORE.test(ctx)) continue; const n=toNum(m[1]); if(n!=null&&n>=0&&n<20000) vals.push(n);}
+    if(k==="deaths"&&!vals.length){ if(/\b(un|una)\s+(fallecido|fallecida|muerto|muerta|cadaver|cuerpo sin vida)\b/.test(t)||/\bha fallecido\b|\bfallecio\b/.test(t)) vals.push(1); }
+    const u=[...new Set(vals)];
+    if(u.length===1) D.stats[k]=u[0];
+    else if(u.length>1) D.warnings.push("Varias cifras de "+STAT_LABEL[k].toLowerCase()+" ("+u.map(fmt).join(", ")+"): anota a mano la total si la noticia la da.");
+    if(k==="women"&&D.stats.women!=null&&D.stats.pregnant!=null&&D.stats.women===D.stats.pregnant) delete D.stats.women;
+  }
+  // Nacionalidades
+  let tt=t; const found=[];
+  for(const [c,kws] of COUNTRIES){
+    for(const kw of kws){
+      const re=new RegExp("(^|[^a-z])"+kw.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(?=[^a-z]|$)","g"); let m;
+      while((m=re.exec(tt))){
+        const start=m.index+m[1].length; const before=tt.slice(Math.max(0,start-40),start);
+        let count=null; const cm=before.match(new RegExp(NUMRE+"\\s+(?:personas\\s+|migrantes\\s+|ocupantes\\s+)?(?:de\\s+(?:nacionalidad|origen)\\s+|procedentes?\\s+de\\s+|de\\s+)?$"));
+        if(cm&&!APPROX_BEFORE.test(before.slice(0,before.length-cm[0].length))){const n=toNum(cm[1]); if(n!=null&&n>0&&n<5000) count=n;}
+        if(!found.some(f=>f.country===c)) found.push({country:c,count}); else if(count!=null){const f=found.find(f=>f.country===c); if(f.count==null) f.count=count;}
+        tt=tt.slice(0,start)+" ".repeat(kw.length)+tt.slice(start+kw.length);
+      }
+    }
+  }
+  // «Gran Canaria», «Guinea» dentro de topónimos no aplican; quitar países que solo aparecen como topónimo español
+  D.nats=found;
+}
+function natText(list){return (list||[]).map(n=>n.country+(n.count!=null?": "+n.count:"")).join(", ");}
+function parseNatText(s){
+  return String(s||"").split(/[,;\n]/).map(x=>x.trim()).filter(Boolean).map(x=>{const m=x.match(/^(.*?)(?:\s*[:=]\s*|\s+)(\d+)$/);return m?{country:m[1].trim(),count:Number(m[2])}:{country:x,count:null};});
+}
+function cleanStats(d){
+  const st={}; for(const [k] of STAT_KEYS){const v=d.stats&&d.stats[k]; if(v!=null&&v!==""&&isFinite(Number(v))) st[k]=Number(v);}
+  if(d.nats&&d.nats.length) st.nationalities=d.nats.filter(n=>n.country).map(n=>({country:n.country,count:n.count==null?null:Number(n.count)}));
+  return Object.keys(st).length?st:null;
+}
+
+/* ───────────── Borradores ───────────── */
+function findDup(d){
+  const u=normUrl(d.url||"");
+  if(u){const e=S.events.find(e=>e.date===d.date&&ZONE[e.zone]?.g===ZONE[d.zone]?.g&&repsOf(e).some(r=>normUrl(r.url||"")===u)); if(e) return e;}
+  return S.events.find(e=>e.date===d.date&&e.zone===d.zone);
+}
+function urlUsedIn(d){const u=normUrl(d.url||""); return u?S.events.filter(e=>(e.reports||[]).some(r=>normUrl(r.url||"")===u)):[];}
+function renderDrafts(){
+  const box=$("#drafts");
+  if(!S.canWrite){box.innerHTML='<div class="card empty-state"><b>Solo lectura</b><span>Tu acceso a este panel no permite añadir datos.</span></div>';return;}
+  if(!S.drafts.length){box.innerHTML='<div class="card empty-state"><b>Nada pendiente de revisar</b><span>Lo que extraigas de las noticias aparecerá aquí para que lo confirmes.</span></div>';return;}
+  box.innerHTML=S.drafts.map(d=>{
+    const dup=d.zone&&d.date?findDup(d):null;
+    const used=urlUsedIn(d).filter(e=>!dup||e.id!==dup.id);
+    const zoneOpts='<option value="">Elegir…</option>'+Object.keys(GROUPS).map(g=>'<optgroup label="'+esc(GROUPS[g].name)+'">'+ZONES.filter(z=>z.g===g).map(z=>'<option value="'+z.id+'"'+(z.id===d.zone?" selected":"")+'>'+esc(z.name)+'</option>').join("")+'</optgroup>').join("");
+    const typeOpts='<option value="">Sin especificar</option>'+BOAT_TYPES.map(t=>'<option'+(t===d.boatType?" selected":"")+'>'+t+'</option>').join("");
+    return '<div class="draft card" data-k="'+d.key+'">'+
+      '<div class="row" style="justify-content:space-between"><span class="eyebrow">Borrador · revisar antes de guardar</span><button type="button" class="btn small ghost" data-x="'+d.key+'">Descartar</button></div>'+
+      (d.raw?'<div class="hint" style="max-height:60px;overflow:auto;border-left:3px solid var(--line-2);padding-left:10px">'+esc(d.raw.slice(0,400))+(d.raw.length>400?"…":"")+'</div>':'')+
+      '<div class="grid">'+
+        '<label>Fecha<input class="inp" type="date" data-f="date" value="'+esc(d.date||"")+'"></label>'+
+        '<label>Hora<input class="inp" type="time" data-f="time" value="'+esc(d.time||"")+'"></label>'+
+        '<label class="wide">Ubicación<select class="inp" data-f="zone">'+zoneOpts+'</select></label>'+
+        '<label>Personas<input class="inp" type="number" min="0" step="1" data-f="persons" value="'+(d.persons??"")+'"></label>'+
+        '<label>Embarcaciones<input class="inp" type="number" min="0" step="1" data-f="boats" value="'+(d.boats??"")+'"></label>'+
+        '<label class="wide">Tipo<select class="inp" data-f="boatType">'+typeOpts+'</select></label>'+
+        '<label class="wide">Medio / fuente<input class="inp" data-f="source" value="'+esc(d.source||"")+'" placeholder="p. ej. EFE"></label>'+
+        '<label class="wide">Enlace<input class="inp" type="url" data-f="url" value="'+esc(d.url||"")+'" placeholder="https://…"></label>'+
+        '<label class="full">Notas<input class="inp" data-f="notes" value="'+esc(d.notes||"")+'" placeholder="Opcional"></label>'+
+        '<label class="full" style="display:flex;gap:8px;align-items:center;font-size:13px;color:var(--fg)"><input type="checkbox" data-f="sm"'+(d.sm?" checked":"")+'> Intervención de Salvamento Marítimo</label>'+
+        '<div class="full eyebrow" style="margin-top:4px">Perfil y víctimas · opcional, solo cifras exactas</div>'+
+        STAT_KEYS.map(([k,l])=>'<label>'+esc(l)+'<input class="inp" type="number" min="0" step="1" data-f="st:'+k+'" value="'+((d.stats&&d.stats[k])??"")+'"></label>').join("")+
+        '<label class="full">Países de origen (separados por comas; «Senegal: 20» si da la cifra)<input class="inp" data-f="nat" value="'+esc(natText(d.nats))+'" placeholder="p. ej. Senegal: 20, Gambia, Mali"></label>'+
+      '</div>'+
+      (d.personCands.length>1?'<div><div class="hint" style="margin-bottom:5px">Cifras de personas en el texto</div><div class="cands">'+d.personCands.map(n=>'<button type="button" data-pc="'+n+'" aria-pressed="'+(n===Number(d.persons))+'">'+fmt(n)+'</button>').join("")+'</div></div>':'')+
+      (d.zoneCands.length>1?'<div><div class="hint" style="margin-bottom:5px">Zonas citadas</div><div class="cands">'+d.zoneCands.map(z=>'<button type="button" data-zc="'+z+'" aria-pressed="'+(z===d.zone)+'">'+esc(ZONE[z].name)+'</button>').join("")+'</div></div>':'')+
+      (d.dateNote?'<div class="note"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.3 1.6" stroke-linecap="round"/></svg><span>'+esc(d.dateNote)+'</span></div>':'')+
+      d.warnings.map(w=>'<div class="note warn">'+WARN_ICON+'<span>'+esc(w)+'</span></div>').join("")+
+      (used.length?'<div class="note warn">'+WARN_ICON+'<span>Este mismo enlace ya está registrado en: '+esc(used.map(e=>ZONE[e.zone].name+' '+dShort(e.date)).join(", "))+'. Si es la misma llegada, no la guardes otra vez: se contaría dos veces.</span></div>':'')+
+      (dup?'<div class="note warn">'+WARN_ICON+'<span>Ya hay un evento en <b>'+esc(ZONE[dup.zone].name)+'</b> el '+esc(dShort(dup.date))+' ('+fmt(persons(dup))+' personas · '+esc(repsOf(dup).map(r=>r.source).join(", "))+'). Si es la misma llegada, añade esta noticia como otra fuente: si las cifras difieren se aplicará la media.</span></div>'+
+        '<div class="row"><button class="btn primary" type="button" data-merge="'+d.key+'">Añadir como fuente</button><button class="btn" type="button" data-save="'+d.key+'">Guardar como evento nuevo</button></div>'
+       :'<div class="row"><button class="btn primary" type="button" data-save="'+d.key+'">Guardar evento</button></div>')+
+    '</div>';
+  }).join("");
+  box.querySelectorAll(".draft").forEach(card=>{
+    const d=S.drafts.find(x=>x.key===card.dataset.k);
+    card.querySelectorAll("[data-f]").forEach(inp=>{
+      const f=inp.dataset.f;
+      inp.addEventListener("change",()=>{
+        if(f==="sm") d.sm=inp.checked?true:null;
+        else if(f.startsWith("st:")){d.stats=d.stats||{};d.stats[f.slice(3)]=inp.value===""?null:Number(inp.value);}
+        else if(f==="nat") d.nats=parseNatText(inp.value);
+        else if(f==="persons"||f==="boats") d[f]=inp.value===""?null:Number(inp.value);
+        else d[f]=inp.value;
+        if(f==="zone"||f==="date"||f==="persons") renderDrafts();
+      });
+    });
+    card.querySelectorAll("[data-pc]").forEach(b=>b.onclick=()=>{d.persons=Number(b.dataset.pc);renderDrafts();});
+    card.querySelectorAll("[data-zc]").forEach(b=>b.onclick=()=>{d.zone=b.dataset.zc;renderDrafts();});
+  });
+  box.querySelectorAll("[data-x]").forEach(b=>b.onclick=()=>{S.drafts=S.drafts.filter(x=>x.key!==b.dataset.x);renderDrafts();});
+  box.querySelectorAll("[data-save]").forEach(b=>b.onclick=()=>saveDraft(b.dataset.save,false));
+  box.querySelectorAll("[data-merge]").forEach(b=>b.onclick=()=>saveDraft(b.dataset.merge,true));
+}
+function validDraft(d){
+  if(!d.date) return "Falta la fecha.";
+  if(!d.zone) return "Falta la ubicación.";
+  if(d.persons==null||!isFinite(d.persons)||d.persons<0) return "Falta el número de personas (solo cifras confirmadas).";
+  if(!d.source||!d.source.trim()) return "Indica el medio o la fuente.";
+  return null;
+}
+async function saveDraft(key,merge){
+  const d=S.drafts.find(x=>x.key===key); if(!d) return;
+  const err=validDraft(d); if(err){toast(err);return;}
+  const rep={source:d.source.trim(),url:(d.url||"").trim(),count:Number(d.persons),boats:d.boats==null?null:Number(d.boats),addedAt:new Date().toISOString()};
+  const st=cleanStats(d); if(st) rep.stats=st;
+  let ev;
+  if(merge){
+    const dup=findDup(d); if(!dup){toast("El evento ya no existe.");return;}
+    ev=mergeReport(dup,rep);
+    if(!ev.time&&d.time) ev.time=d.time; if(!ev.boatType&&d.boatType) ev.boatType=d.boatType; if(ev.sm==null&&d.sm) ev.sm=true;
+    if(d.notes) ev.notes=(ev.notes?ev.notes+" · ":"")+d.notes;
+  }else{
+    ev={id:uid(),date:d.date,time:d.time||"",zone:d.zone,boatType:d.boatType||"",sm:d.sm===true?true:null,notes:d.notes||"",reports:[rep],createdAt:new Date().toISOString()};
+  }
+  if(await putEvent(ev)){
+    S.drafts=S.drafts.filter(x=>x.key!==key); renderDrafts();
+    const dd=ev.reports&&ev.reports.length>1&&discrepant(ev);
+    toast(merge?(dd?"Fuente añadida · discrepancia detectada, se aplica la media":"Fuente añadida"):"Evento guardado");
+  }
+}
+
+/* ───────────── Claude (opcional) ───────────── */
+let sampleFn=null, sampleCtl=null;
+async function initSample(){
+  const C=window.claude; if(!C||typeof C.use!=="function") return;
+  try{sampleFn=await C.use("sample");}catch(e){sampleFn=null;}
+  if(sampleFn&&S.canWrite) $("#btnClaude").hidden=false;
+}
+async function claudeExtract(){
+  const text=$("#newsText").value.trim(); if(!text){toast("Pega primero el texto de una noticia.");return;}
+  const ref=$("#refDate").value||todayISO();
+  const btn=$("#btnClaude"); btn.disabled=true; $("#parseStatus").textContent="Claude está leyendo las noticias…";
+  const prompt=
+"Extrae llegadas de personas migrantes a España de estas noticias. Responde SOLO con un array JSON.\n"+
+"Cada objeto: {\"date\":\"AAAA-MM-DD\"|null,\"time\":\"HH:MM\"|null,\"zone\":uno de ["+ZONES.map(z=>'"'+z.id+'"').join(",")+"]|null,\"persons\":entero|null,\"boats\":entero|null,\"boatType\":uno de ["+BOAT_TYPES.map(t=>'"'+t+'"').join(",")+"]|null,\"salvamento\":true|false|null,\"source\":nombre del medio|null,\"url\":\"https://…\"|null,\"notes\":texto breve|null,\"stats\":{\"deaths\":entero|null,\"missing\":entero|null,\"women\":entero|null,\"minors\":entero|null,\"men\":entero|null,\"pregnant\":entero|null,\"injured\":entero|null,\"nationalities\":[{\"country\":nombre del país en español,\"count\":entero|null}]}}.\n"+
+"Reglas estrictas: no inventes nada; usa null si el dato no aparece escrito. 'persons' solo si la noticia da una cifra exacta (ignora 'casi', 'unos', 'más de'); si es una suma de cifras exactas de la misma zona y día, puedes sumarlas e indicarlo en notes. Un objeto por zona y día. En stats recoge solo cifras exactas escritas (mujeres, menores, hombres, embarazadas, heridos, fallecidos, desaparecidos) y los países de origen citados, con su número de personas si la noticia lo da. Los fallecidos durante la travesía o hallados en costas españolas cuentan en deaths aunque no haya supervivientes (persons 0). Las fechas relativas ('este martes', 'ayer') se calculan desde la fecha de publicación "+ref+". No incluyas salidas frustradas ni intercepciones fuera de España.\n\nNOTICIAS:\n"+text.slice(0,24000);
+  sampleCtl=new AbortController();
+  try{
+    const arr=await sampleFn.json(prompt,{signal:sampleCtl.signal});
+    const list=Array.isArray(arr)?arr:[];
+    const add=list.map(o=>{
+      const D={key:uid(),raw:"",date:typeof o.date==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(o.date)?o.date:ref,dateNote:"Extraído por Claude",time:typeof o.time==="string"?o.time:"",zone:ZONE[o.zone]?o.zone:"",zoneCands:[],persons:Number.isFinite(o.persons)?o.persons:null,personCands:[],boats:Number.isFinite(o.boats)?o.boats:null,boatType:BOAT_TYPES.includes(o.boatType)?o.boatType:"",sm:o.salvamento===true?true:null,source:typeof o.source==="string"?o.source:"",url:typeof o.url==="string"&&/^https:\/\//.test(o.url)?o.url:"",notes:typeof o.notes==="string"?o.notes:"",warnings:[]};
+      D.stats={}; const so=o.stats&&typeof o.stats==="object"?o.stats:{}; for(const [k] of STAT_KEYS){if(Number.isFinite(so[k])) D.stats[k]=so[k];}
+      D.nats=Array.isArray(so.nationalities)?so.nationalities.filter(n=>n&&typeof n.country==="string").map(n=>({country:n.country,count:Number.isFinite(n.count)?n.count:null})):[];
+      if(!o.date) D.warnings.push("Claude no encontró la fecha: se usa la de publicación.");
+      if(D.persons==null) D.warnings.push("Sin cifra exacta de personas.");
+      return D;
+    });
+    S.drafts=add.concat(S.drafts); renderDrafts();
+    $("#parseStatus").textContent=add.length?add.length+(add.length===1?" llegada extraída":" llegadas extraídas")+". Revisa cada borrador.":"Claude no encontró llegadas con cifras en el texto.";
+  }catch(e){
+    const code=e&&e.code;
+    if(code==="not_granted"||code==="sampling_disabled"||code==="not_declared"||code==="capability_disabled"){btn.hidden=true;$("#parseStatus").textContent="La extracción con Claude no está disponible. Usa «Analizar texto».";}
+    else if(code==="rate_limited") $("#parseStatus").textContent="Demasiadas peticiones seguidas. Prueba de nuevo en un rato.";
+    else if(code==="cancelled") $("#parseStatus").textContent="";
+    else $("#parseStatus").textContent="No se pudo completar la extracción. Prueba de nuevo o usa «Analizar texto».";
+  }finally{btn.disabled=false;}
+}
+
+/* ───────────── Exportar ───────────── */
+async function exportCSV(){
+  const rows=[["fecha","hora","zona","region","personas_media","discrepancia","cifras_por_fuente","embarcaciones","tipo","salvamento_maritimo",...STAT_KEYS.map(([k,l])=>l.toLowerCase()),"paises_origen","fuentes","enlaces","notas"]];
+  const r0=range();
+  S.events.filter(e=>inRange(e,r0)&&inGeo(e)).sort(sortEv).forEach(e=>{const z=ZONE[e.zone]||{};const b=boatsInfo(e);
+    rows.push([e.date,e.time||"",z.name||e.zone,z.sub||"",persons(e)??"",discrepant(e)?"sí":"no",repsOf(e).map(r=>r.source+": "+r.count).join(" | "),b?(b.min===b.max?b.min:b.min+"-"+b.max):"",e.boatType||"",e.sm===true?"sí":"",...STAT_KEYS.map(([k])=>{const s=statVal(e,k);return s?Math.round(s.mean*10)/10:"";}),Object.keys(natsOf(e)).join(" | "),repsOf(e).map(r=>r.source).join(" | "),repsOf(e).map(r=>r.url||"").join(" | "),e.notes||""]);});
+  const csv="﻿"+rows.map(r=>r.map(v=>{v=String(v);return /[",;\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}).join(";")).join("\n");
+  const [ra,rb]=rangeBounds(); const name="migrometer-es-"+ra+"_"+rb+".csv";
+  try{const C=window.claude;const dl=C&&C.use?await C.use("downloads"):null;
+    if(dl){await dl.save({filename:name,data:new Blob([csv],{type:"text/csv"})});return;}
+  }catch(e){if(e&&e.code&&e.code!=="unavailable"){toast("Descarga cancelada.");return;}}
+  try{await navigator.clipboard.writeText(csv);toast("CSV copiado al portapapeles");}catch(e){toast("No se pudo exportar desde esta vista.");}
+}
+
+/* ───────────── Eventos UI ───────────── */
+function renderAll(){prepEvents();renderFilters();setPill();renderDay();renderFocus();renderPopulation();renderProfile();renderMapCtrl();renderMap();renderCoverage();renderOfficial();renderCharts();renderMedia();renderTable();if(renderAll._cw!==S.canWrite){renderDrafts();renderAll._cw=S.canWrite;}
+}
+document.querySelectorAll("#segPreset button").forEach(b=>b.onclick=()=>{stopPlay();S.f.preset=b.dataset.p;saveUI();renderAll();});
+document.querySelectorAll("#segRegion button").forEach(b=>b.onclick=()=>{S.f.region=b.dataset.r;S.f.zone="";saveUI();renderAll();});
+$("#fDay").onchange=e=>{if(e.target.value){stopPlay();S.f.day=e.target.value;renderAll();}};
+$("#fZone").onchange=e=>{S.f.zone=e.target.value;renderAll();};
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change",()=>renderCharts());
+new MutationObserver(()=>renderCharts()).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+
+const ui=lsGet(LS_UI); if(ui){if(ui.preset)S.f.preset=ui.preset;if(ui.region)S.f.region=ui.region;}
+document.querySelectorAll("#mapPreset button").forEach(b=>b.onclick=()=>{stopPlay();S.f.preset=b.dataset.p;saveUI();renderAll();});
+$("#mapSlider").addEventListener("input",e=>{stopPlay();const [mn]=mapBounds();S.f.day=addDays(mn,Number(e.target.value));renderAll();});
+$("#mapPrev").onclick=()=>{stopPlay();S.f.day=addDays(S.f.day,-1);renderAll();};
+$("#mapNext").onclick=()=>{stopPlay();S.f.day=addDays(S.f.day,1);renderAll();};
+$("#mapPlay").onclick=togglePlay;
+document.querySelectorAll("#mapSrc button").forEach(x=>x.onclick=()=>{S.f.mapSrc=x.dataset.s;renderMap();});
+buildMapBase();
+function renderDrafts(){}
+initStore();
+</script>
+
+</body>
+</html>

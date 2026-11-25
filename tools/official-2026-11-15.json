@@ -1,0 +1,11 @@
+{"source":"Ministerio del Interior · Informe quincenal de inmigración irregular","url":"https://www.interior.gob.es/opencms/export/sites/default/.galleries/galeria-de-prensa/documentos-y-multimedia/balances-e-informes/2026/21_informe_quincenal_acumulado_01-01_al_15-11-2026.pdf","from":"2026-01-01","to":"2026-11-15","provisional":true,
+ "total":{"v":44238,"prev":31742},"maritime":{"v":39445,"prev":28361,"boats":1154},"land":{"v":4793,"prev":3381},
+ "rows":[
+  {"key":"canarias","label":"Canarias (marítima)","group":"canarias","v":24364,"prev":14690},
+  {"key":"ceuta_mar","label":"Ceuta (marítima)","group":"ceuta","v":2,"prev":4},
+  {"key":"ceuta_tierra","label":"Ceuta (terrestre)","group":"ceuta","v":4078,"prev":3102},
+  {"key":"melilla_mar","label":"Melilla (marítima)","group":"melilla","v":24,"prev":25},
+  {"key":"melilla_tierra","label":"Melilla (terrestre)","group":"melilla","v":715,"prev":279},
+  {"key":"peninsula","label":"Península (marítima)","group":"peninsula","v":7766,"prev":6959},
+  {"key":"baleares","label":"Baleares (marítima)","group":"peninsula","v":7289,"prev":6683}
+ ]}

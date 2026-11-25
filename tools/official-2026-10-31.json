@@ -1,0 +1,11 @@
+{"source":"Ministerio del Interior · Informe quincenal de inmigración irregular","url":"https://www.interior.gob.es/opencms/export/sites/default/.galleries/galeria-de-prensa/documentos-y-multimedia/balances-e-informes/2026/20_informe_quincenal_acumulado_01-01_al_31-10-2026.pdf","from":"2026-01-01","to":"2026-10-31","provisional":true,
+ "total":{"v":32942,"prev":30263},"maritime":{"v":28155,"prev":27001},"land":{"v":4787,"prev":3262},
+ "rows":[
+  {"key":"canarias","label":"Canarias (marítima)","group":"canarias","v":13327,"prev":14099},
+  {"key":"ceuta_mar","label":"Ceuta (marítima)","group":"ceuta","v":2,"prev":4},
+  {"key":"ceuta_tierra","label":"Ceuta (terrestre)","group":"ceuta","v":4076,"prev":2994},
+  {"key":"melilla_mar","label":"Melilla (marítima)","group":"melilla","v":23,"prev":25},
+  {"key":"melilla_tierra","label":"Melilla (terrestre)","group":"melilla","v":711,"prev":268,"note":"Calculada: vía terrestre Ceuta y Melilla (4.787) menos Ceuta terrestre (4.076); 2025: 3.262 − 2.994"},
+  {"key":"peninsula","label":"Península (marítima)","group":"peninsula","v":7615,"prev":6593},
+  {"key":"baleares","label":"Baleares (marítima)","group":"peninsula","v":7188,"prev":6280}
+ ]}

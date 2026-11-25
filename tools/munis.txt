@@ -1,0 +1,629 @@
+10|19049|Bañuelos
+11|19231|Rebollosa de Jadraque
+12|09184|Jaramillo Quemado
+13|19048|Baños de Tajo
+14|05034|Blasconuño de Matacabras
+15|19019|Alique
+16|16140|Olmeda de la Cuesta
+17|16071|Castillo-Albaráñez
+18|05063|Collado del Mirón
+19|05206|San Esteban de los Patos
+20|09046|Bascuñana
+21|09202|Manciles
+21|12037|Castell de Cabres
+22|05119|Manjabálago y Ortigosa de Rioalmar
+23|05018|Avellaneda
+24|05106|Hoyos de Miguel Muñoz
+25|08216|Sant Jaume de Frontanyà
+26|05148|Narros del Puerto
+27|09201|Mamolar
+28|05104|Hoyos del Collado
+29|05120|Marlín
+30|05188|Poveda
+31|05070|Donvidas
+32|03130|Tollos
+33|09062|Cabezón de la Sierra
+34|05039|Brabos
+34|12087|Palanques
+35|05244|Tormellas
+36|09071|Carcedo de Bureba
+37|05081|Garganta del Villar
+38|05164|Navaquesera
+39|09191|Jurisdicción de Lara
+40|05108|Junciana
+41|05107|Hurtumpascual
+42|05046|Canales
+43|09055|Brazacorta
+44|03068|Famorca
+45|05085|Gil García
+46|09007|Aguilar de Bureba
+47|16169|Pozuelo, El
+49|05264|Viñegra de Moraña
+50|05143|Muñotello
+51|02077|Villa de Ves
+51|12137|Villores
+52|09050|Berberana
+54|05155|Navaescurial
+54|21027|Cumbres de Enmedio
+55|05030|Berrocalejo de Aragona
+55|12063|Fuente la Reina
+56|05144|Narrillos del Álamo
+58|05015|Arevalillo
+59|05196|Rivilla de Barajas
+61|05067|Chamartín
+62|05126|Mesegar de Corneja
+63|04026|Benitagla
+63|12127|Vallibona
+64|05133|Monsalupe
+65|05217|San Miguel de Corneja
+67|05017|Aveinte
+68|12068|Herbers
+69|05069|Donjimeno
+70|05025|Becedillas
+72|09328|Rucandio
+72|12088|Pavías
+74|02050|Montalvos
+76|05139|Muñogrande
+78|19066|Cañizar
+80|05043|Cabezas del Pozo
+82|10042|Campillo de Deleitosa
+84|05059|Cillán
+85|03039|Benimassot
+86|05131|Mirueña de los Infanzones
+88|05253|Vega de Santa María
+90|05078|Fuentes de Año
+92|05075|Fresnedilla
+95|05141|Muñopepe
+97|09312|Revilla y Ahedo, La
+97|46086|Carrícola
+99|05112|Losar del Barco, El
+101|04033|Castro de Filabres
+102|05048|Cantiveros
+104|05036|Bohodón, El
+107|05060|Cisla
+107|12055|Xodos/Chodos
+110|03036|Benillup
+112|09316|Revilla Vallejera
+115|04009|Alcudia de Monteagud
+118|10208|Villa del Rey
+121|02013|Balsa de Ves
+121|12025|Benafigos
+124|17119|Palau de Santa Eulàlia
+126|04015|Alsodux
+127|10106|Jarilla
+130|03032|Benifallim
+134|05235|Sinlabajos
+136|12112|Todolella
+137|09140|Fuentenebro
+139|18121|Lobras
+140|04023|Beires
+144|06110|Reina
+148|09345|Santa Cruz de la Salceda
+151|05147|Narros del Castillo
+151|46243|Torrella
+155|05051|Carrera, La
+159|03134|Vall d'Alcalà, la
+163|05215|San Martín de la Vega del Alberche
+167|05172|Niharra
+169|04034|Cóbdar
+171|05231|San Vicente de Arévalo
+171|12142|Zucaina
+175|04068|Olula de Castro
+180|10088|Guijo de Coria
+184|03008|Alcoleja
+188|12020|Barracas
+189|13043|Fuenllana
+194|29085|Salares
+198|09483|Zazuar
+199|07019|Escorca
+203|05254|Velayos
+208|04014|Almócita
+209|46056|Beniatjar
+214|16121|Majadas, Las
+215|04021|Bayarque
+219|05901|San Juan de Gredos
+224|04087|Suflí
+230|04097|Velefique
+236|04080|Santa Cruz de Marchena
+239|21071|Valdelarco
+242|04027|Benizalón
+246|46262|Yesa, La
+248|20031|Elduain
+254|39077|Santiurde de Reinosa
+260|06142|Valverde de Burguillos
+265|03086|Millena
+267|08004|Alpens
+271|21051|Nava, La
+274|10065|Collado de la Vera
+280|08901|Rupit i Pruit
+287|17100|Masarac i Vilarnadal
+295|05221|Santa Cruz del Valle
+295|12059|Fanzara
+301|04036|Chercos
+302|08190|Saldes
+309|08242|Marganell
+317|02076|Vianos
+325|02084|Villaverde de Guadalimar
+333|39072|San Roque de Riomiera
+335|23042|Hinojares
+338|46038|Andilla
+342|10053|Casas de Don Gómez
+350|05105|Hoyos del Espino
+359|05156|Navahondilla
+368|09400|Vadocondes
+369|07021|Estellencs
+374|46263|Zarra
+377|09406|Valdorros
+378|04058|Líjar
+386|10091|Guijo de Santa Bárbara
+396|05178|Palacios de Goda
+406|10033|Cabañas del Castillo
+416|48066|Morga
+419|03010|Alfafara
+422|18005|Albuñán
+427|43177|Vinebre
+437|18128|Marchal
+448|22023|Almuniente
+459|17123|Palol de Revardit
+466|21067|Santa Ana la Real
+471|47110|Parrilla, La
+473|12130|Villahermosa del Río
+483|02020|Carcelén
+495|50124|Herrera de los Navarros
+507|04055|Instinción
+520|13073|Saceruela
+526|04051|Huécija
+527|46222|Sant Joanet
+533|18117|Lanteira
+546|46071|Bicorp
+548|30031|Ojós
+560|06144|Valverde de Llerena
+573|07007|Banyalbufar
+574|03091|Murla
+588|10099|Holguera
+590|18042|Capileira
+590|03029|Benigembla
+603|10011|Aldeacentenera
+617|10202|Valdeobispo
+633|08212|Sant Feliu Sasserra
+649|12079|Montanejos
+660|23077|Santiago de Calatrava
+662|03127|Tàrbena
+665|12067|Geldo
+682|49024|Bóveda de Toro, La
+699|24123|Quintana del Castillo
+717|37073|Calzada de Valdunciel
+734|03110|Ràfol d'Almúnia, el
+741|07018|Deià
+742|11009|Benaocaz
+743|07025|Fornalutx
+744|03035|Benilloba
+753|02001|Abengibre
+771|04043|Felix
+791|48030|Etxebarria
+801|35007|Betancuria
+810|39067|Ruesga
+827|12109|Tales
+829|04007|Alcolea
+832|25225|Tornabous
+853|16271|Villarta
+873|16202|Talayuelas
+895|01033|Lapuebla de Labarca
+917|16126|Mira
+926|30040|Ulea
+933|18904|Alpujarra de la Sierra
+936|46124|Fontanars dels Alforins
+940|29062|Iznate
+964|08099|Guardiola de Berguedà
+987|40152|Otero de Herreros
+1012|24083|Igüeña
+1024|35005|Artenara
+1038|08206|Sant Cugat Sesgarrigues
+1039|12105|Sierra Engarcerán
+1040|18159|Píñar
+1064|01055|Valdegovía/Gaubea
+1072|07901|Ariany
+1078|38002|Agulo
+1090|06148|Valle de Santa Ana
+1118|16236|Valverde de Júcar
+1123|30006|Aledo
+1144|39084|Solórzano
+1166|18152|Pedro Martínez
+1171|46217|Rotglà i Corberà
+1175|06042|Cheles
+1197|30034|Ricote
+1202|04063|María
+1215|07009|Búger
+1234|06131|Torre de Miguel Sesmero
+1264|43128|Riudecols
+1297|06099|Parra, La
+1302|12121|Traiguera
+1309|23030|Chilluévar
+1328|03013|Algueña
+1362|05054|Casavieja
+1395|30004|Albudeite
+1431|14048|Palenciana
+1453|41083|Ronquillo, El
+1461|46158|Macastre
+1465|02046|Mahora
+1502|25078|Corbins
+1540|50181|Muel
+1579|17184|Santa Pau
+1591|07017|Costitx
+1619|04037|Chirivel
+1624|46173|Montaverner
+1639|23017|Cabra del Santo Cristo
+1659|15028|Corcubión
+1700|18063|Darro
+1742|45034|Camuñas
+1785|50038|Ateca
+1806|35025|Tejeda
+1828|03116|Salinas
+1831|13092|Villanueva de la Fuente
+1841|18912|Cuevas del Campo
+1877|19274|Torija
+1902|07053|Santa Eugènia
+1924|47101|Nava del Rey
+1974|24105|Onzonilla
+2021|12100|Sant Mateu
+2042|12034|Càlig
+2049|07045|Puigpunyent
+2061|38003|Alajeró
+2062|41073|Pedroso, El
+2074|32052|Nogueira de Ramuín
+2124|39011|Bareyo
+2159|30014|Campos del Río
+2177|45025|Cabañas de la Sagra
+2232|25158|Palau d'Anglesola, El
+2287|08094|Granada, La
+2302|14004|Almedinilla
+2314|46150|Llutxent
+2336|07049|Sant Joan
+2344|37376|Vitigudino
+2345|38029|Puntagorda
+2403|32050|Monterrei
+2463|40043|Carbonero el Mayor
+2524|29018|Ardales
+2577|46197|Polinyà de Xúquer
+2582|18171|Salar
+2587|08223|Sant Llorenç Savall
+2589|07030|Llubí
+2653|25172|Ponts
+2718|43002|Albinyana
+2733|38047|Tijarafe
+2787|38044|Tanque, El
+2822|46132|Genovés, el
+2856|24223|Villarejo de Órbigo
+2859|07012|Campanet
+2908|23014|Begíjar
+2925|31015|Andosilla
+2938|38050|Vallehermoso
+3002|43042|Castellvell del Camp
+3076|36044|Pontecesures
+3145|38012|Fasnia
+3153|46089|Casinos
+3220|41003|Albaida del Aljarafe
+3225|46191|Pedralba
+3231|07041|Petra
+3311|28093|Navacerrada
+3395|43020|Banyeres del Penedès
+3481|41901|Cañada Rosal
+3569|28170|Villaconejos
+3626|29043|Colmenar
+3657|36034|Neves, As
+3677|03043|Biar
+3746|31042|Azagra
+3775|35032|Valleseco
+3842|50204|Pedrola
+3929|07065|Vilafranca de Bonany
+3941|45133|Polán
+3973|07047|Sencelles
+4003|30032|Pliego
+4020|46127|Font d'en Carròs, la
+4041|26125|Rincón de Soto
+4049|29020|Arriate
+4111|30042|Villanueva del Río Segura
+4137|27013|Cervo
+4242|15032|Curtis
+4345|23063|Navas de San Juan
+4350|38033|San Andrés y Sauces
+4456|36030|Mondariz
+4537|07060|Sineu
+4549|38045|Tazacorte
+4552|04074|Pechina
+4565|48916|Usansolo
+4605|12901|Alqueries, les/Alquerías del Niño Perdido
+4688|50066|Cadrete
+4807|46118|Enguera
+4911|03042|Poble Nou de Benitatxell, el/Benitachell
+5037|45145|Recas
+5087|21052|Nerva
+5089|46233|Sollana
+5131|38053|Villa de Mazo
+5166|36046|Ribadumia
+5170|07023|Ferreries
+5291|41026|Casariche
+5427|37156|Guijuelo
+5552|10127|Montehermoso
+5683|35001|Agaete
+5692|11026|Prado del Rey
+5710|15029|Coristanco
+5744|12117|Torreblanca
+5847|13020|Argamasilla de Calatrava
+5854|30023|Librilla
+5892|07043|Porreres
+5988|45176|Ugena
+6149|46143|Xeraco
+6159|38009|Breña Baja
+6256|30001|Abanilla
+6290|47007|Aldeamayor de San Martín
+6322|46006|Albaida
+6357|07004|Algaida
+6371|18084|Gójar
+6459|07037|Mercadal, Es
+6606|28108|Pedrezuela
+6777|13019|Argamasilla de Alba
+6882|30011|Blanca
+6939|35029|Tinajo
+7046|07050|Sant Joan de Labritja
+7107|23088|Torreperogil
+7108|15048|Miño
+7177|03120|San Miguel de Salinas
+7294|48901|Derio
+7487|38008|Breña Alta
+7669|03083|Xixona/Jijona
+7774|07064|Castell, Es
+7864|08067|Centelles
+7946|30025|Lorquí
+7995|46126|Foios
+8007|35013|Moya
+8024|21061|Rociana del Condado
+8060|48073|Ondarroa
+8260|43131|Roda de Berà
+8458|04032|Carboneras
+8679|33073|Tineo
+8886|08135|Montmeló
+8951|46109|Cheste
+9004|14043|Montoro
+9089|38025|Matanza de Acentejo, La
+9126|15067|Pobra do Caramiñal, A
+9231|07051|Sant Llorenç des Cardassar
+9345|38041|Sauzal, El
+9574|38036|San Sebastián de la Gomera
+9824|14058|Rute
+9869|35031|Valsequillo de Gran Canaria
+10062|46172|Montserrat
+10129|23003|Alcaudete
+10217|07002|Alaior
+10305|24008|Astorga
+10391|30013|Calasparra
+10594|28004|Álamo, El
+10835|39079|Santoña
+11099|46011|Alberic
+11192|46903|San Antonio de Benagéber
+11285|23053|Jódar
+11403|46256|Vilamarxant
+11437|30020|Fortuna
+11490|38046|Tegueste
+11661|07024|Formentera
+11663|46249|Utiel
+11939|48011|Arrigorriaga
+12262|46060|Benifaió
+12485|07013|Campos
+12570|17199|Torroella de Montgrí
+12582|38040|Santiago del Teide
+12587|46019|Alcúdia, l'
+12631|21072|Valverde del Camino
+12879|08126|Montgat
+13089|30018|Ceutí
+13211|35027|Teror
+13533|15009|Betanzos
+13882|07061|Sóller
+14056|07055|Santa Margalida
+14164|35003|Antigua
+14222|41075|Pilas
+14315|12082|Nules
+14506|30017|Cehegín
+14615|43092|Mont-roig del Camp
+14976|37294|Santa Marta de Tormes
+14990|07044|Pobla, Sa
+15301|20018|Azpeitia
+15575|23009|Baeza
+15690|38037|Santa Cruz de la Palma
+16119|43136|Ràpita, La
+16443|30901|Santomera
+16479|41040|Espartinas
+16734|46054|Benetússer
+16878|18062|Churriana de la Vega
+17309|49021|Benavente
+17396|41068|Osuna
+17652|03113|Rojales
+17729|25040|Balaguer
+17807|07042|Pollença
+17937|30029|Mula
+17958|38032|Rosario, El
+18174|36035|Nigrán
+18660|04052|Huércal de Almería
+19121|03094|Nucia, la
+19146|07022|Felanitx
+19551|35018|San Bartolomé
+19642|31901|Barañáin/Barañain
+19768|18003|Albolote
+19839|46116|Eliana, l'
+20076|11016|Chipiona
+20408|30902|Alcázares, Los
+20587|18023|Baza
+21080|03011|Alfàs del Pi, l'
+21613|35028|Tías
+21907|07003|Alcúdia
+22009|38020|Güímar
+22213|46171|Montcada/Moncada
+22294|18127|Maracena
+22676|30038|Torres de Cotillas, Las
+22737|21002|Aljaraque
+23211|36042|Ponteareas
+23917|43171|Vila-seca
+24163|30008|Alhama de Murcia
+24462|23060|Martos
+24702|46105|Cullera
+24864|21005|Almonte
+25108|35009|Gáldar
+25773|06153|Villanueva de la Serena
+26350|28040|Ciempozuelos
+26967|46102|Quart de Poblet
+27574|30022|Jumilla
+27650|28104|Paracuellos de Jarama
+27788|41053|Lebrija
+28136|46186|Paiporta
+28306|46029|Algemesí
+29023|38011|Candelaria
+29089|41021|Camas
+29132|07046|Sant Antoni de Portmany
+29674|30036|San Pedro del Pinatar
+29761|07048|Sant Josep de sa Talaia
+30577|39016|Camargo
+30666|07032|Maó
+31137|38028|Puerto de la Cruz
+31267|11006|Arcos de la Frontera
+31278|41034|Coria del Río
+31419|03050|Campello, el
+32120|15019|Carballo
+32905|35011|Ingenio
+33800|35002|Agüimes
+34587|06011|Almendralejo
+34712|03140|Villena
+35449|30026|Mazarrón
+35610|23005|Andújar
+36262|07027|Inca
+36373|33037|Mieres
+37060|13082|Tomelloso
+37811|30003|Águilas
+38075|28015|Arroyomolinos
+38761|41069|Palacios y Villafranca, Los
+39059|28130|San Fernando de Henares
+39232|35006|Arucas
+39709|03121|Santa Pola
+40132|10148|Plasencia
+40422|07036|Marratxí
+41133|43163|Vendrell, El
+41299|46078|Burjassot
+42085|08102|Igualada
+42479|07054|Santa Eulària des Riu
+42514|38026|Orotava, La
+43000|17095|Lloret de Mar
+43408|14038|Lucena
+43876|30005|Alcantarilla
+45565|13071|Puertollano
+46442|48082|Santurtzi
+48017|41059|Mairena del Aljarafe
+48236|46017|Alzira
+49153|07033|Manacor
+50021|38001|Adeje
+51796|39087|Torrelavega
+52454|29082|Rincón de la Victoria
+53793|07011|Calvià
+54291|35019|San Bartolomé de Tirajana
+55222|03066|Elda
+55337|07026|Eivissa
+55633|23055|Linares
+56651|28113|Pinto
+58528|08266|Cerdanyola del Vallès
+58752|38017|Granadilla de Abona
+59815|49275|Zamora
+59862|18140|Motril
+61468|03009|Alcoi/Alcoy
+63040|28013|Aranjuez
+64367|15036|Ferrol
+65341|08096|Granollers
+67274|28047|Collado Villalba
+70012|11032|Sanlúcar de Barrameda
+70811|35004|Arrecife
+73031|46220|Sagunt/Sagunto
+73625|28080|Majadahonda
+76217|13034|Ciudad Real
+77327|03031|Benidorm
+77474|41004|Alcalá de Guadaíra
+78338|29025|Benalmádena
+78458|30027|Molina de Segura
+78584|35022|Santa Lucía de Tirajana
+80512|28049|Coslada
+82823|08184|Rubí
+83595|51001|Ceuta
+83803|45165|Talavera de la Reina
+84560|03099|Orihuela
+86048|29094|Vélez-Málaga
+86780|52001|Melilla
+87793|38006|Arona
+90864|11015|Chiclana de la Frontera
+92834|19130|Guadalajara
+95104|29070|Mijas
+97983|08205|Sant Cugat del Vallès
+98533|03133|Torrevieja
+98969|30024|Lorca
+100143|27028|Lugo
+100965|15078|Santiago de Compostela
+102986|48013|Barakaldo
+103148|28123|Rivas-Vaciamadrid
+104168|35026|Telde
+105769|32054|Ourense
+108666|17079|Girona
+109950|11012|Cádiz
+111240|04079|Roquetas de Mar
+111601|43123|Reus
+112235|23050|Jaén
+123342|28006|Alcobendas
+123446|24089|León
+123981|08245|Santa Coloma de Gramenet
+126589|11004|Algeciras
+131683|08121|Mataró
+137471|28106|Parla
+142519|41038|Dos Hermanas
+143215|21041|Huelva
+143526|28148|Torrejón de Ardoz
+143649|43148|Tarragona
+146110|37274|Salamanca
+146266|25120|Lleida
+150209|06015|Badajoz
+152150|26089|Logroño
+159786|29069|Marbella
+161108|38023|San Cristóbal de La Laguna
+175400|02003|Albacete
+175425|39075|Santander
+175719|28007|Alcorcón
+177402|09059|Burgos
+183711|12040|Castelló de la Plana/Castellón de la Plana
+189866|20069|Donostia/San Sebastián
+190076|28058|Fuenlabrada
+193238|28065|Getafe
+195734|28074|Leganés
+203208|28005|Alcalá de Henares
+205468|04013|Almería
+209094|31201|Pamplona/Iruña
+211957|38038|Santa Cruz de Tenerife
+213634|11020|Jerez de la Frontera
+214817|28092|Móstoles
+220704|30016|Cartagena
+223968|33044|Oviedo
+225368|08187|Sabadell
+231542|08015|Badalona
+233270|08279|Terrassa
+233975|18087|Granada
+245557|03065|Elx/Elche
+251543|15030|Coruña, A
+260699|01059|Vitoria-Gasteiz
+269894|33024|Gijón
+289510|08101|Hospitalet de Llobregat, L'
+294489|36057|Vigo
+302614|47186|Valladolid
+323262|14021|Córdoba
+351124|48020|Bilbao
+366221|03014|Alacant/Alicante
+381868|35016|Palmas de Gran Canaria, Las
+434786|07040|Palma
+479405|30030|Murcia
+599063|29067|Málaga
+689423|41091|Sevilla
+693091|50297|Zaragoza
+840792|46250|València
+1731649|08019|Barcelona
+3506730|28079|Madrid

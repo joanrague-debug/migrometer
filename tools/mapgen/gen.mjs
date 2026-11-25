@@ -1,0 +1,18 @@
+import fs from 'fs';
+import * as topo from 'topojson-client';
+import { geoMercator, geoPath } from 'd3-geo';
+const w = JSON.parse(fs.readFileSync('node_modules/world-atlas/countries-50m.json'));
+const all = topo.feature(w, w.objects.countries).features;
+const ids = {'724':'es','620':'pt','504':'ma','012':'dz','250':'fr','020':'ad','732':'eh','478':'mr','788':'tn','380':'it'};
+const feats = all.filter(f => ids[f.id]);
+const W = 1000;
+const bbox = {type:'Feature',geometry:{type:'Polygon',coordinates:[[[-20.0,26.6],[-20.0,44.4],[5.2,44.4],[5.2,26.6],[-20.0,26.6]]]}};
+const proj = geoMercator().fitWidth(W, bbox);
+const [[x0,y0],[x1,y1]] = geoPath(proj).bounds(bbox);
+const H = Math.round(y1-y0);
+proj.translate([proj.translate()[0]-x0, proj.translate()[1]-y0]).clipExtent([[0,0],[W,H]]);
+const path = geoPath(proj).digits(1);
+const out = {W,H,scale:proj.scale(),translate:proj.translate(),paths:{}};
+for (const f of feats) out.paths[ids[f.id]] = path(f);
+fs.writeFileSync('map.json', JSON.stringify(out));
+console.log(W,H, proj.scale(), proj.translate(), Object.entries(out.paths).map(([k,v])=>k+':'+(v||'').length).join(' '));
