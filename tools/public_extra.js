@@ -40,11 +40,18 @@ function setupChrome(){
 }
 async function setupVisits(){
   if(!GC_CODE||!/^[a-z0-9-]+$/.test(GC_CODE)) return;
+  const base="https://"+GC_CODE+".goatcounter.com/counter/";
+  const num=d=>d&&d.count!=null?Number(String(d.count).replace(/[^\d]/g,""))||0:null;
+  const get=async p=>{try{const r=await fetch(base+p+".json",{cache:"no-store"});if(r.status===404)return 0;if(!r.ok)return null;return num(await r.json());}catch(e){return null;}};
   try{
     const s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js"; s.dataset.goatcounter="https://"+GC_CODE+".goatcounter.com/count"; document.body.appendChild(s);
-    const r=await fetch("https://"+GC_CODE+".goatcounter.com/counter/TOTAL.json"); if(!r.ok) return;
-    const d=await r.json(); if(!d||d.count==null) return;
-    $("#visitsN").textContent=String(d.count).replace(/[^\d.,\s]/g,"")+" visitas";
+    /* TOTAL puede ir con retraso respecto a las visitas del día: se usa la cifra mayor entre el total y la de esta página. */
+    const paths=[...new Set(["/",location.pathname||"/","/migrometer/"])];
+    const vals=await Promise.all(["TOTAL"].concat(paths.map(encodeURIComponent)).map(get));
+    const ok=vals.filter(v=>v!=null); if(!ok.length) return;
+    const pageSum=vals.slice(1).reduce((a,v)=>a+(v||0),0);
+    const n=Math.max(vals[0]||0,pageSum);
+    $("#visitsN").textContent=fmt(n)+(n===1?" visita":" visitas");
     $("#visitsPill").hidden=false;
   }catch(e){}
 }

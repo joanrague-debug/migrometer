@@ -134,6 +134,8 @@ main>section,main>footer{min-width:0}
 .src-grid{align-items:start}
 .kpi .foot{margin-top:6px}
 .kpi-map{grid-column:4;grid-row:1/3;padding:14px 14px 12px;gap:10px;min-height:0}
+.yoy{font-size:12.5px;color:var(--fg-2)}
+.yoy b{color:var(--fg)}
 .kmh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:2px 4px 0}
 .kml{font-size:12.5px;font-weight:600;white-space:nowrap}
 .mmap{display:block;width:100%;height:auto;flex:1;min-height:0;border-radius:14px;background:var(--sea)}
@@ -1191,7 +1193,7 @@ function renderDay(){
   const days=new Set(evs.map(e=>e.date)).size;
   const split='<div class="card kpi kpi-split">'+
     '<div class="half"><span class="eyebrow"><span class="src-tag press sm">Noticias</span> Llegadas según prensa</span>'+
-      (evs.length?'<span class="v num">'+fmt(total)+'</span><span class="foot">'+Object.entries(regs).map(([g,v])=>'<span class="chip"><span class="dot" style="background:var('+GROUPS[g].color+')"></span>'+esc(GROUPS[g].short)+' <b>'+fmt(v)+'</b></span>').join("")+(!isDay?'<span class="chip">Días con llegadas <b>'+days+'</b></span>':'')+'</span>'+srcLine(evs,5)
+      (evs.length?'<span class="v num">'+fmt(total)+'</span>'+yoyChip(a,b,total)+'<span class="foot">'+Object.entries(regs).map(([g,v])=>'<span class="chip"><span class="dot" style="background:var('+GROUPS[g].color+')"></span>'+esc(GROUPS[g].short)+' <b>'+fmt(v)+'</b></span>').join("")+(!isDay?'<span class="chip">Días con llegadas <b>'+days+'</b></span>':'')+'</span>'+srcLine(evs,5)
        :'<span class="v muted">Sin datos reportados</span><span class="hint">No hay noticias registradas para estas fechas y zona</span>')+'</div>'+
     '<div class="half"><span class="eyebrow"><span class="src-tag off sm">Oficial</span> Ministerio del Interior</span>'+officialBlock(a,b,sc.keys)+(S.f.zone?'<span class="hint">Interior no desglosa por isla ni provincia: cifra de '+esc(sc.label)+'</span>':'')+'</div>'+
   '</div>';
@@ -1235,6 +1237,18 @@ function renderMiniMap(){
   svg.querySelectorAll(".mz").forEach(el=>{const go=()=>{S.f.zone=(S.f.zone===el.dataset.z?"":el.dataset.z);renderAll();};el.onclick=go;el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}};});
 }
 const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+/* Comparación con el mismo periodo del año anterior (prensa). Solo aparece si el registro de prensa cubría ya esas fechas. */
+function minusYear(d){const y=Number(d.slice(0,4))-1, md=d.slice(5); return y+"-"+(md==="02-29"?"02-28":md);}
+function yoyChip(a,b,total){
+  if(!a||!b) return "";
+  const pa=minusYear(a), pb=minusYear(b);
+  const first=S.events.map(e=>e.date).sort()[0];
+  if(!first||first>pa) return "";
+  const pev=S.events.filter(e=>e.date>=pa&&e.date<=pb&&inGeo(e)&&!e._excluded);
+  const pv=pev.reduce((s,e)=>s+(persons(e)||0),0);
+  const d=pv?((total-pv)/pv*100):null;
+  return '<span class="yoy">Mismo periodo de '+pa.slice(0,4)+' (prensa): <b class="num">'+(pev.length?fmt(pv):'sin llegadas registradas')+'</b>'+(d!=null?' · <b class="num">'+(d>0?'+':'')+fmt(d)+' %</b>':'')+'</span>';
+}
 
 function renderFocus(){
   const r=range(); const [a,b]=rangeBounds();
