@@ -38,20 +38,18 @@ function setupChrome(){
     ids.forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el);});
   }
 }
+/* Contador público de visitas: Abacus (sin registro ni correo; solo guarda un número).
+   Cada carga de la página suma 1 al instante y la cifra se refresca cada minuto mientras la página está abierta.
+   GoatCounter se mantiene aparte para las estadísticas y como respaldo si Abacus no responde. */
+const VISITS_NS="migrometer-es", VISITS_KEY="visitas";
 async function setupVisits(){
-  if(!GC_CODE||!/^[a-z0-9-]+$/.test(GC_CODE)) return;
-  const base="https://"+GC_CODE+".goatcounter.com/counter/";
-  const num=d=>d&&d.count!=null?Number(String(d.count).replace(/[^\d]/g,""))||0:null;
-  const get=async p=>{try{const r=await fetch(base+p+".json?start=2020-01-01",{cache:"no-store"});if(r.status===404)return 0;if(!r.ok)return null;return num(await r.json());}catch(e){return null;}};
-  try{
-    const s=document.createElement("script"); s.async=true; s.src="https://gc.zgo.at/count.js"; s.dataset.goatcounter="https://"+GC_CODE+".goatcounter.com/count"; document.body.appendChild(s);
-    /* Sin fechas, GoatCounter devuelve una cifra en caché que va con retraso; con ?start= devuelve el total al día. Se usa la mayor entre el total y la de esta página. */
-    const paths=[...new Set(["/",location.pathname||"/","/migrometer/"])];
-    const vals=await Promise.all(["TOTAL"].concat(paths.map(encodeURIComponent)).map(get));
-    const ok=vals.filter(v=>v!=null); if(!ok.length) return;
-    const pageSum=vals.slice(1).reduce((a,v)=>a+(v||0),0);
-    const n=Math.max(vals[0]||0,pageSum);
-    $("#visitsN").textContent=fmt(n)+(n===1?" visita":" visitas");
-    $("#visitsPill").hidden=false;
-  }catch(e){}
+  const show=n=>{if(n==null||!isFinite(n))return false;$("#visitsN").textContent=fmt(n)+(n===1?" visita":" visitas");$("#visitsPill").hidden=false;return true;};
+  const ab=async op=>{try{const r=await fetch("https://abacus.jasoncameron.dev/"+op+"/"+VISITS_NS+"/"+VISITS_KEY,{cache:"no-store"});if(!r.ok)return null;const d=await r.json();return typeof d.value==="number"?d.value:null;}catch(e){return null;}};
+  if(GC_CODE&&/^[a-z0-9-]+$/.test(GC_CODE)){try{const s=document.createElement("script");s.async=true;s.src="https://gc.zgo.at/count.js";s.dataset.goatcounter="https://"+GC_CODE+".goatcounter.com/count";document.body.appendChild(s);}catch(e){}}
+  const isLocal=/^(localhost|127\.|\[::1\])/.test(location.hostname)||location.protocol==="file:";
+  let ok=show(await ab(isLocal?"get":"hit"));
+  if(!ok&&GC_CODE){
+    try{const r=await fetch("https://"+GC_CODE+".goatcounter.com/counter/TOTAL.json?start=2020-01-01",{cache:"no-store"});if(r.ok){const d=await r.json();ok=show(Number(String(d.count).replace(/[^\d]/g,""))||0);}}catch(e){}
+  }
+  if(ok) setInterval(async()=>{if(document.visibilityState!=="visible")return;show(await ab("get"));},60000);
 }
