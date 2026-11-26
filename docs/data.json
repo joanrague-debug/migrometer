@@ -1,11 +1,13 @@
 {
- "updatedAt": "2026-11-26T07:26:24+01:00",
+ "updatedAt": "2026-11-26T22:21:09+01:00",
  "lastSweepDate": "2026-11-26",
  "events": [
   {
+   "approx": true,
    "boatType": "a nado",
    "createdAt": "2026-11-26T07:45:00+01:00",
    "date": "2026-07-30",
+   "editorial": "Se cuenta con la cifra aproximada del Gobierno (50.000) por decisión editorial del 26/11/2026; marcada como aproximada.",
    "id": "ev-20260730-ceuta",
    "notes": "Entrada masiva desde Marruecos los días 30 y 31 de julio, a nado y a pie por el espigón de El Tarajal. Cifra estimada, no exacta: 50.000 según el Gobierno (RTVC/EFE: «aproximadamente 50.000»); el Ejecutivo ceutí la elevó a 60.000 y el Gobierno, después, a «hasta 80.000». Más de 48.000 regresaron a Marruecos el 31/07 por sus propios medios; Interior estimó después que permanecían en la ciudad unas 2.500 y luego 5.000. Fallecidos: 83 cuerpos recuperados en aguas de Ceuta hasta el 9/08 (todos hombres salvo una mujer); ONG marroquíes cifran 141-145 víctimas a ambos lados de la frontera. El informe quincenal de Interior no refleja esta entrada (Ceuta terrestre: 4.078 en todo el año a 15/11).",
    "reports": [
@@ -37,9 +39,7 @@
    ],
    "sm": null,
    "time": "",
-   "zone": "ceuta",
-   "approx": true,
-   "editorial": "Se cuenta con la cifra aproximada del Gobierno (50.000) por decisión editorial del 26/11/2026; marcada como aproximada."
+   "zone": "ceuta"
   },
   {
    "boatType": "valla terrestre",
@@ -353,6 +353,46 @@
    "zone": "el-hierro"
   },
   {
+   "boatType": "a nado",
+   "createdAt": "2026-11-26T22:30:00+01:00",
+   "date": "2026-11-25",
+   "id": "ev-20261125-ceuta",
+   "notes": "Cuerpo sin vida de un joven de unos 20 años, de origen subsahariano, con neopreno, aletas y gafas de buceo, hallado hacia las 14:00 en la playa de la Cabililla (Benzú). Sin signos de descomposición avanzada; según AUGC habría muerto la noche anterior. AUGC estima unas 140 muertes en 2026 en el entorno de Ceuta (90 cuerpos recuperados en la zona española); estimación no registrada como cifra.",
+   "reports": [
+    {
+     "boats": null,
+     "count": 0,
+     "note": "Edad aproximada: unos 20 años",
+     "source": "Ceuta Televisión",
+     "stats": {
+      "deaths": 1,
+      "men": 1,
+      "nationalities": [
+       {
+        "count": 1,
+        "country": "África subsahariana (sin precisar)"
+       }
+      ]
+     },
+     "url": "https://www.ceutatv.com/sociedad/joven-20-anos-hallado-vida-playa-cabililla-benzu/20261126141313262182.html"
+    },
+    {
+     "boats": null,
+     "count": 0,
+     "note": "Varón de unos 20 años; fuente AUGC",
+     "source": "Ceuta Actualidad",
+     "stats": {
+      "deaths": 1,
+      "men": 1
+     },
+     "url": "https://www.ceutaactualidad.com/sucesos/augc-informa-hallazgo-cadaver-aguas-ceuta/20261126131211289796.html"
+    }
+   ],
+   "sm": null,
+   "time": "14:00",
+   "zone": "ceuta"
+  },
+  {
    "boatType": "cayuco",
    "createdAt": "2026-11-25T20:00:00Z",
    "date": "2026-11-25",
@@ -404,6 +444,62 @@
    ],
    "sm": true,
    "time": "00:22",
+   "zone": "el-hierro"
+  },
+  {
+   "boatType": "cayuco",
+   "createdAt": "2026-11-26T22:30:00+01:00",
+   "date": "2026-11-26",
+   "id": "ev-20261126-el-hierro",
+   "notes": "Noche del 25 al 26: dos cayucos en La Restinga. 1º: 49 personas de nacionalidad senegalesa, llegó a las 23:50 del miércoles 25 (EFE; El País: desembarco terminado a las 23:55; Europa Press lo sitúa a medianoche, ya jueves), cinco días de navegación desde Saint Louis, tres atendidos por hipotermia y deshidratación y uno trasladado al hospital. 2º: 109 personas, escoltado por la Guardamar Calíope y la Salvamar Navia, llegó hacia las 02:00 (EFE) o 02:45 (Europa Press, El País). Se agrupan en la jornada del 26 como hacen EFE/RTVC/Canarias7; no duplican el evento del 25 (474 en 5 cayucos, que ya incluye el de 31 personas). Europa Press da 632 en 7 cayucos desde el miércoles (=474+158) pero sitúa el de 31 el jueves; aquí ese cayuco sigue contado solo el 25. El País da 523 en 6 cayucos el miércoles (474+49). La Gaceta de Canarias dio un primer aviso de 104 personas a primera hora (preliminar, no contabilizado).",
+   "reports": [
+    {
+     "boats": 2,
+     "count": 158,
+     "note": "49 + 109",
+     "source": "RTVC (EFE)",
+     "stats": {
+      "nationalities": [
+       {
+        "count": 49,
+        "country": "Senegal"
+       }
+      ]
+     },
+     "url": "https://rtvc.es/rescates-cayucos-en-canarias-26-noviembre-2026/"
+    },
+    {
+     "boats": 2,
+     "count": 158,
+     "note": "49 + 109",
+     "source": "Canarias7 (EFE)",
+     "stats": {
+      "nationalities": [
+       {
+        "count": 49,
+        "country": "Senegal"
+       }
+      ]
+     },
+     "url": "https://www.canarias7.es/politica/dos-cayucos-llegan-hierro-jueves-158-personas-20261126111515-nt.html"
+    },
+    {
+     "boats": 2,
+     "count": 158,
+     "note": "Suma de los cayucos de 49 y 109 personas; el de 31 que cita el mismo artículo ya está en el evento del 25",
+     "source": "20minutos (Europa Press)",
+     "url": "https://www.20minutos.es/canarias/llegan-hierro-632-migrantes-bordo-siete-cayucos-interceptados-desde-jornada-este-miercoles_7066251_0.html"
+    },
+    {
+     "boats": 2,
+     "count": 158,
+     "note": "Suma de 49 (23:55 del miércoles) y 109 (02:45 del jueves)",
+     "source": "El País",
+     "url": "https://elpais.com/espana/2026-11-26/otro-cayuco-con-109-personas-eleva-a-mas-de-2600-las-llegadas-de-migrantes-a-el-hierro-en-tres-dias.html"
+    }
+   ],
+   "sm": true,
+   "time": "02:00",
    "zone": "el-hierro"
   }
  ],
