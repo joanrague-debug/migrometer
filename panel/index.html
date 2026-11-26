@@ -131,6 +131,59 @@ main>section,main>footer{min-width:0}
 .focus .fx .v.muted{font-size:13px}
 .focus-src{grid-column:1/-1}
 .pop-q{display:grid;gap:4px}
+.src-grid{align-items:start}
+.kpi .foot{margin-top:6px}
+@media (max-width:980px){#kpis>.kpi:last-child{grid-column:1/-1}.kpi{min-height:0}}
+@media (max-width:700px){.map-wrap{padding:8px}}
+.map-wrap .map-badge{position:static;margin:0 10px 10px;max-width:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--surface-2);border-color:var(--line);display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.map-wrap .map-badge>*{margin:0}
+.san-card{gap:12px}
+.san-q{display:grid;gap:4px}
+.san-v{font-family:var(--font-display);font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1.05}
+.san-v small{font-size:15px;font-weight:600;color:var(--fg-2);letter-spacing:0}
+.san-alt{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:baseline;padding:12px 14px;border-radius:var(--r-md);background:var(--fill);font-size:13px;color:var(--fg-2)}
+.san-alt b{font-size:16px;color:var(--fg)}
+.san-alt small{grid-column:1/-1;font-size:11.5px;color:var(--fg-3)}
+.sim-mk{width:max-content}
+.med-grid{align-items:start}
+table.mt.med td:nth-child(2){white-space:nowrap}
+table.mt.med th{white-space:nowrap}
+@media (max-width:700px){
+  .tbl-wrap:has(table.ev){overflow:visible}
+  table.ev{min-width:0!important;display:block;width:100%}
+  table.ev thead{display:none}
+  table.ev tbody{display:block}
+  table.ev tbody tr:not(.det){display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 14px;padding:14px 16px;border-bottom:1px solid var(--line)}
+  table.ev tbody tr.det{display:block}
+  table.ev tbody tr.det td{display:block}
+  table.ev tbody tr:not(.det) td{display:block;padding:0;border:0;max-width:none!important}
+  table.ev tbody tr:not(.det) td:nth-child(1){grid-column:1;grid-row:1}
+  table.ev tbody tr:not(.det) td:nth-child(2){grid-column:1;grid-row:2}
+  table.ev tbody tr:not(.det) td:nth-child(3){grid-column:2;grid-row:1/3;font-size:22px;align-self:start}
+  table.ev tbody tr:not(.det) td:nth-child(n+4){grid-column:1/-1}
+  table.ev tbody tr:not(.det) td:nth-child(7){text-align:left!important}
+  table.ev .srcs{display:flex;flex-wrap:wrap;gap:2px 12px}
+  table.mt.med{min-width:0}
+  table.mt.med th:nth-child(2),table.mt.med td:nth-child(2){display:none}
+}
+.nat-list .nat{grid-template-columns:minmax(110px,190px) minmax(0,1fr) 104px}
+.nat .num{text-align:right}
+.sim{display:grid;gap:18px}
+.sim-ctrl{display:flex;gap:14px 22px;flex-wrap:wrap}
+.sim-g{display:grid;gap:6px}
+.sim-res{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:16px;align-items:stretch}
+.sim-big{font-family:var(--font-display);font-size:56px;font-weight:800;letter-spacing:-.04em;line-height:1;margin:6px 0 4px;color:var(--accent)}
+.sim-eq{display:grid;gap:4px;align-content:center;padding:16px 18px;border-radius:var(--r-md);background:var(--accent-soft)}
+.sim-track{position:relative;height:96px;margin:8px 12px 0 8px}
+.sim-line{position:absolute;left:0;right:0;top:14px;height:6px;border-radius:999px;background:var(--fill);overflow:hidden}
+.sim-line span{display:block;height:100%;background:linear-gradient(90deg,var(--accent-soft),var(--accent))}
+.sim-mk{position:absolute;top:0;transform:translateX(-100%);display:grid;justify-items:end;text-align:right;gap:1px;font-size:11.5px;max-width:30%}
+.sim-mk i{width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--accent);margin:4px 0 10px}
+.sim-mk b{font-size:13px}
+.sim-mk small{color:var(--fg-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.sim-mk em{font-style:normal;color:var(--fg-3);font-size:10.5px}
+.sim-empty{display:grid;gap:4px;color:var(--fg-2);padding:10px 0}
+@media (max-width:700px){.sim-res{grid-template-columns:minmax(0,1fr)}.sim-big{font-size:44px}.sim-mk small{display:none}}
 .dem-block{display:grid;gap:8px;padding-top:12px;border-top:1px solid var(--line)}
 .dem-row{display:grid;gap:4px}
 .dem-l{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:14px}
@@ -237,6 +290,7 @@ table.mt{width:100%;border-collapse:collapse;font-size:13.5px}
 table.mt th{font-size:11.5px;color:var(--fg-3);font-weight:600;text-transform:uppercase;letter-spacing:.05em;text-align:right;padding:6px 8px;border-bottom:1px solid var(--line)}
 table.mt td{padding:8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
 table.mt th:first-child,table.mt td:first-child{text-align:left}
+table.mt td.num{white-space:nowrap}
 table.mt tr:last-child td{border-bottom:0}
 table.cmp{min-width:620px}
 table.cmp td.cmp-cell{text-align:left;min-width:170px}
@@ -328,8 +382,9 @@ footer p{margin:0;max-width:85ch}
 }
 @media (max-width:560px){
   .kpi-split{grid-template-columns:minmax(0,1fr)}.kpi-split .half+.half{border-left:0;border-top:1px solid var(--line)}
-  .focus-row{grid-template-columns:minmax(0,1fr)}
-  .nat{grid-template-columns:minmax(0,1fr) auto}.nat .bar-bg{display:none}
+  .focus-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .focus-row>.focus:nth-child(1),.focus-row>.focus:nth-child(4){grid-column:1/-1}
+  .nat-list .nat{grid-template-columns:minmax(0,1fr) auto}.nat .bar-bg{display:none}
   .brand h1{font-size:28px}
   .brand .meta{margin-left:0}
   .kpi .v{font-size:32px}
@@ -408,6 +463,25 @@ footer p{margin:0;max-width:85ch}
     <div id="popBox" style="display:grid;gap:14px"></div>
   </section>
 
+  <!-- 2a-bis. Simulador -->
+  <section aria-labelledby="h-sim">
+    <div class="section-h"><h2 id="h-sim">Simulador</h2><span class="sub" id="simSub"></span></div>
+    <div class="card card-pad sim" id="simBox">
+      <div class="sim-ctrl">
+        <div class="sim-g"><span class="eyebrow">Ritmo de</span><div class="seg" id="simBasis" role="group" aria-label="Ritmo"><button type="button" data-v="7">Última semana</button><button type="button" data-v="30">Último mes</button><button type="button" data-v="365">Último año</button></div></div>
+        <div class="sim-g"><span class="eyebrow">Fuente</span><div class="seg" id="simSrc" role="group" aria-label="Fuente"><button type="button" data-v="press">Noticias</button><button type="button" data-v="official">Oficial</button></div></div>
+        <div class="sim-g"><span class="eyebrow">Durante</span><div class="seg" id="simHz" role="group" aria-label="Duración"><button type="button" data-v="30">1 mes</button><button type="button" data-v="182">6 meses</button><button type="button" data-v="365">1 año</button><button type="button" data-v="1826">5 años</button></div></div>
+      </div>
+      <div id="simOut"></div>
+    </div>
+  </section>
+
+  <!-- 2a-ter. Coste sanitario -->
+  <section aria-labelledby="h-san">
+    <div class="section-h"><h2 id="h-san">Coste sanitario de referencia</h2><span class="sub" id="sanSub"></span></div>
+    <div id="sanBox" style="display:grid;gap:14px"></div>
+  </section>
+
   <!-- 2b. Perfil y víctimas -->
   <section aria-labelledby="h-prof">
     <div class="section-h"><h2 id="h-prof">Perfil demográfico y víctimas</h2><span class="sub" id="profSub"></span></div>
@@ -452,6 +526,7 @@ footer p{margin:0;max-width:85ch}
           </div>
           <span class="hint">Escala fija: el tamaño se puede comparar entre periodos</span>
         </div>
+        <div class="map-badge" id="mapBadge"></div>
         <div style="position:relative">
           <svg id="map" viewBox="0 0 1000 914" role="img" aria-label="Mapa de España, Marruecos y cuencas marítimas con las zonas de llegada">
             <g id="landG"></g>
@@ -459,7 +534,6 @@ footer p{margin:0;max-width:85ch}
             <g id="halosG"></g>
             <g id="zonesG"></g>
           </svg>
-          <div class="map-badge" id="mapBadge"></div>
           <div class="tip" id="tip" hidden></div>
         </div>
       </div>
@@ -1193,6 +1267,10 @@ function renderMapPress(){
   $("#mapBadge").innerHTML='<span class="eyebrow"><span class="src-tag press sm">Noticias</span> '+esc(scopeLabel())+'</span><b>'+esc(periodLabel())+'</b>'+
     (gt>0?'<span class="v num">'+fmt(gt)+' <span style="font-size:13px;font-weight:500;color:var(--fg-2)">personas · '+ge.length+(ge.length===1?' evento':' eventos')+'</span></span>'+srcLine(ge,4):'<span class="v muted">Sin datos reportados</span>');
   const sorted=[...ZONES].sort((a,b)=>(t[a.id]?.p||0)-(t[b.id]?.p||0));
+  const showLbl=new Set(), boxes=[];
+  [...sorted].reverse().forEach(z=>{const o=t[z.id]; if(!(o&&o.p>0)) return; const [x,y]=project(z.lon,z.lat); const r=8+30*Math.sqrt(o.p/max);
+    const fs=window.innerWidth<=560?22:15, w=fmt(o.p).length*fs*0.62+10, bx=[x-w/2,y-r-6-fs,x+w/2,y-r-2];
+    if(!boxes.some(q=>bx[0]<q[2]&&bx[2]>q[0]&&bx[1]<q[3]&&bx[3]>q[1])){boxes.push(bx);showLbl.add(z.id);}});
   for(const z of sorted){
     const [x,y]=project(z.lon,z.lat); const o=t[z.id]; const col="var("+GROUPS[z.g].color+")";
     const dim=(S.f.zone&&S.f.zone!==z.id)||(!S.f.zone&&S.f.region!=="all"&&S.f.region!==z.g);
@@ -1202,7 +1280,7 @@ function renderMapPress(){
       parts.push('<g class="'+cls+'" data-z="'+z.id+'" tabindex="0" role="button" aria-label="'+esc(z.name)+': '+fmt(o.p)+' personas">'+
         (z.g!=="peninsula"?'<circle class="pulse" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(1)+'" style="stroke:'+col+'"/>':'')+
         '<circle class="b" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(1)+'" style="fill:'+col+';fill-opacity:.82"/>'+
-        '<text x="'+x.toFixed(1)+'" y="'+(y-r-6).toFixed(1)+'" text-anchor="middle">'+fmt(o.p)+'</text></g>');
+        (showLbl.has(z.id)?'<text x="'+x.toFixed(1)+'" y="'+(y-r-6).toFixed(1)+'" text-anchor="middle">'+fmt(o.p)+'</text>':'')+'</g>');
     }else{
       parts.push('<g class="'+cls+'" data-z="'+z.id+'" tabindex="0" role="button" aria-label="'+esc(z.name)+': sin datos reportados"><circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="11" fill="transparent"/><circle class="empty" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="4.5" style="stroke:'+col+'"/></g>');
     }
@@ -1348,8 +1426,121 @@ function renderPopulation(){
   let evoO="";
   const reps=offReports().filter(x=>x.to<=b&&x.to.slice(0,4)===b.slice(0,4));
   if(reps.length) evoO=reps.slice().reverse().map(x=>{const v=offVal(x,sc.keys);if(!v)return "";const m=nearestMuni(v);return '<tr><td style="white-space:nowrap">1 ene – '+esc(dShort(x.to))+'</td><td class="num"><b>'+fmt(v)+'</b></td><td style="text-align:left">'+esc(muniName(m))+' <span class="muted">('+esc(PROV[m[1].slice(0,2)])+', '+fmt(m[0])+')</span></td></tr>';}).join("");
-  const B=popCard("off",o.v,"Ministerio del Interior",o.v!=null?(o.full?'Del ':'Solo del ')+esc(dShort(o.covA))+' al '+esc(dShort(o.covB))+' de '+esc(o.covB.slice(0,4)):'Interior publica por quincenas'+(o.near?(()=>{const nv=periodVal(o.near,sc.keys);const nm=nv?nearestMuni(nv):null;return '. Quincena más cercana, del '+esc(dShort(o.near.a))+' al '+esc(dShort(o.near.b))+': <b>'+fmt(nv)+'</b> personas'+(nm?', como la población de '+esc(muniName(nm))+' ('+esc(PROV[nm[1].slice(0,2)])+', '+fmt(nm[0])+' hab.)':'')+'.';})()+offSrcLine([o.near.rep,o.near.prev]):''),o.v!=null?offSrcLine(o.parts.flatMap(p=>[p.rep,p.prev])):"",evoO,sc.g==="all"?null:sc.g);
+  let B;
+  if(o.v!=null) B=popCard("off",o.v,"Ministerio del Interior",(o.full?'Del ':'Solo del ')+esc(dShort(o.covA))+' al '+esc(dShort(o.covB))+' de '+esc(o.covB.slice(0,4)),offSrcLine(o.parts.flatMap(p=>[p.rep,p.prev])),evoO,sc.g==="all"?null:sc.g);
+  else if(o.near){const nv=periodVal(o.near,sc.keys); B=popCard("off",nv,"Ministerio del Interior",'Quincena oficial más cercana: del '+esc(dShort(o.near.a))+' al '+esc(dShort(o.near.b))+'. Interior no publica cifras para las fechas exactas elegidas.',offSrcLine([o.near.rep,o.near.prev]),evoO,sc.g==="all"?null:sc.g);}
+  else B=popCard("off",null,"Ministerio del Interior","Interior publica por quincenas","","",null);
   box.innerHTML='<div class="src-grid">'+A+B+'</div><div class="note">'+INFO_ICON+'<span>Se compara el número de personas llegadas con el municipio de población más parecida, entre '+MUNIS.length+' municipios de referencia escogidos del padrón del INE para cubrir todos los tamaños (de 10 a 3,5 millones de habitantes, con más detalle en Canarias, Andalucía, Murcia, Comunidad Valenciana, Baleares, Ceuta y Melilla). La equivalencia se recalcula sola cada vez que entran datos nuevos o cambias las fechas.</span></div>';
+}
+
+/* ───────────── Coste sanitario de referencia ───────────── */
+/* Fuente: Ministerio de Sanidad, Estadística de Gasto Sanitario Público 2024 (EGSP), Principales resultados, edición abril 2026.
+   Tabla 1: gasto sanitario público consolidado de España 2024 = 101.739 M€, 2.084 € por habitante.
+   Tabla 5: euros por habitante del sector Comunidades Autónomas 2024. Ceuta y Melilla no figuran (su sanidad la gestiona INGESA): se usa la media de España. */
+const SAN={year:2024,nat:2084,
+  ccaa:{"Islas Canarias":2036,"Andalucía":1658,"Región de Murcia":2155,"Comunidad Valenciana":1867,"Islas Baleares":1956},
+  offKey:{canarias:2036,baleares:1956},
+  src:{label:"Ministerio de Sanidad · Estadística de Gasto Sanitario Público 2024, principales resultados (edición abril 2026), tablas 1 y 5",url:"https://www.sanidad.gob.es/estadEstudios/estadisticas/inforRecopilaciones/gastoSanitario2005/tablasEstEGSP/Principales_resultados.pdf"}};
+function euros(n,long){
+  if(n==null||!isFinite(n)) return "—";
+  const d1=x=>x.toLocaleString("es-ES",{minimumFractionDigits:1,maximumFractionDigits:1});
+  if(n>=1e9) return d1(Math.round(n/1e8)/10)+(long?" mil millones de €":" mil M€");
+  if(n>=1e6) return d1(Math.round(n/1e5)/10)+(long?" millones de €":" M€");
+  return fmt(Math.round(n))+" €";
+}
+function sanSrcHtml(){return '<div class="src-line"><span>Gasto sanitario:</span> <a href="'+SAN.src.url+'" target="_blank" rel="noopener">'+esc(SAN.src.label)+'</a></div>';}
+function sanCard(kind,v,sub,regional,regNote,srcHtml){
+  const head='<div class="src-h"><span class="src-tag '+(kind==="off"?'off':'press')+'">'+(kind==="off"?'Oficial':'Noticias')+'</span><h3>'+(kind==="off"?'Llegadas según Interior':'Llegadas según prensa')+'</h3></div>';
+  if(v==null||!(v>0)) return '<div class="card card-pad src-card">'+head+'<span class="v muted" style="font-size:17px;font-weight:600;color:var(--fg-3)">'+(kind==="off"?'Sin cifra oficial para estas fechas':'Sin datos reportados')+'</span>'+(sub?'<span class="hint">'+sub+'</span>':'')+'</div>';
+  const nat=v*SAN.nat;
+  return '<div class="card card-pad src-card san-card">'+head+
+    '<div class="san-q"><span class="eyebrow">Coste sanitario público de referencia</span><span class="san-v num">'+esc(euros(nat))+'<small> al año</small></span>'+
+    '<span class="hint"><b class="num">'+fmt(v)+'</b> personas × <b class="num">'+fmt(SAN.nat)+' €</b> por habitante y año (media de España, '+SAN.year+') · '+esc(euros(nat/12))+' al mes</span></div>'+
+    '<span class="hint">'+sub+'</span>'+
+    (regional!=null&&Math.round(regional)!==Math.round(nat)?'<div class="san-alt"><span>Con el gasto por habitante de cada comunidad</span><b class="num">'+esc(euros(regional))+'</b>'+(regNote?'<small>'+esc(regNote)+'</small>':'')+'</div>':'')+
+    srcHtml+sanSrcHtml()+'</div>';
+}
+function sanRegionalPress(evs){
+  let tot=0,nat=false;
+  evs.forEach(e=>{const p=persons(e)||0; if(!p) return; const z=ZONE[e.zone]; const r=z&&SAN.ccaa[z.sub]; if(r) tot+=p*r; else {tot+=p*SAN.nat; nat=true;}});
+  return {v:tot,note:nat?'Ceuta, Melilla y otras zonas sin dato autonómico: media de España.':''};
+}
+function sanRegionalOff(getVal,keys){
+  const ks=keys||["canarias","ceuta_mar","ceuta_tierra","melilla_mar","melilla_tierra","peninsula","baleares"];
+  let tot=0,any=false;
+  ks.forEach(k=>{const v=getVal([k]); if(v==null) return; any=true; tot+=v*(SAN.offKey[k]||SAN.nat);});
+  return any?{v:tot,note:'Canarias y Baleares con su gasto autonómico; Ceuta, Melilla y península con la media de España (Interior no desglosa la península por comunidad).'}:null;
+}
+function renderSanidad(){
+  const box=$("#sanBox"); if(!box) return;
+  const r=range(); const [a,b]=rangeBounds(); const sc=cmpScope();
+  $("#sanSub").textContent=periodLabel()+" · "+scopeLabel();
+  const evs=S.events.filter(e=>inRange(e,r)&&inGeo(e)&&!e._excluded);
+  const pv=evs.reduce((s,e)=>s+(persons(e)||0),0);
+  const days=[...new Set(evs.map(e=>e.date))].sort();
+  const rp=sanRegionalPress(evs);
+  const A=sanCard("press",pv,pv?'Llegadas del '+esc(dShort(days[0]))+' al '+esc(dShort(days[days.length-1]))+' · '+evs.length+(evs.length===1?' evento':' eventos'):'',rp.v,rp.note,srcLine(evs,5));
+  const o=officialFor(a,b,sc.keys); let B;
+  if(o.v!=null){
+    const reg=sanRegionalOff(ks=>officialFor(a,b,ks).v,sc.keys);
+    B=sanCard("off",o.v,(o.full?'Del ':'Solo del ')+esc(dShort(o.covA))+' al '+esc(dShort(o.covB))+' de '+esc(o.covB.slice(0,4)),reg&&reg.v,reg&&reg.note,offSrcLine(o.parts.flatMap(p=>[p.rep,p.prev])));
+  }else if(o.near){
+    const nv=periodVal(o.near,sc.keys); const reg=sanRegionalOff(ks=>periodVal(o.near,ks),sc.keys);
+    B=sanCard("off",nv,'Quincena oficial más cercana: del '+esc(dShort(o.near.a))+' al '+esc(dShort(o.near.b))+'. Interior no publica cifras para las fechas exactas elegidas.',reg&&reg.v,reg&&reg.note,offSrcLine([o.near.rep,o.near.prev]));
+  }else B=sanCard("off",null,"Interior publica por quincenas",null,"","");
+  box.innerHTML='<div class="src-grid">'+A+B+'</div><div class="note">'+INFO_ICON+'<span><b>Estimación ilustrativa, no un gasto real.</b> Multiplica las personas llegadas por el gasto sanitario público medio por habitante y año que publica el Ministerio de Sanidad ('+fmt(SAN.nat)+' € en España en '+SAN.year+', último año publicado). No existe una estadística pública del gasto sanitario real en personas llegadas de forma irregular: su edad, su estado de salud y el tiempo que permanecen en España no son los de la población media, y la cifra no incluye otros gastos (acogida, salvamento, manutención).</span></div>';
+}
+
+/* ───────────── Simulador ───────────── */
+const SIM={basis:"7",src:"press",hz:"365"};
+const SIM_BASIS={"7":"de la última semana","30":"del último mes","365":"del último año"};
+const SIM_HZ={"30":"1 mes","182":"6 meses","365":"1 año","1826":"5 años"};
+function simRate(){
+  const day=S.f.day, w=Number(SIM.basis), sc=cmpScope();
+  if(SIM.src==="press"){
+    const all=S.events.filter(e=>!e._excluded&&ZONE[e.zone]&&(sc.g==="all"||ZONE[e.zone].g===sc.g)&&e.date<=day);
+    const first=all.map(e=>e.date).sort()[0];
+    if(!first) return null;
+    let a=addDays(day,-(w-1)); const cut=a<first; if(cut) a=first;
+    const days=dayIdx(a,day)+1; const ev=all.filter(e=>e.date>=a);
+    const sum=ev.reduce((s,e)=>s+(persons(e)||0),0);
+    return {rate:sum/days,sum,days,a,b:day,ev,note:cut?'El registro de prensa empieza el '+dShort(first)+': el ritmo se calcula sobre '+days+(days===1?' día':' días')+', no sobre '+w+'.':'',src:srcLine(ev,5)};
+  }
+  const ps=officialPeriods().filter(p=>p.b<=day&&p.b.slice(0,4)===day.slice(0,4));
+  if(!ps.length) return null;
+  let use=[],label="";
+  if(SIM.basis==="365"){const last=ps[ps.length-1]; const v=offVal(last.rep,sc.keys); const d=dayIdx(last.rep.from||last.b.slice(0,4)+"-01-01",last.b)+1;
+    return {lbl:"del año en curso (oficial)",rate:v/d,sum:v,days:d,a:last.rep.from,b:last.b,note:'Interior no publica los últimos 365 días: se usa el acumulado del año, del '+dShort(last.rep.from)+' al '+dShort(last.b)+'.',src:offSrcLine([last.rep])};}
+  const qs=ps.filter(p=>p.prev); if(!qs.length) return null;
+  if(SIM.basis==="7"){use=[qs[qs.length-1]];label='Interior no publica cifras semanales: se usa la última quincena disponible';}
+  else{let d=0;for(let i=qs.length-1;i>=0&&d<28;i--){use.unshift(qs[i]);d+=dayIdx(qs[i].a,qs[i].b)+1;} label=d<28?'Solo hay '+d+' días con cifra oficial por quincenas':'Se usan las últimas quincenas oficiales';}
+  const sum=use.reduce((s,p)=>s+(periodVal(p,sc.keys)||0),0); const days=use.reduce((s,p)=>s+dayIdx(p.a,p.b)+1,0);
+  return {lbl:use.length===1?"de la última quincena oficial":"de las últimas quincenas oficiales",rate:sum/days,sum,days,a:use[0].a,b:use[use.length-1].b,note:label+' ('+dShort(use[0].a)+' – '+dShort(use[use.length-1].b)+').',src:offSrcLine(use.flatMap(p=>[p.rep,p.prev]))};
+}
+function renderSim(){
+  const box=$("#simBox"); if(!box) return;
+  $("#simSub").textContent=scopeLabel()+" · ritmo hasta el "+dShort(S.f.day);
+  document.querySelectorAll("#simBasis button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.v===SIM.basis)));
+  document.querySelectorAll("#simSrc button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.v===SIM.src)));
+  document.querySelectorAll("#simHz button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.v===SIM.hz)));
+  const r=simRate(); const out=$("#simOut");
+  if(!r||!(r.rate>0)){out.innerHTML='<div class="sim-empty"><b>Sin datos reportados</b><span>No hay '+(SIM.src==="press"?'noticias registradas':'cifras oficiales')+' para calcular el ritmo con estas fechas y zona.</span></div>';return;}
+  const hz=Number(SIM.hz); const total=r.rate*hz; const m=nearestMuni(total);
+  const steps=[.25,.5,.75,1].map(f=>{const v=total*f;return {f,v,m:nearestMuni(v)};});
+  out.innerHTML=
+    '<div class="sim-res">'+
+      '<div><span class="eyebrow">Al ritmo '+esc(r.lbl||SIM_BASIS[SIM.basis])+', en '+esc(SIM_HZ[SIM.hz])+' llegarían</span><div class="sim-big num">'+fmt(Math.round(total))+'</div><span class="hint">personas · '+fmt(r.rate)+' al día ('+fmt(r.sum)+' en '+r.days+(r.days===1?' día':' días')+', '+(SIM.src==="press"?'según la prensa':'según Interior')+')</span></div>'+
+      '<div class="sim-eq"><span class="eyebrow">Como toda la población de</span><span class="pop-name">'+esc(muniName(m))+'</span><span class="pop-meta">'+esc(PROV[m[1].slice(0,2)])+' · '+fmt(m[0])+' habitantes</span><span class="pop-diff">Coste sanitario público de referencia: <b>'+esc(euros(total*SAN.nat))+' al año</b> ('+fmt(SAN.nat)+' € por habitante, '+SAN.year+')</span></div>'+
+    '</div>'+
+    '<div class="sim-track" aria-label="Acumulado simulado"><div class="sim-line"><span style="width:100%"></span></div>'+
+      steps.map(s=>'<div class="sim-mk" style="left:'+(s.f*100)+'%"><i></i><b class="num">'+fmt(Math.round(s.v))+'</b><small>'+esc(muniName(s.m))+'</small><em>'+esc(s.f===1?SIM_HZ[SIM.hz]:(s.f*hz>=60?fmt(Math.round(s.f*hz/30.4))+' meses':fmt(Math.round(s.f*hz))+' días'))+'</em></div>').join("")+
+    '</div>'+
+    (r.note?'<div class="note">'+INFO_ICON+'<span>'+esc(r.note)+'</span></div>':'')+
+    '<div class="note">'+INFO_ICON+'<span>Simulación aritmética: multiplica el ritmo diario observado por el tiempo elegido, suponiendo que no cambia. No es una previsión. La población de comparación es la del padrón del INE a 1 de enero de 2025.</span></div>'+
+    r.src;
+}
+function bindSim(){
+  [["#simBasis","basis"],["#simSrc","src"],["#simHz","hz"]].forEach(([sel,k])=>document.querySelectorAll(sel+" button").forEach(b=>b.onclick=()=>{SIM[k]=b.dataset.v;renderSim();}));
 }
 
 /* ───────────── Render: tabla ───────────── */
@@ -1715,7 +1906,7 @@ async function exportCSV(){
 }
 
 /* ───────────── Eventos UI ───────────── */
-function renderAll(){prepEvents();renderFilters();setPill();renderDay();renderFocus();renderPopulation();renderProfile();renderMapCtrl();renderMap();renderCoverage();renderOfficial();renderCharts();renderMedia();renderTable();if(renderAll._cw!==S.canWrite){renderDrafts();renderAll._cw=S.canWrite;}
+function renderAll(){prepEvents();renderFilters();setPill();renderDay();renderFocus();renderPopulation();renderSim();renderSanidad();renderProfile();renderMapCtrl();renderMap();renderCoverage();renderOfficial();renderCharts();renderMedia();renderTable();if(renderAll._cw!==S.canWrite){renderDrafts();renderAll._cw=S.canWrite;}
   $("#inputSection").hidden=!S.canWrite&&S.mode==="db";}
 document.querySelectorAll("#segPreset button").forEach(b=>b.onclick=()=>{stopPlay();S.f.preset=b.dataset.p;saveUI();renderAll();});
 document.querySelectorAll("#segRegion button").forEach(b=>b.onclick=()=>{S.f.region=b.dataset.r;S.f.zone="";saveUI();renderAll();});
@@ -1743,5 +1934,6 @@ $("#mapNext").onclick=()=>{stopPlay();S.f.day=addDays(S.f.day,1);renderAll();};
 $("#mapPlay").onclick=togglePlay;
 document.querySelectorAll("#mapSrc button").forEach(x=>x.onclick=()=>{S.f.mapSrc=x.dataset.s;renderMap();});
 buildMapBase();
+bindSim();
 initStore().then(initSample);
 </script>
