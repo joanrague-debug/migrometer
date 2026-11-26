@@ -123,8 +123,8 @@ main>section,main>footer{min-width:0}
 .badge-sm{display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 7px;border-radius:6px;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:600;white-space:nowrap}
 
 .prof{display:grid;gap:14px}
-#kpis{grid-template-columns:repeat(5,minmax(0,1fr))}
-.kpi-split{grid-column:span 2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:0}
+#kpis{grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.6fr)}
+.kpi-split{grid-column:1/4;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:0}
 .kpi-split .half{padding:16px 18px;display:flex;flex-direction:column;gap:6px;min-width:0}
 .kpi-split .half+.half{border-left:1px solid var(--line)}
 .kpi-split .half .v{font-family:var(--font-display);font-size:38px;font-weight:700;letter-spacing:-.02em;line-height:1}
@@ -145,7 +145,19 @@ main>section,main>footer{min-width:0}
 .pop-q{display:grid;gap:4px}
 .src-grid{align-items:start}
 .kpi .foot{margin-top:6px}
-@media (max-width:980px){#kpis>.kpi:last-child{grid-column:1/-1}.kpi{min-height:0}}
+.kpi-map{grid-column:4;grid-row:1/3;padding:14px 14px 12px;gap:10px;min-height:0}
+.kmh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:2px 4px 0}
+.kml{font-size:12.5px;font-weight:600;white-space:nowrap}
+.mmap{display:block;width:100%;height:auto;flex:1;min-height:0;border-radius:14px;background:var(--sea)}
+.mmap .zone text{font-size:34px;stroke-width:7px}
+.mmap .zone.sel .b{stroke:var(--fg);stroke-width:2.5}
+.mmap .mm-halos{pointer-events:none}
+.mmap .mm-halos .halo-label{font-size:24px}
+.mmap .mm-halos [data-g="canarias"] text{display:none}
+.mm-empty{font-size:30px;font-weight:600;fill:var(--fg-3)}
+.mm-leg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--fg-2);padding:0 4px}
+.mm-leg>span{display:inline-flex;align-items:center;gap:5px}
+@media (max-width:980px){#kpis>.kpi:last-child{grid-column:1/-1}.kpi{min-height:0}#kpis .kpi-split,#kpis .kpi-map{grid-column:1/-1;grid-row:auto}}
 @media (max-width:700px){.map-wrap{padding:8px}}
 .map-wrap .map-badge{position:static;margin:0 10px 10px;max-width:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--surface-2);border-color:var(--line);display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
 .map-wrap .map-badge>*{margin:0}
@@ -1403,22 +1415,44 @@ function renderDay(){
        :'<span class="v muted">Sin datos reportados</span><span class="hint">No hay noticias registradas para estas fechas y zona</span>')+'</div>'+
     '<div class="half"><span class="eyebrow"><span class="src-tag off sm">Oficial</span> Ministerio del Interior</span>'+officialBlock(a,b,sc.keys)+(S.f.zone?'<span class="hint">Interior no desglosa por isla ni provincia: cifra de '+esc(sc.label)+'</span>':'')+'</div>'+
   '</div>';
+  const mapCard='<div class="card kpi kpi-map"><div class="kmh"><span class="eyebrow"><span class="src-tag press sm">Noticias</span> Mapa de llegadas</span><a class="kml" href="#h-map">Mapa completo</a></div><svg class="mmap" id="miniMap" viewBox="0 50 1000 864" role="img" aria-label="Mapa de llegadas según la prensa en el periodo"></svg><div class="mm-leg"><span><span class="dot" style="background:var(--c-canarias)"></span>Canarias</span><span><span class="dot" style="background:var(--c-ceuta)"></span>Ceuta</span><span><span class="dot" style="background:var(--c-melilla)"></span>Melilla</span><span><span class="dot" style="background:var(--c-peninsula)"></span>Península y Baleares</span></div></div>';
   const k=$("#kpis");
   if(!evs.length){
-    k.innerHTML=split+["Embarcaciones","Salvamento Marítimo","Discrepancias"].map(t=>'<div class="card kpi"><span class="eyebrow">'+t+'</span><span class="v muted">Sin datos reportados</span><span class="foot">&nbsp;</span></div>').join("");
-    return;
+    k.innerHTML=split+mapCard+["Embarcaciones","Salvamento Marítimo","Discrepancias"].map(t=>'<div class="card kpi"><span class="eyebrow">'+t+'</span><span class="v muted">Sin datos reportados</span><span class="foot">&nbsp;</span></div>').join("");
+    renderMiniMap(); return;
   }
   const byType={}; let boatsTot=0; const bEv=[];
   evs.forEach(e=>{const bi=boatsInfo(e); const t=e.boatType||"sin especificar"; if(bi){bEv.push(e);boatsTot+=bi.mean;byType[t]=(byType[t]||0)+bi.mean;} });
   const smEv=evs.filter(e=>e.sm===true); const smBoats=smEv.reduce((s,e)=>s+(boatsInfo(e)?.mean||0),0);
   const smPersons=smEv.reduce((s,e)=>s+(persons(e)||0),0);
   const disc=evs.filter(discrepant);
-  k.innerHTML=split+
+  k.innerHTML=split+mapCard+
    '<div class="card kpi"><span class="eyebrow">Embarcaciones · prensa</span>'+(bEv.length?'<span class="v num">'+fmt(boatsTot)+'</span>':'<span class="v muted">Sin datos reportados</span>')+
      '<span class="foot">'+Object.entries(byType).map(([t,v])=>'<span class="chip">'+esc(cap(t))+' <b>'+fmt(v)+'</b></span>').join("")+'</span>'+srcLine(bEv,3)+'</div>'+
    '<div class="card kpi"><span class="eyebrow">Salvamento Marítimo · prensa</span>'+(smEv.length?'<span class="v num">'+fmt(smEv.length)+'</span><span class="foot"><span class="chip">'+(smEv.length===1?"Evento":"Eventos")+' con intervención</span>'+(smBoats?'<span class="chip">Embarcaciones <b>'+fmt(smBoats)+'</b></span>':'')+'<span class="chip">Personas <b>'+fmt(smPersons)+'</b></span></span>'+srcLine(smEv,3):'<span class="v muted">Sin intervenciones reportadas</span><span class="foot">&nbsp;</span>')+'</div>'+
    '<div class="card kpi"><span class="eyebrow">Discrepancias entre medios</span>'+(disc.length?'<span class="v num" style="color:var(--warn)">'+disc.length+'</span><span class="foot">'+disc.slice(0,3).map(e=>'<span class="badge-warn" data-open="'+e.id+'" title="'+esc(repsOf(e).map(r=>mediumOf(r.source)+": "+fmt(Number(r.count))).join(" · "))+'">'+WARN_ICON+esc(ZONE[e.zone].name)+' '+esc(dShort(e.date))+': '+esc(repsOf(e).map(r=>mediumOf(r.source)+" "+fmt(Number(r.count))).join(" / "))+'</span>').join("")+(disc.length>3?'<span class="chip">y '+(disc.length-3)+' más</span>':'')+'</span>':'<span class="v num">0</span><span class="foot">Las fuentes coinciden</span>')+'</div>';
   k.querySelectorAll("[data-open]").forEach(x=>x.onclick=()=>openRow(x.dataset.open));
+  renderMiniMap();
+}
+function renderMiniMap(){
+  const svg=$("#miniMap"); if(!svg||typeof MAP==="undefined") return;
+  const order=["mr","eh","dz","ma","fr","ad","pt","es"];
+  const land=order.filter(k=>MAP.paths[k]).map(k=>'<path class="land'+(k==="es"?" es":"")+'" d="'+MAP.paths[k]+'"/>').join("");
+  const t=zoneTotals(); const vals=Object.values(t).map(o=>o.p).filter(v=>v>0);
+  const max=Math.max(1,...vals);
+  const sorted=[...ZONES].filter(z=>t[z.id]&&t[z.id].p>0).sort((a,b)=>t[a.id].p-t[b.id].p);
+  const R=z=>12+32*Math.sqrt(t[z.id].p/max);
+  const show=new Set(), boxes=[], fs=34;
+  [...sorted].reverse().forEach(z=>{const [x,y]=project(z.lon,z.lat); const r=R(z); const w=fmt(t[z.id].p).length*fs*0.6+12; const bx=[x-w/2,y-r-8-fs,x+w/2,y-r-4];
+    if(!boxes.some(q=>bx[0]<q[2]&&bx[2]>q[0]&&bx[1]<q[3]&&bx[3]>q[1])){boxes.push(bx);show.add(z.id);}});
+  const bub=sorted.map(z=>{const [x,y]=project(z.lon,z.lat); const r=R(z); const col="var("+GROUPS[z.g].color+")";
+    const dim=(S.f.zone&&S.f.zone!==z.id)||(!S.f.zone&&S.f.region!=="all"&&S.f.region!==z.g);
+    return '<g class="zone mz'+(dim?" dim":"")+(S.f.zone===z.id?" sel":"")+'" data-z="'+z.id+'" tabindex="0" role="button" aria-label="'+esc(z.name)+': '+fmt(t[z.id].p)+' personas"><title>'+esc(z.name)+': '+fmt(t[z.id].p)+' personas</title>'+
+      '<circle class="b" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(1)+'" style="fill:'+col+';fill-opacity:.85"/>'+
+      (show.has(z.id)?'<text x="'+x.toFixed(1)+'" y="'+(y-r-8).toFixed(1)+'" text-anchor="middle">'+fmt(t[z.id].p)+'</text>':'')+'</g>';}).join("");
+  const halos=$("#halosG")?$("#halosG").innerHTML:"";
+  svg.innerHTML='<g>'+land+'</g><g class="mm-halos">'+halos+'</g><g>'+bub+'</g>'+(sorted.length?'':'<text class="mm-empty" x="500" y="470" text-anchor="middle">Sin datos reportados</text>');
+  svg.querySelectorAll(".mz").forEach(el=>{const go=()=>{S.f.zone=(S.f.zone===el.dataset.z?"":el.dataset.z);renderAll();};el.onclick=go;el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}};});
 }
 const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
 
