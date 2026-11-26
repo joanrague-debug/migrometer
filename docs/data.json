@@ -1,469 +1,497 @@
 {
-"updatedAt": "2026-11-25T23:15:00+01:00",
-"lastSweepDate": "2026-11-25",
-"events": [
-{
-"boatType": "cayuco",
-"createdAt": "2026-11-25T20:00:00Z",
-"date": "2026-11-14",
-"id": "ev-20261114-el-hierro",
-"notes": "Jornada récord previa en la ruta canaria (1.580 personas en total en Canarias ese día).",
-"reports": [
-{
-"boats": 13,
-"count": 1327,
-"note": "Dato citado retrospectivamente en la crónica del 24/11",
-"source": "RTVE",
-"url": "https://www.rtve.es/noticias/20261124/hierro-recibe-madrugada-cinco-nuevos-cayucos-con-torno-a-900-personas/17327996.shtml"
-}
-],
-"sm": null,
-"time": "",
-"zone": "el-hierro"
-},
-{
-"boatType": "cayuco",
-"createdAt": "2026-11-25T20:00:00Z",
-"date": "2026-11-14",
-"id": "ev-20261114-gran-canaria",
-"notes": "",
-"reports": [
-{
-"boats": 1,
-"count": 203,
-"note": "Dato citado retrospectivamente en la crónica del 24/11",
-"source": "RTVE",
-"url": "https://www.rtve.es/noticias/20261124/hierro-recibe-madrugada-cinco-nuevos-cayucos-con-torno-a-900-personas/17327996.shtml"
-}
-],
-"sm": null,
-"time": "",
-"zone": "gran-canaria"
-},
-{
-"boatType": "cayuco",
-"createdAt": "2026-11-25T20:00:00Z",
-"date": "2026-11-14",
-"id": "ev-20261114-tenerife",
-"notes": "",
-"reports": [
-{
-"boats": 1,
-"count": 50,
-"note": "Dato citado retrospectivamente en la crónica del 24/11",
-"source": "RTVE",
-"url": "https://www.rtve.es/noticias/20261124/hierro-recibe-madrugada-cinco-nuevos-cayucos-con-torno-a-900-personas/17327996.shtml"
-}
-],
-"sm": null,
-"time": "",
-"zone": "tenerife"
-},
-{
-"boatType": "cayuco",
-"createdAt": "2026-11-25T20:00:00Z",
-"date": "2026-11-21",
-"id": "ev-20261121-el-hierro",
-"notes": "Primera llegada a la isla tras cinco días sin cayucos. Fecha deducida: RTVC cifra el fin de semana en 7 embarcaciones y 429 personas (362 el domingo).",
-"reports": [
-{
-"boats": 1,
-"count": 67,
-"source": "20minutos",
-"stats": {
-"minors": 4,
-"women": 5
-},
-"url": ""
-},
-{
-"boats": 1,
-"count": 67,
-"source": "El Día",
-"stats": {
-"minors": 4,
-"women": 5
-},
-"url": ""
-}
-],
-"sm": true,
-"time": "",
-"zone": "el-hierro"
-},
-{
-"boatType": "patera",
-"createdAt": "2026-11-25T20:00:00Z",
-"date": "2026-11-21",
-"id": "ev-20261121-murcia",
-"notes": "Patera detectada a 21,87 millas al sureste del Monte de las Cenizas (Cartagena). Una segunda embarcación con ocupantes sin localizar no se contabiliza.",
-"reports": [
-{
-"boats": 1,
-"count": 47,
-"source": "La 7 (Delegación del Gobierno vía Europa Press)",
-"stats": {
-"injured": 1,
-"men": 39,
-"minors": 7,
-"women": 1
-},
-"url": "https://www.la7tv.es/cultura-y-sociedad/sociedad/dos-pateras-centenar-migrantes-llegan-cabo-palos/20261121123416076045.html"
-}
-],
-"sm": null,
-"time": "01:45",
-"zone": "murcia"
-},
-{
-"boatType": "cayuco",
-"createdAt": "2026-11-25T20:00:00Z",
-"date": "2026-11-22",
-"id": "ev-20261122-el-hierro",
-"notes": "La Vanguardia informó antes de cerrar la jornada de «casi 300» en cinco cayucos (cifra aproximada y parcial, no contabilizada).",
-"reports": [
-{
-"boats": 6,
-"count": 362,
-"source": "RTVC",
-"url": "https://rtvc.es/llegada-cayucos-canarias-23-noviembre-2026/"
-}
-],
-"sm": null,
-"time": "",
-"zone": "el-hierro"
-},
-{
-"boatType": "cayuco",
-"createdAt": "2026-11-25T20:00:00Z",
-"date": "2026-11-23",
-"id": "ev-20261123-el-hierro",
-"notes": "Seis cayucos en La Restinga: 64, 88, 129, 152, 153 y 49 personas. Atlántico Hoy (EFE) informó a las 14:20 de 433 personas en los 4 primeros cayucos (recuento parcial de la mañana, no contabilizado aparte).",
-"reports": [
-{
-"boats": 6,
-"count": 635,
-"note": "Suma de las seis embarcaciones detalladas",
-"source": "RTVC",
-"stats": {
-"nationalities": [
-{
-"count": null,
-"country": "Senegal"
-},
-{
-"count": null,
-"country": "Gambia"
-},
-{
-"count": null,
-"country": "Guinea"
-}
-]
-},
-"url": "https://rtvc.es/llegada-cayucos-canarias-23-noviembre-2026/"
-}
-],
-"sm": true,
-"time": "00:45",
-"zone": "el-hierro"
-},
-{
-"boatType": "cayuco",
-"createdAt": "2026-11-25T20:00:00Z",
-"date": "2026-11-23",
-"id": "ev-20261123-tenerife",
-"notes": "Dos cayucos localizados frente a Granadilla y escoltados por Salvamento Marítimo a Los Cristianos (Arona). RTVC: 96 y 84 personas; Atlántico Hoy (EFE, datos de Salvamento Marítimo): 150 cada uno.",
-"reports": [
-{
-"boats": 2,
-"count": 180,
-"note": "Suma de las dos embarcaciones detalladas",
-"source": "RTVC",
-"url": "https://rtvc.es/llegada-cayucos-canarias-23-noviembre-2026/"
-},
-{
-"boats": 2,
-"count": 300,
-"note": "150 personas en cada cayuco",
-"source": "Atlántico Hoy (EFE)",
-"url": "https://www.atlanticohoy.com/sociedad/confirman-que-los-dos-cayucos-llegados-este-lunes-a-tenerife-transportaban-a-300-personas_1570477_102.html"
-}
-],
-"sm": true,
-"time": "",
-"zone": "tenerife"
-},
-{
-"boatType": "cayuco",
-"createdAt": "2026-11-25T20:00:00Z",
-"date": "2026-11-24",
-"id": "ev-20261124-el-hierro",
-"notes": "Récord diario de la ruta canaria. Un fallecido; nacimiento de una niña durante la travesía.",
-"reports": [
-{
-"boats": 15,
-"count": 2121,
-"source": "RTVE (datos de Salvamento Marítimo)",
-"stats": {
-"deaths": 1,
-"minors": 107,
-"nationalities": [
-{
-"count": null,
-"country": "Gambia"
-},
-{
-"count": null,
-"country": "Senegal"
-},
-{
-"count": null,
-"country": "Guinea"
-},
-{
-"count": null,
-"country": "Guinea-Bisáu"
-},
-{
-"count": null,
-"country": "Burkina Faso"
-},
-{
-"count": null,
-"country": "Mauritania"
-},
-{
-"count": null,
-"country": "Mali"
-},
-{
-"count": 1,
-"country": "Yemen"
-}
-],
-"women": 177
-},
-"url": "https://www.rtve.es/noticias/20261124/hierro-recibe-madrugada-cinco-nuevos-cayucos-con-torno-a-900-personas/17327996.shtml"
-},
-{
-"boats": 14,
-"count": 1971,
-"note": "Canarias7 cita «al menos 203 mujeres y 127 menores» (mínimos, no registrados como cifra exacta)",
-"source": "Canarias7 (EFE)",
-"stats": {
-"deaths": 1,
-"nationalities": [
-{
-"count": null,
-"country": "Gambia"
-},
-{
-"count": null,
-"country": "Senegal"
-},
-{
-"count": null,
-"country": "Guinea"
-},
-{
-"count": null,
-"country": "Guinea-Bisáu"
-},
-{
-"count": null,
-"country": "Burkina Faso"
-},
-{
-"count": null,
-"country": "Mauritania"
-},
-{
-"count": null,
-"country": "Mali"
-},
-{
-"count": 1,
-"country": "Yemen"
-}
-]
-},
-"url": "https://www.canarias7.es/politica/hierro-recibe-604-migrantes-tres-nuevos-cayucos-20261124091043-nt.html"
-}
-],
-"sm": true,
-"time": "02:45",
-"zone": "el-hierro"
-},
-{
-"boatType": "cayuco",
-"createdAt": "2026-11-25T20:00:00Z",
-"date": "2026-11-25",
-"id": "ev-20261125-el-hierro",
-"notes": "Recuento parcial de la jornada: 4 cayucos (88 a las 00:22, 102 hacia las 08:00, 65 hacia las 16:00-16:20 y 188 por la tarde). Los servicios de emergencia tenían localizada una quinta embarcación sin cifra de ocupantes. Público/Europa Press había informado de 255 (3 cayucos, hasta las 17:30), cifra superada por el cuarto cayuco.",
-"reports": [
-{
-"boats": 4,
-"count": 443,
-"note": "Parcial: 4 cayucos hasta la tarde (20:52)",
-"source": "RTVC",
-"url": "https://rtvc.es/llegada-de-embarcaciones-con-migrantes-a-canarias-25-noviembre-2026/"
-},
-{
-"boats": 4,
-"count": 443,
-"note": "Parcial: 88 + 102 + 65 + 188",
-"source": "Atlántico Hoy (EFE)",
-"url": "https://www.atlanticohoy.com/sociedad/un-cuarto-cayuco-llega-a-el-hierro-con-188-migrantes-tras-siete-dias-de-travesia_1570639_102.html"
-}
-],
-"sm": true,
-"time": "00:22",
-"zone": "el-hierro"
-}
-],
-"official": [
-{
-"source": "Ministerio del Interior · Informe quincenal de inmigración irregular",
-"url": "https://www.interior.gob.es/opencms/export/sites/default/.galleries/galeria-de-prensa/documentos-y-multimedia/balances-e-informes/2026/20_informe_quincenal_acumulado_01-01_al_31-10-2026.pdf",
-"from": "2026-01-01",
-"to": "2026-10-31",
-"provisional": true,
-"total": {
-"v": 32942,
-"prev": 30263
-},
-"maritime": {
-"v": 28155,
-"prev": 27001
-},
-"land": {
-"v": 4787,
-"prev": 3262
-},
-"rows": [
-{
-"key": "canarias",
-"label": "Canarias (marítima)",
-"group": "canarias",
-"v": 13327,
-"prev": 14099
-},
-{
-"key": "ceuta_mar",
-"label": "Ceuta (marítima)",
-"group": "ceuta",
-"v": 2,
-"prev": 4
-},
-{
-"key": "ceuta_tierra",
-"label": "Ceuta (terrestre)",
-"group": "ceuta",
-"v": 4076,
-"prev": 2994
-},
-{
-"key": "melilla_mar",
-"label": "Melilla (marítima)",
-"group": "melilla",
-"v": 23,
-"prev": 25
-},
-{
-"key": "melilla_tierra",
-"label": "Melilla (terrestre)",
-"group": "melilla",
-"v": 711,
-"prev": 268,
-"note": "Calculada: vía terrestre Ceuta y Melilla (4.787) menos Ceuta terrestre (4.076); 2025: 3.262 − 2.994"
-},
-{
-"key": "peninsula",
-"label": "Península (marítima)",
-"group": "peninsula",
-"v": 7615,
-"prev": 6593
-},
-{
-"key": "baleares",
-"label": "Baleares (marítima)",
-"group": "peninsula",
-"v": 7188,
-"prev": 6280
-}
-]
-},
-{
-"source": "Ministerio del Interior · Informe quincenal de inmigración irregular",
-"url": "https://www.interior.gob.es/opencms/export/sites/default/.galleries/galeria-de-prensa/documentos-y-multimedia/balances-e-informes/2026/21_informe_quincenal_acumulado_01-01_al_15-11-2026.pdf",
-"from": "2026-01-01",
-"to": "2026-11-15",
-"provisional": true,
-"total": {
-"v": 44238,
-"prev": 31742
-},
-"maritime": {
-"v": 39445,
-"prev": 28361,
-"boats": 1154
-},
-"land": {
-"v": 4793,
-"prev": 3381
-},
-"rows": [
-{
-"key": "canarias",
-"label": "Canarias (marítima)",
-"group": "canarias",
-"v": 24364,
-"prev": 14690
-},
-{
-"key": "ceuta_mar",
-"label": "Ceuta (marítima)",
-"group": "ceuta",
-"v": 2,
-"prev": 4
-},
-{
-"key": "ceuta_tierra",
-"label": "Ceuta (terrestre)",
-"group": "ceuta",
-"v": 4078,
-"prev": 3102
-},
-{
-"key": "melilla_mar",
-"label": "Melilla (marítima)",
-"group": "melilla",
-"v": 24,
-"prev": 25
-},
-{
-"key": "melilla_tierra",
-"label": "Melilla (terrestre)",
-"group": "melilla",
-"v": 715,
-"prev": 279
-},
-{
-"key": "peninsula",
-"label": "Península (marítima)",
-"group": "peninsula",
-"v": 7766,
-"prev": 6959
-},
-{
-"key": "baleares",
-"label": "Baleares (marítima)",
-"group": "peninsula",
-"v": 7289,
-"prev": 6683
-}
-]
-}
-]
+ "updatedAt": "2026-11-26T07:21:30+01:00",
+ "lastSweepDate": "2026-11-26",
+ "events": [
+  {
+   "boatType": "cayuco",
+   "createdAt": "2026-11-25T20:00:00Z",
+   "date": "2026-11-14",
+   "id": "ev-20261114-el-hierro",
+   "notes": "Jornada récord previa en la ruta canaria (1.580 personas en total en Canarias ese día).",
+   "reports": [
+    {
+     "boats": 13,
+     "count": 1327,
+     "note": "Dato citado retrospectivamente en la crónica del 24/11",
+     "source": "RTVE",
+     "url": "https://www.rtve.es/noticias/20261124/hierro-recibe-madrugada-cinco-nuevos-cayucos-con-torno-a-900-personas/17327996.shtml"
+    }
+   ],
+   "sm": null,
+   "time": "",
+   "zone": "el-hierro"
+  },
+  {
+   "boatType": "cayuco",
+   "createdAt": "2026-11-25T20:00:00Z",
+   "date": "2026-11-14",
+   "id": "ev-20261114-gran-canaria",
+   "notes": "",
+   "reports": [
+    {
+     "boats": 1,
+     "count": 203,
+     "note": "Dato citado retrospectivamente en la crónica del 24/11",
+     "source": "RTVE",
+     "url": "https://www.rtve.es/noticias/20261124/hierro-recibe-madrugada-cinco-nuevos-cayucos-con-torno-a-900-personas/17327996.shtml"
+    }
+   ],
+   "sm": null,
+   "time": "",
+   "zone": "gran-canaria"
+  },
+  {
+   "boatType": "cayuco",
+   "createdAt": "2026-11-25T20:00:00Z",
+   "date": "2026-11-14",
+   "id": "ev-20261114-tenerife",
+   "notes": "",
+   "reports": [
+    {
+     "boats": 1,
+     "count": 50,
+     "note": "Dato citado retrospectivamente en la crónica del 24/11",
+     "source": "RTVE",
+     "url": "https://www.rtve.es/noticias/20261124/hierro-recibe-madrugada-cinco-nuevos-cayucos-con-torno-a-900-personas/17327996.shtml"
+    }
+   ],
+   "sm": null,
+   "time": "",
+   "zone": "tenerife"
+  },
+  {
+   "boatType": "cayuco",
+   "createdAt": "2026-11-25T20:00:00Z",
+   "date": "2026-11-21",
+   "id": "ev-20261121-el-hierro",
+   "notes": "Primera llegada a la isla tras cinco días sin cayucos. Fecha deducida: RTVC cifra el fin de semana en 7 embarcaciones y 429 personas (362 el domingo).",
+   "reports": [
+    {
+     "boats": 1,
+     "count": 67,
+     "source": "20minutos",
+     "stats": {
+      "minors": 4,
+      "women": 5
+     },
+     "url": ""
+    },
+    {
+     "boats": 1,
+     "count": 67,
+     "source": "El Día",
+     "stats": {
+      "minors": 4,
+      "women": 5
+     },
+     "url": ""
+    }
+   ],
+   "sm": true,
+   "time": "",
+   "zone": "el-hierro"
+  },
+  {
+   "boatType": "patera",
+   "createdAt": "2026-11-25T20:00:00Z",
+   "date": "2026-11-21",
+   "id": "ev-20261121-murcia",
+   "notes": "Patera detectada a 21,87 millas al sureste del Monte de las Cenizas (Cartagena). Una segunda embarcación con ocupantes sin localizar no se contabiliza.",
+   "reports": [
+    {
+     "boats": 1,
+     "count": 47,
+     "source": "La 7 (Delegación del Gobierno vía Europa Press)",
+     "stats": {
+      "injured": 1,
+      "men": 39,
+      "minors": 7,
+      "women": 1
+     },
+     "url": "https://www.la7tv.es/cultura-y-sociedad/sociedad/dos-pateras-centenar-migrantes-llegan-cabo-palos/20261121123416076045.html"
+    }
+   ],
+   "sm": null,
+   "time": "01:45",
+   "zone": "murcia"
+  },
+  {
+   "boatType": "cayuco",
+   "createdAt": "2026-11-25T20:00:00Z",
+   "date": "2026-11-22",
+   "id": "ev-20261122-el-hierro",
+   "notes": "La Vanguardia informó antes de cerrar la jornada de «casi 300» en cinco cayucos (cifra aproximada y parcial, no contabilizada).",
+   "reports": [
+    {
+     "boats": 6,
+     "count": 362,
+     "source": "RTVC",
+     "url": "https://rtvc.es/llegada-cayucos-canarias-23-noviembre-2026/"
+    }
+   ],
+   "sm": null,
+   "time": "",
+   "zone": "el-hierro"
+  },
+  {
+   "boatType": "cayuco",
+   "createdAt": "2026-11-25T20:00:00Z",
+   "date": "2026-11-23",
+   "id": "ev-20261123-el-hierro",
+   "notes": "Seis cayucos en La Restinga: 64, 88, 129, 152, 153 y 49 personas. Atlántico Hoy (EFE) informó a las 14:20 de 433 personas en los 4 primeros cayucos (recuento parcial de la mañana, no contabilizado aparte).",
+   "reports": [
+    {
+     "boats": 6,
+     "count": 635,
+     "note": "Suma de las seis embarcaciones detalladas",
+     "source": "RTVC",
+     "stats": {
+      "nationalities": [
+       {
+        "count": null,
+        "country": "Senegal"
+       },
+       {
+        "count": null,
+        "country": "Gambia"
+       },
+       {
+        "count": null,
+        "country": "Guinea"
+       }
+      ]
+     },
+     "url": "https://rtvc.es/llegada-cayucos-canarias-23-noviembre-2026/"
+    }
+   ],
+   "sm": true,
+   "time": "00:45",
+   "zone": "el-hierro"
+  },
+  {
+   "boatType": "cayuco",
+   "createdAt": "2026-11-25T20:00:00Z",
+   "date": "2026-11-23",
+   "id": "ev-20261123-tenerife",
+   "notes": "Dos cayucos localizados frente a Granadilla y escoltados por Salvamento Marítimo a Los Cristianos (Arona). RTVC: 96 y 84 personas; Atlántico Hoy (EFE, datos de Salvamento Marítimo): 150 cada uno.",
+   "reports": [
+    {
+     "boats": 2,
+     "count": 180,
+     "note": "Suma de las dos embarcaciones detalladas",
+     "source": "RTVC",
+     "url": "https://rtvc.es/llegada-cayucos-canarias-23-noviembre-2026/"
+    },
+    {
+     "boats": 2,
+     "count": 300,
+     "note": "150 personas en cada cayuco",
+     "source": "Atlántico Hoy (EFE)",
+     "url": "https://www.atlanticohoy.com/sociedad/confirman-que-los-dos-cayucos-llegados-este-lunes-a-tenerife-transportaban-a-300-personas_1570477_102.html"
+    }
+   ],
+   "sm": true,
+   "time": "",
+   "zone": "tenerife"
+  },
+  {
+   "boatType": "cayuco",
+   "createdAt": "2026-11-25T20:00:00Z",
+   "date": "2026-11-24",
+   "id": "ev-20261124-el-hierro",
+   "notes": "Récord diario de la ruta canaria. Un fallecido; nacimiento de una niña durante la travesía.",
+   "reports": [
+    {
+     "boats": 15,
+     "count": 2121,
+     "source": "RTVE (datos de Salvamento Marítimo)",
+     "stats": {
+      "deaths": 1,
+      "minors": 107,
+      "nationalities": [
+       {
+        "count": null,
+        "country": "Gambia"
+       },
+       {
+        "count": null,
+        "country": "Senegal"
+       },
+       {
+        "count": null,
+        "country": "Guinea"
+       },
+       {
+        "count": null,
+        "country": "Guinea-Bisáu"
+       },
+       {
+        "count": null,
+        "country": "Burkina Faso"
+       },
+       {
+        "count": null,
+        "country": "Mauritania"
+       },
+       {
+        "count": null,
+        "country": "Mali"
+       },
+       {
+        "count": 1,
+        "country": "Yemen"
+       }
+      ],
+      "women": 177
+     },
+     "url": "https://www.rtve.es/noticias/20261124/hierro-recibe-madrugada-cinco-nuevos-cayucos-con-torno-a-900-personas/17327996.shtml"
+    },
+    {
+     "boats": 14,
+     "count": 1971,
+     "note": "Canarias7 cita «al menos 203 mujeres y 127 menores» (mínimos, no registrados como cifra exacta)",
+     "source": "Canarias7 (EFE)",
+     "stats": {
+      "deaths": 1,
+      "nationalities": [
+       {
+        "count": null,
+        "country": "Gambia"
+       },
+       {
+        "count": null,
+        "country": "Senegal"
+       },
+       {
+        "count": null,
+        "country": "Guinea"
+       },
+       {
+        "count": null,
+        "country": "Guinea-Bisáu"
+       },
+       {
+        "count": null,
+        "country": "Burkina Faso"
+       },
+       {
+        "count": null,
+        "country": "Mauritania"
+       },
+       {
+        "count": null,
+        "country": "Mali"
+       },
+       {
+        "count": 1,
+        "country": "Yemen"
+       }
+      ]
+     },
+     "url": "https://www.canarias7.es/politica/hierro-recibe-604-migrantes-tres-nuevos-cayucos-20261124091043-nt.html"
+    }
+   ],
+   "sm": true,
+   "time": "02:45",
+   "zone": "el-hierro"
+  },
+  {
+   "boatType": "cayuco",
+   "createdAt": "2026-11-25T20:00:00Z",
+   "date": "2026-11-25",
+   "id": "ev-20261125-el-hierro",
+   "notes": "Jornada completa: 5 cayucos en La Restinga (88 a las 00:22, 102 a las 08:00, 65 hacia las 16:00, 188 a las 16:28 y 31 ya de noche, por sus propios medios). Desglose publicado por cayuco (20minutos/Europa Press): 1º 77 hombres, 8 mujeres y 5 menores; 2º 90 hombres, 4 mujeres y 8 menores; 3º 54 hombres, 7 mujeres y 4 menores; 4º 12 mujeres y 2 menores; 5º sin detalle. RTVC y Atlántico Hoy (EFE) publicaron 443 personas en 4 cayucos (recuento parcial antes del quinto, coherente con el total; sustituido por el recuento completo). elDiario.es: «más de 400» (aproximado).",
+   "reports": [
+    {
+     "boats": 5,
+     "count": 474,
+     "note": "Cifras de los servicios de emergencia",
+     "source": "ABC (EFE)",
+     "url": "https://www.abc.es/sociedad/inmigrantes-llegan-quinto-cayuco-jornada-hierro-20261126004212-nt_amp.html"
+    },
+    {
+     "boats": 5,
+     "count": 474,
+     "note": "Salvamento Marítimo interceptó cinco embarcaciones",
+     "source": "20minutos (Europa Press)",
+     "stats": {
+      "nationalities": [
+       {
+        "count": null,
+        "country": "Senegal"
+       },
+       {
+        "count": null,
+        "country": "Costa de Marfil"
+       },
+       {
+        "count": null,
+        "country": "Gambia"
+       },
+       {
+        "count": null,
+        "country": "Guinea"
+       },
+       {
+        "count": null,
+        "country": "Mali"
+       },
+       {
+        "count": null,
+        "country": "Guinea-Bisáu"
+       }
+      ]
+     },
+     "url": "https://www.20minutos.es/canarias/llegan-hierro-255-migrantes-bordo-tres-cayucos-este-miercoles_7065880_0.html"
+    }
+   ],
+   "sm": true,
+   "time": "00:22",
+   "zone": "el-hierro"
+  }
+ ],
+ "official": [
+  {
+   "from": "2026-01-01",
+   "land": {
+    "prev": 3262,
+    "v": 4787
+   },
+   "maritime": {
+    "prev": 27001,
+    "v": 28155
+   },
+   "provisional": true,
+   "rows": [
+    {
+     "group": "canarias",
+     "key": "canarias",
+     "label": "Canarias (marítima)",
+     "prev": 14099,
+     "v": 13327
+    },
+    {
+     "group": "ceuta",
+     "key": "ceuta_mar",
+     "label": "Ceuta (marítima)",
+     "prev": 4,
+     "v": 2
+    },
+    {
+     "group": "ceuta",
+     "key": "ceuta_tierra",
+     "label": "Ceuta (terrestre)",
+     "prev": 2994,
+     "v": 4076
+    },
+    {
+     "group": "melilla",
+     "key": "melilla_mar",
+     "label": "Melilla (marítima)",
+     "prev": 25,
+     "v": 23
+    },
+    {
+     "group": "melilla",
+     "key": "melilla_tierra",
+     "label": "Melilla (terrestre)",
+     "note": "Calculada: vía terrestre Ceuta y Melilla (4.787) menos Ceuta terrestre (4.076); 2025: 3.262 − 2.994",
+     "prev": 268,
+     "v": 711
+    },
+    {
+     "group": "peninsula",
+     "key": "peninsula",
+     "label": "Península (marítima)",
+     "prev": 6593,
+     "v": 7615
+    },
+    {
+     "group": "peninsula",
+     "key": "baleares",
+     "label": "Baleares (marítima)",
+     "prev": 6280,
+     "v": 7188
+    }
+   ],
+   "source": "Ministerio del Interior · Informe quincenal de inmigración irregular",
+   "to": "2026-10-31",
+   "total": {
+    "prev": 30263,
+    "v": 32942
+   },
+   "url": "https://www.interior.gob.es/opencms/export/sites/default/.galleries/galeria-de-prensa/documentos-y-multimedia/balances-e-informes/2026/20_informe_quincenal_acumulado_01-01_al_31-10-2026.pdf"
+  },
+  {
+   "from": "2026-01-01",
+   "land": {
+    "prev": 3381,
+    "v": 4793
+   },
+   "maritime": {
+    "boats": 1154,
+    "prev": 28361,
+    "v": 39445
+   },
+   "provisional": true,
+   "rows": [
+    {
+     "group": "canarias",
+     "key": "canarias",
+     "label": "Canarias (marítima)",
+     "prev": 14690,
+     "v": 24364
+    },
+    {
+     "group": "ceuta",
+     "key": "ceuta_mar",
+     "label": "Ceuta (marítima)",
+     "prev": 4,
+     "v": 2
+    },
+    {
+     "group": "ceuta",
+     "key": "ceuta_tierra",
+     "label": "Ceuta (terrestre)",
+     "prev": 3102,
+     "v": 4078
+    },
+    {
+     "group": "melilla",
+     "key": "melilla_mar",
+     "label": "Melilla (marítima)",
+     "prev": 25,
+     "v": 24
+    },
+    {
+     "group": "melilla",
+     "key": "melilla_tierra",
+     "label": "Melilla (terrestre)",
+     "prev": 279,
+     "v": 715
+    },
+    {
+     "group": "peninsula",
+     "key": "peninsula",
+     "label": "Península (marítima)",
+     "prev": 6959,
+     "v": 7766
+    },
+    {
+     "group": "peninsula",
+     "key": "baleares",
+     "label": "Baleares (marítima)",
+     "prev": 6683,
+     "v": 7289
+    }
+   ],
+   "source": "Ministerio del Interior · Informe quincenal de inmigración irregular",
+   "to": "2026-11-15",
+   "total": {
+    "prev": 31742,
+    "v": 44238
+   },
+   "url": "https://www.interior.gob.es/opencms/export/sites/default/.galleries/galeria-de-prensa/documentos-y-multimedia/balances-e-informes/2026/21_informe_quincenal_acumulado_01-01_al_15-11-2026.pdf"
+  }
+ ]
 }
