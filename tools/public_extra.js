@@ -30,7 +30,7 @@ function setupChrome(){
   document.querySelectorAll("#tbNav a").forEach(a=>a.addEventListener("click",close));
   const scrim=document.getElementById("tbScrim"); if(scrim) scrim.onclick=close;
   document.addEventListener("keydown",e=>{if(e.key==="Escape"&&tb.classList.contains("open")){close();btn.focus();}});
-  const ids=["h-day","h-sim","h-pop","h-san","h-prof","h-map","h-off","h-med","h-log"];
+  const ids=["h-day","h-vel","h-sim","h-pop","h-san","h-prof","h-map","h-off","h-med","h-log"];
   if("IntersectionObserver" in window){
     const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;
       document.querySelectorAll("#tbNav a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+id));

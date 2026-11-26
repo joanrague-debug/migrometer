@@ -1,7 +1,62 @@
 {
- "updatedAt": "2026-11-26T07:21:30+01:00",
+ "updatedAt": "2026-11-26T07:26:24+01:00",
  "lastSweepDate": "2026-11-26",
  "events": [
+  {
+   "boatType": "a nado",
+   "createdAt": "2026-11-26T07:45:00+01:00",
+   "date": "2026-07-30",
+   "id": "ev-20260730-ceuta",
+   "notes": "Entrada masiva desde Marruecos los días 30 y 31 de julio, a nado y a pie por el espigón de El Tarajal. Cifra estimada, no exacta: 50.000 según el Gobierno (RTVC/EFE: «aproximadamente 50.000»); el Ejecutivo ceutí la elevó a 60.000 y el Gobierno, después, a «hasta 80.000». Más de 48.000 regresaron a Marruecos el 31/07 por sus propios medios; Interior estimó después que permanecían en la ciudad unas 2.500 y luego 5.000. Fallecidos: 83 cuerpos recuperados en aguas de Ceuta hasta el 9/08 (todos hombres salvo una mujer); ONG marroquíes cifran 141-145 víctimas a ambos lados de la frontera. El informe quincenal de Interior no refleja esta entrada (Ceuta terrestre: 4.078 en todo el año a 15/11).",
+   "reports": [
+    {
+     "boats": null,
+     "count": 50000,
+     "note": "Cifra del Gobierno; el Ejecutivo ceutí la eleva a 60.000. Más de 48.000 regresaron a Marruecos el 31/07",
+     "source": "RTVE",
+     "url": "https://www.rtve.es/noticias/20260731/crisis-inmigrantes-ceuta-hoy-ultima-hora-resumen/17175111.shtml"
+    },
+    {
+     "boats": null,
+     "note": "Sin cifra de llegadas; balance de fallecidos a 9 de agosto",
+     "source": "laSexta",
+     "stats": {
+      "deaths": 83
+     },
+     "url": "https://www.lasexta.com/noticias/nacional/suben-83-muertos-entrada-masiva-migrantes-ceuta-hallarse-cadaver-avanzado-estado-descomposicion_202608096a789be871b42a0b5de5e105.html"
+    },
+    {
+     "boats": null,
+     "note": "Sin cifra exacta de llegadas («hasta 80.000»); menores no acompañados identificados según Grande-Marlaska (las ONG hablan de unos 4.000)",
+     "source": "El Pueblo de Ceuta (Ministerio del Interior)",
+     "stats": {
+      "minors": 1898
+     },
+     "url": "https://www.elpueblodeceuta.es/sec/politica/inmigracion/numeros-crisis-ceuta-sigue-batallando_1_1185686.html"
+    }
+   ],
+   "sm": null,
+   "time": "",
+   "zone": "ceuta"
+  },
+  {
+   "boatType": "valla terrestre",
+   "createdAt": "2026-11-26T07:45:00+01:00",
+   "date": "2026-07-30",
+   "id": "ev-20260730-melilla",
+   "notes": "Entradas irregulares por la valla la noche del jueves 30 de julio, en paralelo a la entrada masiva en Ceuta. El paso de Beni Enzar quedó cerrado. Los intentos de la noche siguiente (31/07) no fueron cuantificados oficialmente.",
+   "reports": [
+    {
+     "boats": null,
+     "count": 400,
+     "source": "RTVE",
+     "url": "https://www.rtve.es/noticias/20260731/crisis-inmigrantes-ceuta-hoy-ultima-hora-resumen/17175111.shtml"
+    }
+   ],
+   "sm": null,
+   "time": "",
+   "zone": "melilla"
+  },
   {
    "boatType": "cayuco",
    "createdAt": "2026-11-25T20:00:00Z",
