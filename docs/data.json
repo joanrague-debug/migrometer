@@ -37,7 +37,9 @@
    ],
    "sm": null,
    "time": "",
-   "zone": "ceuta"
+   "zone": "ceuta",
+   "approx": true,
+   "editorial": "Se cuenta con la cifra aproximada del Gobierno (50.000) por decisión editorial del 26/11/2026; marcada como aproximada."
   },
   {
    "boatType": "valla terrestre",

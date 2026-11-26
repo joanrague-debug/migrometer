@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Genera la web pública de Migrometer (solo lectura) a partir del panel.
 Salidas: public.html (contenido para el artefacto) y, con --docs DIR, DIR/index.html completo."""
-import os, sys
+import re, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 PANEL = os.environ.get('MIGRO_PANEL', os.path.join(HERE, '..', 'panel', 'index.html'))
 def rd(n): return open(os.path.join(HERE, n), encoding='utf8').read()
@@ -67,18 +67,57 @@ open(os.path.join(HERE, 'public.html'), 'w', encoding='utf8').write(h)
 print('public.html', len(h))
 if '--docs' in sys.argv:
     out = sys.argv[sys.argv.index('--docs') + 1]
-    head = '''<!doctype html>
+    k = h.index('<svg width="0" height="0"')
+    pre, body = h[:k], h[k:]
+    pre = re.sub(r'<title>.*?</title>\s*', '', pre, flags=re.S)
+    pre = re.sub(r'<meta name="claude:[^>]*>\s*', '', pre)
+    TITLE = 'Migrometer · Llegadas irregulares a España, día a día'
+    DESC = 'Cuántos inmigrantes llegan a España de forma irregular, día a día: Canarias, Ceuta, Melilla, península y Baleares según la prensa y según el Ministerio del Interior, por separado y con sus fuentes.'
+    head = """<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Llegadas irregulares de personas migrantes a España según la prensa y según el Ministerio del Interior, por separado y con sus fuentes.">
+<title>""" + TITLE + """</title>
+<meta name="description" content="""" + DESC + """">
+<link rel="canonical" href="https://migrometer.es/">
+<link rel="alternate" hreflang="es-ES" href="https://migrometer.es/">
+<link rel="alternate" hreflang="x-default" href="https://migrometer.es/">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="author" content="Migrometer">
+<meta name="geo.region" content="ES">
+<meta name="geo.placename" content="España">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Migrometer">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://migrometer.es/">
+<meta property="og:title" content="""" + TITLE + """">
+<meta property="og:description" content="""" + DESC + """">
+<meta property="og:image" content="https://migrometer.es/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Migrometer: llegadas irregulares a España según la prensa y según Interior">
+<meta property="article:modified_time" content="">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="""" + TITLE + """">
+<meta name="twitter:description" content="""" + DESC + """">
+<meta name="twitter:image" content="https://migrometer.es/og.png">
 <meta name="theme-color" content="#111111">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
+<link rel="alternate" type="text/plain" title="Resumen para asistentes de IA" href="llms.txt">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" href="data.json" as="fetch" type="application/json" crossorigin>
+<!--SEO:JSONLD--><!--/SEO:JSONLD-->
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+""" + pre.strip() + """
 </head>
 <body>
-'''
-    open(os.path.join(out, 'index.html'), 'w', encoding='utf8').write(head + h + '\n</body>\n</html>\n')
+"""
+    pre_icons = ''
+    open(os.path.join(out, 'index.html'), 'w', encoding='utf8').write(head + body + '\n</body>\n</html>\n')
+    seo = os.path.join(HERE, 'seo.py')
+    if os.path.exists(seo):
+        import subprocess; subprocess.run([sys.executable, seo, out], check=False)
     print(os.path.join(out, 'index.html'))

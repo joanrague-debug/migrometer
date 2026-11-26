@@ -69,6 +69,7 @@ body::before{background:var(--glass)}
 .hero{padding-block:40px 18px}
 .hero-in{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,1fr);gap:28px;align-items:center}
 .hero-l{display:grid;gap:14px;align-content:end}
+h1.hero-k{margin:0}
 .hero-k{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--fg-2)}
 .hero-num{font-size:clamp(64px,10vw,124px);font-weight:800;letter-spacing:-.055em;line-height:.88;color:var(--fg)}
 .hero-empty{font-style:normal;font-size:.42em;letter-spacing:-.02em;color:var(--fg-3)}
@@ -142,3 +143,17 @@ body::before{background:var(--glass)}
   .hl:hover{border-radius:0}.hl:first-child:hover{border-radius:22px 0 0 22px}.hl:last-child:hover{border-radius:0 22px 22px 0}
   .hl-v{font-size:22px}
 }
+
+/* Datos clave y preguntas frecuentes (texto estático para buscadores y asistentes) */
+.kf{margin:8px 0 18px;display:grid;gap:8px;max-width:none}
+.kf:empty{display:none}
+.kf h2{font-size:18px;font-weight:700;letter-spacing:-.01em;margin:6px 0 2px}
+.kf p{margin:0;font-size:14px;line-height:1.55;color:var(--fg-2);max-width:95ch}
+.kf .kf-upd{font-size:12px;color:var(--fg-3)}
+.kf details{border-top:1px solid var(--line);padding:10px 0}
+.kf details:last-child{border-bottom:1px solid var(--line)}
+.kf summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--fg);list-style:none;display:flex;justify-content:space-between;gap:12px}
+.kf summary::-webkit-details-marker{display:none}
+.kf summary::after{content:"+";color:var(--fg-3);font-weight:500}
+.kf details[open] summary::after{content:"–"}
+.kf details p{margin-top:8px}

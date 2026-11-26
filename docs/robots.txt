@@ -1,0 +1,5 @@
+# Migrometer: contenido público e informativo. Se permite el acceso a buscadores y asistentes de IA.
+User-agent: *
+Allow: /
+
+Sitemap: https://migrometer.es/sitemap.xml
