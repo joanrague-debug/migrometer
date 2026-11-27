@@ -41,6 +41,13 @@ def dlong(d):
     y, m, dd = d.split("-"); return f"{int(dd)} de {MES[int(m)-1]} de {y}"
 def dshort(d):
     y, m, dd = d.split("-"); return f"{int(dd)} de {MES[int(m)-1]}"
+MON_EN = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+def fmt_en(n, dec=0):
+    return fmt(n, dec).replace(".", "§").replace(",", ".").replace("§", ",")
+def dlong_en(d):
+    y, m, dd = d.split("-"); return f"{MON_EN[int(m)-1]} {int(dd)}, {y}"
+def dshort_en(d):
+    y, m, dd = d.split("-"); return f"{MON_EN[int(m)-1][:3]} {int(dd)}"
 def pct(a, b):
     return None if not b else (a - b) / b * 100
 
@@ -85,6 +92,7 @@ def main():
     upd_d = upd[:10]
     last = d.get("lastSweepDate") or (max((e["date"] for e in evs), default=upd_d))
     facts, faq = [], []
+    facts_en, faq_en = [], []
     # Oficial
     if off:
         o = off[-1]; yr = o["to"][:4]
@@ -107,6 +115,20 @@ def main():
         if bal is not None: parts.append(f"Baleares, {fmt(bal)}")
         s2 = ("Por zonas: " + "; ".join(parts) + ".") if parts else ""
         facts += [s1, s2]
+        e1 = (f"According to the Ministry of the Interior's latest fortnightly report, {fmt_en(tv)} people arrived in Spain irregularly from January 1 to {dlong_en(o['to'])}"
+              + (f", {fmt_en(abs(p),1)} % {'more' if p >= 0 else 'fewer'} than in the same period of {int(yr)-1} ({fmt_en(tp)})" if p is not None else "") + ".")
+        pe = []
+        if can is not None: pe.append(f"Canary Islands, {fmt_en(can)}" + (f" ({'+' if pct(can,cp)>=0 else '−'}{fmt_en(abs(pct(can,cp)),1)} %)" if cp else ""))
+        if ceu is not None: pe.append(f"Ceuta, {fmt_en(ceu)} (by sea and land)")
+        if mel is not None: pe.append(f"Melilla, {fmt_en(mel)} (by sea and land)")
+        if pen is not None: pe.append(f"mainland, {fmt_en(pen)} by sea")
+        if bal is not None: pe.append(f"Balearic Islands, {fmt_en(bal)}")
+        facts_en += [e1, ("By area: " + "; ".join(pe) + ".") if pe else ""]
+        faq_en.append((f"How many irregular migrants have arrived in Spain in {yr}?", e1 + " The Ministry publishes the cumulative total every fortnight; it is a provisional figure."))
+        if can is not None:
+            faq_en.append((f"How many people have arrived in the Canary Islands in {yr}?", f"According to the Ministry of the Interior, {fmt_en(can)} people arrived in the Canary Islands by sea from January 1 to {dlong_en(o['to'])}" + (f", compared with {fmt_en(cp)} in the same period of {int(yr)-1}." if cp else ".")))
+        if ceu is not None and mel is not None:
+            faq_en.append((f"How many people have entered Ceuta and Melilla in {yr}?", f"According to the Ministry of the Interior, from January 1 to {dlong_en(o['to'])}: Ceuta, {fmt_en(ceu)} and Melilla, {fmt_en(mel)}, adding entries by sea and by land."))
         faq.append((f"¿Cuántos inmigrantes irregulares han llegado a España en {yr}?", s1 + " Interior publica el acumulado cada quincena; es una cifra provisional."))
         if can is not None:
             faq.append((f"¿Cuántas personas han llegado a Canarias en {yr}?", f"Según Interior, {fmt(can)} personas llegaron a Canarias por vía marítima del 1 de enero al {dlong(o['to'])}" + (f", frente a {fmt(cp)} en el mismo periodo de {int(yr)-1}." if cp else ".")))
@@ -127,16 +149,28 @@ def main():
         s3 = (f"Según las noticias de prensa y televisión registradas, del {dshort(a)} al {dlong(b)} llegaron {fmt(tot)} personas en {len(wk)} llegadas registradas; "
               f"el día con más llegadas fue el {dshort(top[0])} ({fmt(top[1])}). Medios citados: {', '.join(med[:8])}{' y otros' if len(med) > 8 else ''}.")
         facts.append(s3)
+        e3 = (f"According to the press and TV news recorded, {fmt_en(tot)} people arrived from {dshort_en(a)} to {dlong_en(b)} in {len(wk)} recorded arrivals; "
+              f"the day with the most arrivals was {dshort_en(top[0])} ({fmt_en(top[1])}). Outlets cited: {', '.join(med[:8])}{' and others' if len(med) > 8 else ''}.")
+        facts_en.append(e3)
+        faq_en.append(("How many migrants have arrived in Spain this week?", e3 + " When several outlets give different figures for the same arrival the mean is used, and each news item counts only once."))
         faq.append(("¿Cuántos inmigrantes han llegado a España esta semana?", s3 + " Cuando varios medios dan cifras distintas para una misma llegada se usa la media, y cada noticia cuenta una sola vez."))
     faq.append(("¿De dónde salen los datos de Migrometer?", "De dos fuentes que se muestran por separado y nunca se suman: las noticias de televisiones, periódicos y agencias (cada cifra enlaza a su noticia) y los informes quincenales de inmigración irregular del Ministerio del Interior. La población de comparación es la del padrón del INE a 1 de enero de 2025."))
     faq.append(("¿Por qué no coinciden las cifras de prensa y las oficiales?", "Interior solo publica acumulados cada quincena y la prensa informa día a día de las llegadas que conoce; no todas las llegadas salen en las noticias y algunas cifras de prensa son provisionales. Por eso Migrometer las compara, pero no las mezcla."))
+    faq_en.append(("Where does Migrometer's data come from?", "From two sources that are shown separately and never added together: news from TV channels, newspapers and agencies (each figure links to its news item) and the Ministry of the Interior's fortnightly reports on irregular immigration. The comparison population is that of the INE register as of January 1, 2025."))
+    faq_en.append(("Why don't the press and official figures match?", "The Ministry of the Interior only publishes cumulative totals every fortnight, while the press reports day by day on the arrivals it knows about; not every arrival makes the news and some press figures are provisional. That is why Migrometer compares them but does not mix them."))
     facts = [f for f in facts if f]
+    facts_en = [f for f in facts_en if f]
     # Bloque visible
     esc = html.escape
-    vis = ('<h2>Datos clave</h2><p class="kf-upd">Actualizado el ' + esc(dlong(upd_d)) + '.</p>' +
+    vis_es = ('<h2>Datos clave</h2><p class="kf-upd">Actualizado el ' + esc(dlong(upd_d)) + '.</p>' +
            ''.join('<p>' + esc(f) + '</p>' for f in facts) +
            '<h2>Preguntas frecuentes</h2>' +
            ''.join('<details><summary>' + esc(q) + '</summary><p>' + esc(a_) + '</p></details>' for q, a_ in faq))
+    vis_en = ('<h2>Key facts</h2><p class="kf-upd">Updated ' + esc(dlong_en(upd_d)) + '.</p>' +
+           ''.join('<p>' + esc(f) + '</p>' for f in facts_en) +
+           '<h2>Frequently asked questions</h2>' +
+           ''.join('<details><summary>' + esc(q) + '</summary><p>' + esc(a_) + '</p></details>' for q, a_ in faq_en))
+    vis = '<div class="kf-es" lang="es" data-noi18n>' + vis_es + '</div><div class="kf-en" lang="en" data-noi18n hidden>' + vis_en + '</div>' 
     # JSON-LD
     first = min((e["date"] for e in evs), default=upd_d)
     years = sorted({e["date"][:4] for e in evs} | {o["to"][:4] for o in off})

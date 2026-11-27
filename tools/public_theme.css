@@ -199,3 +199,13 @@ body{background:var(--bg)}
 .bar{position:sticky;z-index:20}
 .bar .wrap{border-radius:20px;margin-top:0;box-shadow:0 14px 40px rgba(7,8,15,.18)}
 @media (max-width:700px){.hero{padding-bottom:44px;margin-bottom:-26px}.band::after{background:linear-gradient(180deg,rgba(7,8,15,.45) 0%,rgba(7,8,15,.6) 45%,rgba(7,8,15,.3) 100%)}}
+
+/* Selector de idioma */
+.lang{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:var(--fill);flex:none;margin-left:6px}
+.lang a{min-width:34px;height:28px;display:grid;place-items:center;border-radius:999px;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--fg-2);text-decoration:none}
+.lang a:hover{color:var(--fg);text-decoration:none}
+.lang a.on{background:var(--ink);color:var(--ink-fg)}
+.tb.on-band .lang{background:rgba(255,255,255,.14)}
+.tb.on-band .lang a{color:#fff}
+.tb.on-band .lang a.on{background:#fff;color:#111}
+@media (max-width:900px){.lang{margin-left:auto}.tb-menu{margin-left:8px}}

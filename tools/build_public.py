@@ -56,13 +56,16 @@ h = h[:i] + '''async function initStore(){
 }''' + h[j:]
 R('function setPill(){', '''function setPill(){
   const el=$("#updAt"); if(!el) return;
-  if(S.mode==="public"){const u=S.meta&&S.meta.updatedAt; el.textContent="Datos actualizados: "+(u?new Date(u).toLocaleString("es-ES",{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Madrid"}):"sin fecha");}
+  if(S.mode==="public"){const u=S.meta&&S.meta.updatedAt; el.textContent=LANG==="en"?"Data updated: "+(u?new Date(u).toLocaleString("en-US",{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Madrid"})+" (Madrid time)":"no date"):"Datos actualizados: "+(u?new Date(u).toLocaleString("es-ES",{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Madrid"}):"sin fecha");}
   else if(S.mode==="error"){el.textContent="No se pudieron cargar los datos";$("#updPill").className="pill local";}
   else el.textContent="Cargando datos…";
   return;''')
 R('''  $("#inputSection").hidden=!S.canWrite&&S.mode==="db";}''', '  renderHero();}')
 cut('$("#refDate").value=todayISO();', 'window.matchMedia(')
-R('initStore().then(initSample);', 'function renderDrafts(){}\n' + rd('public_extra.js') + '\nsetupChrome();\ninitStore();\nsetupVisits();')
+R('initStore().then(initSample);', 'function renderDrafts(){}\n' + rd('public_extra.js') + '\n' + rd('public_i18n.js') + '\nsetupLang();\nsetupChrome();\ninitStore();\nsetupVisits();')
+import json as _json
+_dict = _json.load(open(os.path.join(HERE, 'public_i18n_en.json'), encoding='utf8'))
+R('<script>\n"use strict";', '<script>\n"use strict";\nconst LANG=(()=>{try{return new URLSearchParams(location.search).get("lang")==="en"?"en":"es";}catch(e){return "es";}})();\nconst I18N_EN=' + _json.dumps(_dict, ensure_ascii=False).replace('</', '<\\/') + ';')
 open(os.path.join(HERE, 'public.html'), 'w', encoding='utf8').write(h)
 print('public.html', len(h))
 if '--docs' in sys.argv:
@@ -82,6 +85,7 @@ if '--docs' in sys.argv:
 <meta name="description" content="""" + DESC + """">
 <link rel="canonical" href="https://migrometer.es/">
 <link rel="alternate" hreflang="es-ES" href="https://migrometer.es/">
+<link rel="alternate" hreflang="en" href="https://migrometer.es/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://migrometer.es/">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta name="author" content="Migrometer">
