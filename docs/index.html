@@ -690,6 +690,15 @@ body{background:var(--bg)}
 .tb.on-band .lang a{color:#fff}
 .tb.on-band .lang a.on{background:#fff;color:#111}
 @media (max-width:900px){.lang{margin-left:auto}.tb-menu{margin-left:8px}}
+/* Metodología y aviso legal: a todo el ancho al desplegar */
+.legal .fold{width:100%}
+.legal .fold-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:18px 32px;padding:10px 0 18px;max-width:none}
+#metodologia .fold-body{grid-template-columns:minmax(0,1fr)}
+#metodologia ul{display:block;columns:2 380px;column-gap:36px}
+#metodologia li{break-inside:avoid;margin-bottom:6px}
+.legal .fold-body>div{min-width:0}
+.legal p,.legal li,footer.legal p{max-width:none}
+.legal .fine{max-width:none}
 
 </style>
 </head>
