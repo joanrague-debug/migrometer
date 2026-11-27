@@ -25,6 +25,9 @@ function renderHero(){
 }
 function setupChrome(){
   const tb=$("#tb"), btn=$("#tbMenu");
+  const hero=document.getElementById("top");
+  const onBand=()=>{const r=hero?hero.getBoundingClientRect():null;tb.classList.toggle("on-band",!!r&&r.bottom>tb.offsetHeight+40);};
+  onBand(); window.addEventListener("scroll",onBand,{passive:true}); window.addEventListener("resize",onBand);
   const close=()=>{tb.classList.remove("open");document.documentElement.classList.remove("menu-open");btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-label","Abrir el menú");};
   btn.onclick=()=>{const o=tb.classList.toggle("open");document.documentElement.classList.toggle("menu-open",o);btn.setAttribute("aria-expanded",String(o));btn.setAttribute("aria-label",o?"Cerrar el menú":"Abrir el menú");};
   document.querySelectorAll("#tbNav a").forEach(a=>a.addEventListener("click",close));
