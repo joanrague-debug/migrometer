@@ -72,10 +72,11 @@ function setupLang(){
   const sel=document.getElementById("langSel");
   if(sel){sel.querySelectorAll("a").forEach(a=>{const on=a.dataset.l===LANG;a.classList.toggle("on",on);a.setAttribute("aria-current",on?"true":"false");
     const u=new URL(location.href); if(a.dataset.l==="en") u.searchParams.set("lang","en"); else u.searchParams.delete("lang"); a.href=u.pathname+u.search+u.hash;});}
+  try{const z=new URLSearchParams(location.search).get("zona"); if(z&&GROUPS[z]) S.f.region=z;}catch(e){}
   if(LANG!=="en") return;
   document.documentElement.lang="en";
   document.querySelectorAll(".kf-es").forEach(e=>e.hidden=true); document.querySelectorAll(".kf-en").forEach(e=>e.hidden=false);
-  document.title="Migrometer · Irregular arrivals in Spain, day by day";
+  document.title="Migrants arriving in Spain today: boats day by day · Migrometer";
   if(window.Chart&&!window.Chart.__i18n){
     const C0=window.Chart;
     const tc=cfg=>{try{const d=cfg.data||{}; if(Array.isArray(d.labels)) d.labels=d.labels.map(x=>typeof x==="string"?T(x):x);

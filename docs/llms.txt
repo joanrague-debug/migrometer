@@ -24,3 +24,11 @@ Actualizado: 26 de noviembre de 2026.
 - **¿Cuántos inmigrantes han llegado a España esta semana?** Según las noticias de prensa y televisión registradas, del 20 de noviembre al 26 de noviembre de 2026 llegaron 4.029 personas en 8 llegadas registradas; el día con más llegadas fue el 24 de noviembre (2.046). Medios citados: 20minutos, ABC, Atlántico Hoy, Canarias7, El Día, El País, La 7, RTVC y otros. Cuando varios medios dan cifras distintas para una misma llegada se usa la media, y cada noticia cuenta una sola vez.
 - **¿De dónde salen los datos de Migrometer?** De dos fuentes que se muestran por separado y nunca se suman: las noticias de televisiones, periódicos y agencias (cada cifra enlaza a su noticia) y los informes quincenales de inmigración irregular del Ministerio del Interior. La población de comparación es la del padrón del INE a 1 de enero de 2025.
 - **¿Por qué no coinciden las cifras de prensa y las oficiales?** Interior solo publica acumulados cada quincena y la prensa informa día a día de las llegadas que conoce; no todas las llegadas salen en las noticias y algunas cifras de prensa son provisionales. Por eso Migrometer las compara, pero no las mezcla.
+
+## Páginas por zona
+- https://migrometer.es/hoy/
+- https://migrometer.es/canarias/
+- https://migrometer.es/ceuta/
+- https://migrometer.es/melilla/
+- https://migrometer.es/baleares/
+- https://migrometer.es/peninsula/

@@ -20,6 +20,8 @@ chrome = rd('public_chrome.html').replace('__LOGO_SYMBOL__', rd('logo_symbol.svg
 cut('<header class="top wrap">', '<div class="bar">', chrome + '\n')
 # Sin entrada de datos
 cut('  <!-- 6. Entrada de noticias -->', '  <!-- 7. Registro -->')
+R('<h2 id="h-map">Mapa de llegadas</h2>', '<h2 id="h-map">Mapa de llegadas de pateras y cayucos</h2>')
+R('<h2 id="h-log">Registro de eventos</h2>', '<h2 id="h-log">Registro de llegadas de pateras y cayucos</h2>')
 R('<span class="sub">Toca un punto o una zona para filtrar</span>', '<span class="sub">Toca un punto o una zona para filtrar la página</span>')
 # Pie: metodología y aviso legal plegados + barra de pestañas móvil
 i = h.index('  <footer>'); j = h.index('  </footer>', i) + len('  </footer>')
@@ -74,8 +76,8 @@ if '--docs' in sys.argv:
     pre, body = h[:k], h[k:]
     pre = re.sub(r'<title>.*?</title>\s*', '', pre, flags=re.S)
     pre = re.sub(r'<meta name="claude:[^>]*>\s*', '', pre)
-    TITLE = 'Migrometer · Llegadas irregulares a España, día a día'
-    DESC = 'Cuántos inmigrantes llegan a España de forma irregular, día a día: Canarias, Ceuta, Melilla, península y Baleares según la prensa y según el Ministerio del Interior, por separado y con sus fuentes.'
+    TITLE = 'Inmigrantes llegados a España hoy: pateras y cayucos, día a día · Migrometer'
+    DESC = 'Cuántos inmigrantes han llegado hoy a España en pateras y cayucos: Canarias, Ceuta, Melilla, Baleares y la península, día a día, según la prensa y según el Ministerio del Interior, con fuentes.'
     head = """<!doctype html>
 <html lang="es">
 <head>

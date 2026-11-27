@@ -531,5 +531,10 @@
 "No se pudieron cargar los datos": "The data could not be loaded",
 "Por zona · {0}": "By area · {0}",
 "Interior publica por quincenas. Más cercana: {0} – {1}:": "The Ministry of the Interior publishes fortnightly. Nearest: {0} – {1}:",
-"Inicio del recuento: {0} · pico: {1} (Ceuta)": "Count start: {0} · peak: {1} (Ceuta)"
+"Inicio del recuento: {0} · pico: {1} (Ceuta)": "Count start: {0} · peak: {1} (Ceuta)",
+"Inmigrantes llegados a España": "Migrants arrived in Spain",
+"Mapa de llegadas de pateras y cayucos": "Map of boat arrivals (pateras and cayucos)",
+"Registro de llegadas de pateras y cayucos": "Log of boat arrivals (pateras and cayucos)",
+"· últimos {0} días": "· last {0} days",
+"· todo el registro": "· whole record"
 }

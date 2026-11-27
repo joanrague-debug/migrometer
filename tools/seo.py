@@ -170,6 +170,9 @@ def main():
            ''.join('<p>' + esc(f) + '</p>' for f in facts_en) +
            '<h2>Frequently asked questions</h2>' +
            ''.join('<details><summary>' + esc(q) + '</summary><p>' + esc(a_) + '</p></details>' for q, a_ in faq_en))
+    zl = [("hoy","Inmigrantes llegados hoy","Arrivals today"),("canarias","Cayucos a Canarias","Canary Islands"),("ceuta","Ceuta","Ceuta"),("melilla","Melilla","Melilla"),("baleares","Pateras a Baleares","Balearic Islands"),("peninsula","Pateras a la península","Mainland")]
+    vis_es += '<h2>Por zonas</h2><p class="kf-zones">' + ' · '.join(f'<a href="{SITE}{z}/">{esc(t)}</a>' for z, t, _ in zl) + '</p>'
+    vis_en += '<h2>By area (in Spanish)</h2><p class="kf-zones">' + ' · '.join(f'<a href="{SITE}{z}/">{esc(t)}</a>' for z, _, t in zl) + '</p>'
     vis = '<div class="kf-es" lang="es" data-noi18n>' + vis_es + '</div><div class="kf-en" lang="en" data-noi18n hidden>' + vis_en + '</div>' 
     # JSON-LD
     first = min((e["date"] for e in evs), default=upd_d)
@@ -206,14 +209,23 @@ def main():
             "- Las cifras oficiales de cada quincena son la diferencia entre dos informes consecutivos de Interior.", "",
             "## Preguntas frecuentes"] + [f"- **{q}** {a_}" for q, a_ in faq] + [""]
     open(os.path.join(DOCS, "llms.txt"), "w", encoding="utf8").write("\n".join(llms))
+    pages = []
+    try:
+        import seo_pages
+        logo = open(os.path.join(DOCS, "favicon.svg"), encoding="utf8").read().replace('<svg ', '<svg aria-hidden="true" ', 1)
+        pages = seo_pages.build(DOCS, evs, off, upd, last, logo)
+    except Exception as ex:
+        print("Aviso: no se pudieron generar las páginas por zona:", ex)
+    open(os.path.join(DOCS, "llms.txt"), "a", encoding="utf8").write("\n## Páginas por zona\n" + "".join(f"- {u}\n" for u, _ in pages))
     open(os.path.join(DOCS, "sitemap.xml"), "w", encoding="utf8").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         f'  <url><loc>{SITE}</loc><lastmod>{upd_d}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>\n'
+        + "".join(f'  <url><loc>{u}</loc><lastmod>{lm}</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>\n' for u, lm in pages) +
         f'  <url><loc>{SITE}llms.txt</loc><lastmod>{upd_d}</lastmod><changefreq>daily</changefreq><priority>0.3</priority></url>\n</urlset>\n')
     open(os.path.join(DOCS, "robots.txt"), "w", encoding="utf8").write(
         "# Migrometer: contenido público e informativo. Se permite el acceso a buscadores y asistentes de IA.\nUser-agent: *\nAllow: /\n\n"
         f"Sitemap: {SITE}sitemap.xml\n")
-    print("SEO actualizado:", upd, "·", len(facts), "datos ·", len(faq), "preguntas")
+    print("SEO actualizado:", upd, "·", len(facts), "datos ·", len(faq), "preguntas ·", len(pages), "páginas por zona")
 
 if __name__ == "__main__":
     main()
