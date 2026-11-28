@@ -51,8 +51,10 @@ h = h[:i] + '''async function initStore(){
     const r=await fetch("data.json",{cache:"no-store"}); if(!r.ok) throw new Error(String(r.status));
     const d=await r.json();
     S.events=Array.isArray(d.events)?d.events:[]; S.offReports=Array.isArray(d.official)?d.official:[]; S.official=null; S.meta=d; S.mode="public";
-    const last=S.events.map(e=>e.date).sort().pop();
-    if(last&&last<addDays(todayISO(),-6)) S.f.day=last;
+    const lastEv=S.events.map(e=>e.date).sort().pop();
+    let last=(d.lastSweepDate&&/^\d{4}-\d{2}-\d{2}$/.test(d.lastSweepDate))?d.lastSweepDate:lastEv;
+    if(lastEv&&last&&lastEv>last) last=lastEv;
+    if(last&&last<todayISO()) S.f.day=last;
   }catch(e){S.mode="error";}
   renderAll();
 }''' + h[j:]

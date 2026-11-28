@@ -5,7 +5,9 @@ function renderHero(){
   const r=range(); const [a,b]=rangeBounds();
   const evs=S.events.filter(e=>inRange(e,r)&&inGeo(e)&&!e._excluded);
   const pv=evs.reduce((s,e)=>s+(persons(e)||0),0);
-  const lab={dia:" · "+dShort(S.f.day),"7d":" · últimos 7 días","30d":" · últimos 30 días",anio:" · "+S.f.day.slice(0,4),todo:" · todo el registro"}[S.f.preset]||"";
+  const past=S.f.day<todayISO(), EN=typeof LANG!=="undefined"&&LANG==="en";
+  const upto=n=>EN?" · "+n+" days to "+dShort(S.f.day):" · "+n+" días hasta el "+dShort(S.f.day);
+  const lab={dia:" · "+dShort(S.f.day),"7d":past?upto(7):" · últimos 7 días","30d":past?upto(30):" · últimos 30 días",anio:" · "+S.f.day.slice(0,4),todo:" · todo el registro"}[S.f.preset]||"";
   $("#heroK").textContent=lab+(scopeLabel()!=="Toda España"?" · "+scopeLabel():"");
   const n=$("#heroNum");
   if(evs.length){n.innerHTML=esc(fmt(pv));
