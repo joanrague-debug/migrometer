@@ -1,6 +1,6 @@
 {
- "updatedAt": "2026-11-26T22:21:09+01:00",
- "lastSweepDate": "2026-11-26",
+ "updatedAt": "2026-11-28T08:40:00+01:00",
+ "lastSweepDate": "2026-11-28",
  "events": [
   {
    "approx": true,
@@ -500,6 +500,176 @@
    ],
    "sm": true,
    "time": "02:00",
+   "zone": "el-hierro"
+  },
+  {
+   "boatType": "neumática",
+   "createdAt": "2026-11-28T08:30:00+01:00",
+   "date": "2026-11-26",
+   "id": "ev-20261126-gran-canaria",
+   "notes": "Neumática avistada a la deriva por un buque mercante al suroeste del archipiélago; rescatada por la Guardamar Urania y trasladada al muelle de Arguineguín (Mogán), donde el desembarco terminó hacia las 23:15 del jueves 26. Tres personas trasladadas a un centro hospitalario.",
+   "reports": [
+    {
+     "boats": 1,
+     "count": 49,
+     "source": "El Día (EFE)",
+     "stats": {
+      "men": 42,
+      "minors": 1,
+      "women": 6
+     },
+     "url": "https://www.eldia.es/canarias/2026/11/27/rescatados-49-migrantes-neumatica-deriva-136914010.amp.html"
+    },
+    {
+     "boats": 1,
+     "count": 49,
+     "note": "Tres trasladados a un centro hospitalario",
+     "source": "20minutos (Europa Press)",
+     "stats": {
+      "men": 42,
+      "minors": 1,
+      "women": 6
+     },
+     "url": "https://www.20minutos.es/canarias/las-palmas/salvamento-rescata-una-embarcacion-neumatica-con-49-migrantes-bordo-sureste-gran-canaria_7066551_0.html"
+    }
+   ],
+   "sm": true,
+   "time": "23:15",
+   "zone": "gran-canaria"
+  },
+  {
+   "boatType": "cayuco",
+   "createdAt": "2026-11-28T08:30:00+01:00",
+   "date": "2026-11-27",
+   "id": "ev-20261127-el-hierro-2",
+   "notes": "Tragedia: cayuco a la deriva a unos 72 km (39 millas) al sur-suroeste de La Restinga tras diez días de travesía desde Banjul (Gambia). Aviso de un velero a las 03:29; localizado por la Salvamar Navia a las 06:24. Seis ocupantes graves (5 hombres y 1 mujer; RTVC habla de 5) evacuados en helicóptero Helimer 204; dos trasladados a La Candelaria (Tenerife). La Salvamar Navia llevó a 84 supervivientes a La Restinga (3 mujeres; menores: 3 según RTVE/RTVC/El Confidencial, 1 según Europa Press y EFE-Diario de Avisos). El cayuco llegó remolcado hacia las 19:00 con 14 cadáveres. Un superviviente se negó a abandonar el cayuco; según EFE (Heraldo) es uno de los 14 fallecidos y los trasladados por la Salvamar fueron 83. Supervivientes llegados con vida: 90 (RTVE, RTVC, Europa Press, Diario de Avisos) u 89 (Heraldo/EFE). Un guardia civil herido en el rescate. El Español habla de un posible menor fallecido en la sentina (no confirmado).",
+   "reports": [
+    {
+     "boats": 1,
+     "count": 90,
+     "note": "6 evacuados en helicóptero + 84 desembarcados en La Restinga",
+     "source": "RTVE",
+     "stats": {
+      "deaths": 14,
+      "injured": 6,
+      "women": 4
+     },
+     "url": "https://www.rtve.es/noticias/20261127/helicoptero-rescata-a-cinco-personas-estado-critico-viajaban-patera-sur-isla-hierro/17333558.shtml"
+    },
+    {
+     "boats": 1,
+     "count": 90,
+     "note": "90 rescatados con vida: 5 evacuados en helicóptero (4 hombres y 1 mujer), 84 en la Salvamar Navia y un hombre que permaneció en el cayuco",
+     "source": "RTVC (EFE)",
+     "stats": {
+      "deaths": 14,
+      "injured": 5,
+      "minors": 3,
+      "nationalities": [
+       {
+        "count": null,
+        "country": "Gambia"
+       },
+       {
+        "count": null,
+        "country": "Senegal"
+       },
+       {
+        "count": null,
+        "country": "Mali"
+       }
+      ],
+      "women": 4
+     },
+     "url": "https://rtvc.es/llegada-migrantes-canarias-27-noviembre-2026/"
+    },
+    {
+     "boats": 1,
+     "count": 90,
+     "note": "84 desembarcados (3 mujeres y 1 menor) + 6 evacuados graves (5 varones y 1 mujer); cita además un superviviente que siguió a bordo. 14 cadáveres según Delegación del Gobierno",
+     "source": "Europa Press",
+     "stats": {
+      "deaths": 14,
+      "injured": 6,
+      "minors": 1,
+      "women": 4
+     },
+     "url": "https://www.europapress.es/islas-canarias/noticia-llega-restinga-hierro-cayuco-rescatado-viernes-14-fallecidos-bordo-20261127230614.html"
+    },
+    {
+     "boats": 1,
+     "count": 89,
+     "note": "90 supervivientes en el rescate: 6 evacuados, 83 transbordados y uno que se quedó en el cayuco y figura entre los 14 fallecidos (portavoz de Salvamento Marítimo)",
+     "source": "Heraldo de Aragón (EFE)",
+     "stats": {
+      "deaths": 14
+     },
+     "url": "https://www.heraldo.es/noticias/internacional/2026/11/27/hombre-no-quiso-separarse-companeros-cayuco-hierro-fallecidos-2072722.html"
+    },
+    {
+     "boats": 1,
+     "count": 90,
+     "note": "6 evacuados (5 hombres y 1 mujer) + 84 supervivientes (3 mujeres y 1 menor)",
+     "source": "Diario de Avisos (EFE)",
+     "stats": {
+      "deaths": 14,
+      "injured": 6,
+      "minors": 1,
+      "women": 4
+     },
+     "url": "https://diariodeavisos.elespanol.com/2026/11/el-hierro-tragedia-cayuco-14-migrantes-fallecidos/"
+    }
+   ],
+   "sm": true,
+   "time": "19:00",
+   "zone": "el-hierro"
+  },
+  {
+   "boatType": "cayuco",
+   "createdAt": "2026-11-28T08:30:00+01:00",
+   "date": "2026-11-27",
+   "id": "ev-20261127-el-hierro",
+   "notes": "Primer cayuco del viernes en La Restinga: detectado por un ecosive de la Guardia Civil a unas diez millas al sur de La Restinga y llevado a puerto por la Salvamar Dipdha. Partió hace una semana de Dakar. Un menor con ceguera total bilateral. Discrepancia en el perfil: EFE da 4 mujeres y 12 menores; Europa Press (datos de Salvamento Marítimo) 91 hombres, 10 mujeres y 10 menores. Hora de llegada 11:35 (EFE) u 11:30 (Europa Press).",
+   "reports": [
+    {
+     "boats": 1,
+     "count": 111,
+     "source": "Canarias7 (EFE)",
+     "stats": {
+      "minors": 12,
+      "nationalities": [
+       {
+        "count": null,
+        "country": "Senegal"
+       },
+       {
+        "count": null,
+        "country": "Gambia"
+       },
+       {
+        "count": null,
+        "country": "Guinea"
+       }
+      ],
+      "women": 4
+     },
+     "url": "https://www.canarias7.es/politica/cayuco-111-personas-llega-hierro-tras-semana-20261127124715-nt.html"
+    },
+    {
+     "boats": 1,
+     "count": 111,
+     "note": "Datos de Salvamento Marítimo",
+     "source": "Diario de Avisos (Europa Press)",
+     "stats": {
+      "men": 91,
+      "minors": 10,
+      "women": 10
+     },
+     "url": "https://diariodeavisos.elespanol.com/2026/11/llegada-cayuco-111-migrantes-el-hierro/"
+    }
+   ],
+   "sm": true,
+   "time": "11:35",
    "zone": "el-hierro"
   }
  ],
