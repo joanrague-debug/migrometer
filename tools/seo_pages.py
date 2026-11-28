@@ -79,7 +79,7 @@ footer{padding:0 0 40px;color:var(--fg3);font-size:12px}
 def fmt(n, dec=0):
     if n is None: return "—"
     neg = n < 0; n = abs(n)
-    r = round(n, 1)
+    r = float(round(n)) if n >= 100 else round(n, 1)  # totales de personas: sin decimales
     i, _, dd = f"{r:.1f}".partition(".")
     i = f"{int(i):,}".replace(",", ".")
     s = i + ("," + dd if dd and dd != "0" else "")

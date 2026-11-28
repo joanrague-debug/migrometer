@@ -9,7 +9,7 @@ const DIAS_EN=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Satu
 function fmt(n){
   if(n==null||isNaN(n)) return "—";
   const neg=n<0; n=Math.abs(n);
-  const r=Math.round(n*10)/10;
+  const r=n>=100?Math.round(n):Math.round(n*10)/10; /* totales de personas: sin decimales */
   let [i,d]=String(r).split(".");
   i=i.replace(/\B(?=(\d{3})+(?!\d))/g,LANG==="en"?",":".");
   return (neg?"−":"")+i+(d&&d!=="0"?(LANG==="en"?".":",")+d:"");

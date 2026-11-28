@@ -1061,7 +1061,7 @@ const norm = s=>String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,
 function fmt(n){
   if(n==null||isNaN(n)) return "—";
   const neg=n<0; n=Math.abs(n);
-  const r=Math.round(n*10)/10;
+  const r=n>=100?Math.round(n):Math.round(n*10)/10; /* totales de personas: sin decimales */
   let [i,d]=String(r).split(".");
   i=i.replace(/\B(?=(\d{3})+(?!\d))/g,".");
   return (neg?"−":"")+i+(d&&d!=="0"?","+d:"");
@@ -1167,7 +1167,7 @@ function setPill(){
 async function initStore(){
   renderAll();
   try{
-    const r=await fetch("data.json",{cache:"no-store"}); if(!r.ok) throw new Error(String(r.status));
+    const r=await fetch("data.json?t="+Date.now(),{cache:"no-store"}); if(!r.ok) throw new Error(String(r.status));
     const d=await r.json();
     S.events=Array.isArray(d.events)?d.events:[]; S.offReports=Array.isArray(d.official)?d.official:[]; S.official=null; S.meta=d; S.mode="public";
     const lastEv=S.events.map(e=>e.date).sort().pop();
@@ -2526,7 +2526,7 @@ const DIAS_EN=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Satu
 function fmt(n){
   if(n==null||isNaN(n)) return "—";
   const neg=n<0; n=Math.abs(n);
-  const r=Math.round(n*10)/10;
+  const r=n>=100?Math.round(n):Math.round(n*10)/10; /* totales de personas: sin decimales */
   let [i,d]=String(r).split(".");
   i=i.replace(/\B(?=(\d{3})+(?!\d))/g,LANG==="en"?",":".");
   return (neg?"−":"")+i+(d&&d!=="0"?(LANG==="en"?".":",")+d:"");

@@ -48,7 +48,7 @@ i = h.index('async function initStore(){'); j = h.index('\nasync function putEve
 h = h[:i] + '''async function initStore(){
   renderAll();
   try{
-    const r=await fetch("data.json",{cache:"no-store"}); if(!r.ok) throw new Error(String(r.status));
+    const r=await fetch("data.json?t="+Date.now(),{cache:"no-store"}); if(!r.ok) throw new Error(String(r.status));
     const d=await r.json();
     S.events=Array.isArray(d.events)?d.events:[]; S.offReports=Array.isArray(d.official)?d.official:[]; S.official=null; S.meta=d; S.mode="public";
     const lastEv=S.events.map(e=>e.date).sort().pop();
